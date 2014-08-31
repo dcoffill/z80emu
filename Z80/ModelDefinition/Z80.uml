@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="9fab0ad9-e680-45b7-9f36-cf2aecad85f5"
+  name="Z80" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <appliedStereotypesInternal>
+    <stereotypeInstance
+      Id="ae08970c-3b10-4677-9b89-5975199d06f0"
+      name="namespace"
+      profile="CSharpProfile">
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="25e070e6-6a72-471f-a93b-a8e6df8f8cc8">
+          <propertyInstance
+            Id="19143584-50ee-4d27-89fb-bee0d8e3a466"
+            name="BaseName" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="3aa4c673-6064-451c-9c04-27bd0893c242">
+          <propertyInstance
+            Id="61c392b7-a952-49f5-bc17-a9f1bae2b7e0"
+            name="ClrAttributes" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="45d8c696-2202-400e-bb62-d905d51f2526">
+          <propertyInstance
+            Id="73036f1a-c524-41ec-a9c0-a7d61ac9bc6d"
+            name="Usings" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance
+      Id="7adafb7f-2373-42f4-9fd7-fdcbaa0e6247"
+      name="TextTemplateBindings"
+      profile="TextTemplateBindings">
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="1065be3c-d070-46a7-ad81-f55dca991f24">
+          <propertyInstance
+            Id="e0362688-8fa7-4727-83b2-46fe6eaca43f"
+            name="Alias"
+            value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="bd7de294-3fae-4b0c-a1b1-a7cbe16bef85">
+          <propertyInstance
+            Id="58097426-f15e-4a86-a8bd-e0253800837d"
+            name="TemplateFilePath"
+            value="ClassTemplate=G:\VISUAL STUDIO\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=G:\VISUAL STUDIO\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=G:\VISUAL STUDIO\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=G:\VISUAL STUDIO\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="243d3f2d-d012-46b1-9095-d84bdcb526d8">
+          <propertyInstance
+            Id="2d25548b-9b3f-4c5c-8d49-7bac6c26ccf5"
+            name="ProjectPath"
+            value="ClassTemplate=..\Z80Lib\Z80Lib.csproj|EnumTemplate=..\Z80Lib\Z80Lib.csproj|InterfaceTemplate=..\Z80Lib\Z80Lib.csproj|StructTemplate=..\Z80Lib\Z80Lib.csproj" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="4eb65c0a-be3a-448d-bef6-29deed22e74e">
+          <propertyInstance
+            Id="0027a89f-1c8d-44ed-81d7-9fd0793efa00"
+            name="TargetDirectory"
+            value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="95e0608f-980d-462f-a777-2a6c2ec42bc7">
+          <propertyInstance
+            Id="ad6c1129-4ea0-4fb5-b33c-552aad95c597"
+            name="TargetName"
+            value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="a08617a4-77fe-4965-8a8e-fac0fc3c1e8b">
+          <propertyInstance
+            Id="99ef2087-0c03-4306-bef4-c5932c67692e"
+            name="Overwrite"
+            value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="2860af17-2a6a-4109-b61c-2ae0a957c3f1">
+          <propertyInstance
+            Id="10c2a051-f95d-4ac2-a79a-efa6e4d4dc98"
+            name="Parameters" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="a0e60579-99c1-4385-a68a-db46f1b06bd4">
+      <profileInstance
+        Id="f0f7bacb-aeb3-4a35-a650-37ec9ad4a583"
+        name="CSharpProfile" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="0be80165-74ad-4e96-b1f7-b535eb09d4b8">
+      <profileInstance
+        Id="10e18ece-9180-45e3-bfa7-172554a61e11"
+        name="TextTemplateBindings" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="4b72bdd4-9d6b-47f8-836c-ca05d46e6550"
+        name="Memory"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="7f88e9fb-3974-4bfa-b394-6ae110d5fe21"
+            name="_memory"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <lowerValueInternal>
+              <literalString
+                Id="48d7bb25-d67e-450f-8d6a-a6e817a6a968"
+                name="Lower"
+                value="*" />
+            </lowerValueInternal>
+            <upperValueInternal>
+              <literalString
+                Id="a4838eaa-78e8-4363-8b38-26749e485add"
+                name="Upper"
+                value="*" />
+            </upperValueInternal>
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="a00d3694-3c67-4189-b343-931f90b48360"
+                LastKnownName="uint8_t"
+                LastKnownLocation="Z80.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="70ff0a39-a737-4ff7-a00d-ebcb66cf8700"
+            name="write"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e31ea3ae-4fe7-478f-b463-59d23b473d8f"
+                  name="address"
+                  direction="In">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="Z80.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="deccd973-d8fa-4867-96ee-836f37db0cbd"
+                  name="data"
+                  direction="In">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="Z80.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="188733c1-09c0-4e20-b380-a7dfb7de6d8f"
+            name="read"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c264065d-e6ab-4821-80f6-730ab168b03b"
+                  name="address"
+                  direction="In">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="Z80.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="344ba98c-deb4-46ba-abdc-965e0c499b33"
+        name="Cpu"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="96bf8a0e-b37b-4154-bfcd-e30feb2eaf1f">
+            <classMoniker
+              Id="ac0c4c70-28dd-4c5e-84f3-4d79fa6b8793"
+              LastKnownName="RegisterFile"
+              LastKnownLocation="Z80.uml" />
+          </dependency>
+          <dependency
+            Id="faf3b75c-7691-4989-b841-29f5d2601cd1">
+            <classMoniker
+              Id="df60339f-cb24-44ef-8ebc-74dbfc783829"
+              LastKnownName="Register"
+              LastKnownLocation="Z80.uml" />
+          </dependency>
+        </suppliersInternal>
+        <targetEnds>
+          <association
+            Id="e828038e-abb9-4333-9cba-daf1a7c67cc1"
+            isDerived="false"
+            sourceEndRoleName="Cpu"
+            targetEndRoleName="Memory"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="4b72bdd4-9d6b-47f8-836c-ca05d46e6550"
+              LastKnownName="Memory"
+              LastKnownLocation="Z80.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1790730d-2306-4018-abbb-c911b82559e0"
+                  name="Cpu"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="132964bb-9583-4a6a-bed2-6d92e8e3a64f"
+                  name="Memory"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="967ba03e-ac63-45ec-b6db-52ba411f49c2"
+            name="_register_file"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <lowerValueInternal>
+              <literalString
+                Id="14f1dba0-177c-4755-8da1-9ab4261b1432"
+                name="Lower"
+                value="*" />
+            </lowerValueInternal>
+            <upperValueInternal>
+              <literalString
+                Id="703921b9-1c5e-461e-b8d9-2c966e2b5af0"
+                name="Upper"
+                value="*" />
+            </upperValueInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="df60339f-cb24-44ef-8ebc-74dbfc783829"
+                LastKnownName="Register"
+                LastKnownLocation="Z80.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="9e1a962d-d975-404d-8ea9-910f216f4c4c"
+            name="execute"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ac0c4c70-28dd-4c5e-84f3-4d79fa6b8793"
+        name="RegisterFile"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="4895ac15-f3ee-4257-b8cf-661d26b2129b"
+            isDerived="false"
+            sourceEndRoleName="RegisterFile"
+            targetEndRoleName="Register"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="df60339f-cb24-44ef-8ebc-74dbfc783829"
+              LastKnownName="Register"
+              LastKnownLocation="Z80.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5f300e86-7b78-4878-824d-584a831324c9"
+                  name="RegisterFile"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7187cf50-8109-46b1-8ab2-7f9ccb3879bc"
+                  name="Register"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="3194fbcc-07ef-4267-810e-90fe01703d59"
+            name="_registers"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="df60339f-cb24-44ef-8ebc-74dbfc783829"
+                LastKnownName="Register"
+                LastKnownLocation="Z80.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="0172a2c0-1882-4b57-b60d-31ddeede33d0"
+            name="Operator[]"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="df60339f-cb24-44ef-8ebc-74dbfc783829"
+        name="Register"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d4447eae-3b73-470a-9075-973d097e9a3a"
+        name="Emulator"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="30b87f9d-bfff-4e50-9ca1-30245539d144">
+            <classMoniker
+              Id="344ba98c-deb4-46ba-abdc-965e0c499b33"
+              LastKnownName="Cpu"
+              LastKnownLocation="Z80.uml" />
+          </dependency>
+          <dependency
+            Id="65ee0bf8-77a9-4732-a27b-de9e7d4bf0cc">
+            <classMoniker
+              Id="4b72bdd4-9d6b-47f8-836c-ca05d46e6550"
+              LastKnownName="Memory"
+              LastKnownLocation="Z80.uml" />
+          </dependency>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="b8e2845f-313a-49d1-b2c8-fcc1a5a973c5"
+            name="_cpu"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="344ba98c-deb4-46ba-abdc-965e0c499b33"
+                LastKnownName="Cpu"
+                LastKnownLocation="Z80.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="d0d714b2-a082-40c4-8cb8-b39ab0f14380"
+            name="_memory"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="4b72bdd4-9d6b-47f8-836c-ca05d46e6550"
+                LastKnownName="Memory"
+                LastKnownLocation="Z80.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="339b8532-cc19-4df3-8046-b91e8c1c44e4"
+            name="initialize"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="3ed59532-d62b-4a0f-af91-93a2d5f964b1"
+            name="run"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="7e8a6758-eb95-4738-b324-38d56177d517"
+        name="char[" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="e2d61519-bb27-404b-af1c-ff0a2caa61d3"
+        name="char[491" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="4fed7190-bc0a-4545-a61c-8e659efd9df4"
+        name="char" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="0c9fbc68-f485-402a-bbfa-8096782e5bd8"
+        name="unsigned char" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="a00d3694-3c67-4189-b343-931f90b48360"
+        name="uint8_t" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>
