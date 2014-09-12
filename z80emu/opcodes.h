@@ -146,7 +146,7 @@ namespace opcodes {
 
 	// LD A, (DE)
 	// Load contents of memory, stored at address contained in DE, to register A
-	const instruction LD_A_BC { 0x1A, 1 };
+	const instruction LD_A_DE { 0x1A, 1 };
 
 	// LD A, (nn)
 	// Load contents of memory, indicated at the address nn, to register A
@@ -162,7 +162,7 @@ namespace opcodes {
 
 	// LD (nn), A
 	// Store contents of register A to address indicated by nn
-	const instruction LD_A_NN { 0x32, 3 };
+	const instruction LD_NN_A { 0x32, 3 };
 
 	// LD A, I
 	// Load contents of Interrupt Vector register I into A
@@ -175,9 +175,9 @@ namespace opcodes {
 	// LD dd, nn
 	// Load 2 byte immediate nn into register dd
 	const instruction LD_BC_NN { 0x01, 3 }; // to BC
-	const instruction LD_BC_NN { 0x11, 3 }; // to DE
-	const instruction LD_BC_NN { 0x21, 3 }; // to HL
-	const instruction LD_BC_NN { 0x31, 3 }; // to SP
+	const instruction LD_DE_NN { 0x11, 3 }; // to DE
+	const instruction LD_HL_NN { 0x21, 3 }; // to HL
+	const instruction LD_SP_NN { 0x31, 3 }; // to SP
 
 	// LD IX, nn
 	// Load nn into index register IX
@@ -190,14 +190,14 @@ namespace opcodes {
 	// 0xFD then 0x21
 
 	// LD HL, (nn)
-	const instruction LD_HL_NN { 0x2A, 3 };
+	const instruction LD_HL_NN_ADDR { 0x2A, 3 };
 
 	// LD dd, (nn)
 	// 0xed, then:
-	const instruction LD_HL_NN_2 { 0x6B, 4 };
-	const instruction LD_BC_NN { 0x4B, 4 };
-	const instruction LD_DE_NN { 0x5B, 4 };
-	const instruction LD_SP_NN { 0x7B, 4 };
+	const instruction LD_HL_NN_ADDR_2 { 0x6B, 4 };
+	const instruction LD_BC_NN_ADDR { 0x4B, 4 };
+	const instruction LD_DE_NN_ADDR { 0x5B, 4 };
+	const instruction LD_SP_NN_ADDR { 0x7B, 4 };
 
 	// LD IX, (nn)
 	// first LD_R_IXD
@@ -213,10 +213,10 @@ namespace opcodes {
 	//LD (nn), dd
 	// first LD_A_I
 	//then
-	const instruction LD_NN_BC { 0x43, 4 };
-	const instruction LD_NN_DE { 0x53, 4 };
-	const instruction LD_NN_HL { 0x63, 4 };
-	const instruction LD_NN_SP { 0x73, 4 };
+	const instruction LD_NN_BC_ADDR { 0x43, 4 };
+	const instruction LD_NN_DE_ADDR { 0x53, 4 };
+	const instruction LD_NN_HL_ADDR { 0x63, 4 };
+	const instruction LD_NN_SP_ADDR { 0x73, 4 };
 
 	// LD (nn), IX
 	// first LD_IXD_R
@@ -249,10 +249,10 @@ namespace opcodes {
 	// then PUSH_HL
 
 	// POP qq
-	const instruction PUSH_BC { 0xC1, 1 };
-	const instruction PUSH_DE { 0xD1, 1 };
-	const instruction PUSH_HL { 0xE1, 1 };
-	const instruction PUSH_AF { 0xF1, 1 };
+	const instruction POP_BC { 0xC1, 1 };
+	const instruction POP_DE { 0xD1, 1 };
+	const instruction POP_HL { 0xE1, 1 };
+	const instruction POP_AF { 0xF1, 1 };
 
 	// POP IX
 	// first LD_R_IXD
@@ -357,7 +357,7 @@ namespace opcodes {
 	const instruction ADC_A_N { 0xCE, 2 };
 
 	// ADC A, (HL)
-	const instruction ADC_A_N { 0x8E, 1 };
+	const instruction ADC_A_HL { 0x8E, 1 };
 
 	// ADC A, (IX + d)
 	// first LD_IXD_R
@@ -410,7 +410,7 @@ namespace opcodes {
 	const instruction SBC_A_N { 0xDE, 2 };
 
 	// SBC A, (HL)
-	const instruction SBC_A_N { 0x9E, 1 };
+	const instruction SBC_A_HL { 0x9E, 1 };
 
 	// SBC A, (IX + d)
 	// first LD_IXD_R
@@ -538,15 +538,15 @@ namespace opcodes {
 	const instruction INC_L { 0x2C, 1 };
 
 	// INC (HL)
-	const instruction INC_HL { 0x34, 1 };
+	const instruction INC_HL_ADDR { 0x34, 1 };
 
 	// INC (IX + d)
 	// first LD_IXD_R
-	// then INC (HL)
+	// then INC (HL) INC_HL_ADDR
 
 	// INC (IY + d)
 	// first LD_IYD_R
-	// then INC (HL)
+	// then INC (HL) INC_HL_ADDR
 
 	// DEC m: opcode group
 	// DEC r'
@@ -559,15 +559,15 @@ namespace opcodes {
 	const instruction DEC_L { 0x2D, 1 };
 
 	// DEC (HL)
-	const instruction DEC_HL { 0x35, 1 };
+	const instruction DEC_HL_ADDR { 0x35, 1 };
 
 	// DEC (IX + d)
 	// first LD_IXD_R
-	// then DEC_HL
+	// then DEC_HL_ADDR
 
 	// DEC (IY + d)
 	// first LD_IYD_R
-	// then DEC_HL
+	// then DEC_HL_ADDR
 
 	// General purpose Arithmetic and CPU Control
 
@@ -606,11 +606,11 @@ namespace opcodes {
 
 	// IM 1
 	// first LD_A_I
-	const instruction IM_0 { 0x56, 1 };
+	const instruction IM_1 { 0x56, 1 };
 
 	// IM 2
 	// first LD_A_I
-	const instruction IM_0 { 0x5E, 1 };
+	const instruction IM_2 { 0x5E, 1 };
 
 	// 16-Bit Arithmetic Group
 
@@ -696,19 +696,19 @@ namespace opcodes {
 
 	// RLC r
 	//first
-	const instruction RLC_R { 0xCB, 2 };
+	const instruction RLC_R { 0xCB, 1 };
 	// then any of 
-	const instruction RLC_A {0x07};
-	const instruction RLC_B { 0x07 };
-	const instruction RLC_C { 0x01 };
-	const instruction RLC_D { 0x02 };
-	const instruction RLC_E { 0x03 };
-	const instruction RLC_H { 0x04 };
-	const instruction RLC_L { 0x05 };
+	const instruction RLC_A { 0x07, 2 };
+	const instruction RLC_B { 0x00, 2 };
+	const instruction RLC_C { 0x01, 2 };
+	const instruction RLC_D { 0x02, 2 };
+	const instruction RLC_E { 0x03, 2 };
+	const instruction RLC_H { 0x04, 2 };
+	const instruction RLC_L { 0x05, 2 };
 
 	// RLC (HL)
 	// first RLC_R
-	const instruction RLC_HL { 0x06, 1 };
+	const instruction RLC_HL { 0x06, 2 };
 
 	// RLC (IX + d)
 	// first LD_IXD_R
@@ -722,4 +722,191 @@ namespace opcodes {
 	// then d
 	const instruction RLC_IYD { 0x06, 4 };
 
+	// RL m: opcode group
+
+	// RL r'
+	// first RLC_R
+	// then any of
+	const instruction RL_A { 0x17, 2 };
+	const instruction RL_B { 0x10, 2 };
+	const instruction RL_C { 0x11, 2 };
+	const instruction RL_D { 0x12, 2 };
+	const instruction RL_E { 0x13, 2 };
+	const instruction RL_H { 0x14, 2 };
+	const instruction RL_L { 0x15, 2 };
+
+	// RL (HL)
+	// first RLC_R
+	const instruction RL_HL { 0x16, 2 };
+
+	// RL (IX + d)
+	// first LD_IXD_R
+	// then RLC_R
+	// then d
+	const instruction RL_IXD { 0x16, 4 };
+
+	// RL (IY + d)
+	// first LD_IYD_R
+	// then RLC_R
+	// then d
+	const instruction RL_IYD { 0x16, 4 };
+
+	//RRC m: opcode group
+	
+	// RRC r'
+	// first RLC_R
+	// then one of
+	const instruction RRC_A { 0x0F, 2 };
+	const instruction RRC_B { 0x08, 2 };
+	const instruction RRC_C { 0x09, 2 };
+	const instruction RRC_D { 0x0A, 2 };
+	const instruction RRC_E { 0x0B, 2 };
+	const instruction RRC_H { 0x0C, 2 };
+	const instruction RRC_L { 0x0D, 2 };
+
+	// RRC (HL)
+	// first RLC_R
+	const instruction RRC_HL { 0x0E, 2 };
+	
+	// RRC (IX + d)
+	// first LD_IXD_R
+	// then RLC_R
+	// then D
+	const instruction RRC_IXD { 0x0E, 4 };
+
+	// RRC (IY + d)
+	// first LD_IYD_R
+	// then RLC_R
+	// then D
+	const instruction RRC_IYD { 0x0E, 4 };
+
+	// RR m: opcode group
+
+	// RR r'
+	// first RLC_R
+	// then
+	const instruction RR_A { 0x1F, 2 };
+	const instruction RR_B { 0x18, 2 };
+	const instruction RR_C { 0x19, 2 };
+	const instruction RR_D { 0x1A, 2 };
+	const instruction RR_E { 0x1B, 2 };
+	const instruction RR_H { 0x1C, 2 };
+	const instruction RR_L { 0x1D, 2 };
+
+	// RR (HL)
+	// first RLC_R
+	const instruction RR_HL { 0x1E, 2 };
+
+	// RR (IX + d)
+	// first LD_IXD_R
+	// then RLC_R
+	// then D
+	const instruction RR_IXD { 0x1E, 4 };
+
+	// RR (IY + d)
+	// first LD_IYD_R
+	// then RLC_R
+	// then D
+	const instruction RR_IYD { 0x1E, 4 };
+
+	// SLA m: opcode group
+
+	// SLA r'
+	// first RLC_R
+	// then any of
+	const instruction SLA_A { 0x27, 2 };
+	const instruction SLA_B { 0x20, 2 };
+	const instruction SLA_C { 0x21, 2 };
+	const instruction SLA_D { 0x22, 2 };
+	const instruction SLA_E { 0x23, 2 };
+	const instruction SLA_H { 0x24, 2 };
+	const instruction SLA_L { 0x25, 2 };
+
+	// SLA (HL)
+	// first RLC_R
+	// then
+	const instruction SLA_HL { 0x26, 2 };
+
+	// SLA (IX + d)
+	// first LD_IXD_R
+	// then RLC_R
+	// then D
+	const instruction SLA_IXD { 0x26, 4 };
+
+	// SLA (IY + d)
+	// first LD_IYD_R
+	// then RLC_R
+	// then D
+	const instruction SLA_IYD { 0x26, 4 };
+
+	// SRA m: opcode group
+
+	// SRA r'
+	// first RLC_R
+	// then any of
+	const instruction SRA_A { 0x2F, 2 };
+	const instruction SRA_B { 0x28, 2 };
+	const instruction SRA_C { 0x29, 2 };
+	const instruction SRA_D { 0x2A, 2 };
+	const instruction SRA_E { 0x2B, 2 };
+	const instruction SRA_H { 0x2C, 2 };
+	const instruction SRA_L { 0x2D, 2 };
+
+	// SRA (HL)
+	// first RLC_R
+	// then
+	const instruction SRA_HL { 0x2E, 2 };
+
+	// SRA (IX + d)
+	// first LD_IXD_R
+	// then RLC_R
+	// then D
+	const instruction SRA_IXD { 0x2E, 4 };
+
+	// SRA (IY + d)
+	// first LD_IYD_R
+	// then RLC_R
+	// then D
+	const instruction SRA_IYD { 0x2E, 4 };
+
+	// SRL m: opcode group
+
+	// SRL r'
+	// first RLC_R
+	// then any of
+	const instruction SRL_A { 0x3F, 2 };
+	const instruction SRL_B { 0x38, 2 };
+	const instruction SRL_C { 0x39, 2 };
+	const instruction SRL_D { 0x3A, 2 };
+	const instruction SRL_E { 0x3B, 2 };
+	const instruction SRL_H { 0x3C, 2 };
+	const instruction SRL_L { 0x3D, 2 };
+
+	// SRL (HL)
+	// first RLC_R
+	// then
+	const instruction SRL_HL { 0x3E, 2 };
+
+	// SRL (IX + d)
+	// first LD_IXD_R
+	// then RLC_R
+	// then D
+	const instruction SRL_IXD { 0x3E, 4 };
+
+	// SRL (IY + d)
+	// first LD_IYD_R
+	// then RLC_R
+	// then D
+	const instruction SRL_IYD { 0x3E, 4 };
+
+	// RLD
+	// first LD_A_I
+	const instruction RLD { 0x6F, 2 };
+	
+	// RRD
+	// first LD_A_I
+	const instruction RRD { 0x67, 2 };
+
+
+	// Bit Set, Reset, and Test Group
 }
