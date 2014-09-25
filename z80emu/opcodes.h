@@ -9,6 +9,11 @@ namespace opcodes {
 		const int op_size; // how many bytes instruction is, so we know how far to advance PC
 	};
 
+	struct opcode_struct {
+		int (Cpu::*execute)(void);
+
+	};
+
 	// LD r, r' instruction opcodes
 	const instruction LD_A_A { 0x7F, 1 };
 	const instruction LD_A_B { 0x78, 1 };
