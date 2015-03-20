@@ -1,7 +1,7 @@
 #include "stdafx.h"
+#pragma once
 
-
-
+// DEPRECATED!!!!!!!!!!!!!!!!!!!!!
 namespace opcodes {
 	struct instruction
 	{

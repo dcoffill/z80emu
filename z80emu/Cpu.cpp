@@ -5,7 +5,7 @@
 void Cpu::execute() {
 	// zero all registers
 	_registers.zero();
-	typedef int (Cpu::*opcode)(void);
+	typedef uint16_t (Cpu::*opcode)(void);
 
 	static opcode array[] = {
 			// 0x00
@@ -295,7 +295,10 @@ void Cpu::execute() {
 				break;
 		}
 		// Decode and execute opcode from lookup table
-		(this->*(array[next_inst]))();
+		(this->*array[next_inst])();
+		_registers.IncR();
+		_registers.Main().A();
+		_registers.SetPC();
 	}
 }
 

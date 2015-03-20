@@ -79,6 +79,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DataRegisters.h" />
     <ClInclude Include="opcodes.h" />
     <ClInclude Include="Registers.h" />
     <ClInclude Include="Ram.h" />

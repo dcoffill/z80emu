@@ -4,29 +4,49 @@
 #define REGISTER_H
 
 #include <memory>
+#include "DataRegisters.h"
 class Registers {
-	friend class Cpu;
 public:
+	Registers();
 	void zero();
+
+
+
+	DataRegisters& Main();
+	void EXX();
+	uint16_t IX();
+	void SetIX(uint16_t);
+
+	uint16_t IY();
+	void SetIY(uint16_t);
+
+	uint16_t SP();
+	void SetSP(uint16_t);
+
+	uint16_t PC();
+	void SetPC(uint16_t);
+
+	uint8_t I();
+	void SetI(uint8_t);
+
+	uint8_t R();
+	void SetR(uint8_t);
+	void IncR(); // increment Refresh (R) register
+
+	uint8_t operator[](ByteReg regVal) const
+	{
+		return _main->_reg[regVal];
+	}
+
+	uint16_t& operator[](const WordReg regVal);
+	uint8_t& operator[](const ByteReg regVal);
+
+
+
 private:
-	// main register set
-	uint8_t _a_a;
-	uint8_t _b_a;
-	uint8_t _c_a;
-	uint8_t _d_a;
-	uint8_t _e_a;
-	uint8_t _f_a; // flag register
-	uint8_t _h_a;
-	uint8_t _l_a;
-	// alternate register set
-	uint8_t _a_b;
-	uint8_t _b_b;
-	uint8_t _c_b;
-	uint8_t _d_b;
-	uint8_t _e_b;
-	uint8_t _f_b; // alt flag register
-	uint8_t _h_b;
-	uint8_t _l_b;
+
+	DataRegisters *_main;
+	DataRegisters *_alt;
 
 	// 16 bit address/index registers
 	uint16_t _ix;
@@ -45,14 +65,35 @@ private:
 	uint8_t _r;
 
 
-	// flags from fl
-	// interrupt flags
+	// interrupt flip flops
 	bool _iff1;
 	bool _iff2;
 
-	// carry flag
+};
 
+enum ByteReg : int
+{
+	A = 0,
+	B = 1,
+	C = 2,
+	D = 3,
+	E = 4,
+	F = 5,
+	H = 6,
+	L = 7,
+	R,
+	I
+};
 
+enum WordReg
+{
+	AB,
+	CD,
+	HL,
+	IX,
+	IY,
+	SP,
+	PC
 };
 
 #endif

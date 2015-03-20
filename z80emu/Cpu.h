@@ -15,83 +15,85 @@ private:
 	Ram _memory;
 
 	// CPU opcode implementations
+	// return uuint16_t16_t address of next instruction
+	// TODO: look into generating specialized method implementations from generic function template for each opcode (actual template<> or just generic method)
 
 	// LD r, r' instruction opcodes
-	int LD_A_A();
-	int LD_A_B();
-	int LD_A_C();
-	int LD_A_D();
-	int LD_A_E();
-	int LD_A_H();
-	int LD_A_L();
+	uint16_t LD_A_A();
+	uint16_t LD_A_B();
+	uint16_t LD_A_C();
+	uint16_t LD_A_D();
+	uint16_t LD_A_E();
+	uint16_t LD_A_H();
+	uint16_t LD_A_L();
 
-	int LD_B_A();
-	int LD_B_B();
-	int LD_B_C();
-	int LD_B_D();
-	int LD_B_E();
-	int LD_B_H();
-	int LD_B_L();
+	uint16_t LD_B_A();
+	uint16_t LD_B_B();
+	uint16_t LD_B_C();
+	uint16_t LD_B_D();
+	uint16_t LD_B_E();
+	uint16_t LD_B_H();
+	uint16_t LD_B_L();
 
-	int LD_C_A();
-	int LD_C_B();
-	int LD_C_C();
-	int LD_C_D();
-	int LD_C_E();
-	int LD_C_H();
-	int LD_C_L();
+	uint16_t LD_C_A();
+	uint16_t LD_C_B();
+	uint16_t LD_C_C();
+	uint16_t LD_C_D();
+	uint16_t LD_C_E();
+	uint16_t LD_C_H();
+	uint16_t LD_C_L();
 
-	int LD_D_A();
-	int LD_D_B();
-	int LD_D_C();
-	int LD_D_D();
-	int LD_D_E();
-	int LD_D_H();
-	int LD_D_L();
+	uint16_t LD_D_A();
+	uint16_t LD_D_B();
+	uint16_t LD_D_C();
+	uint16_t LD_D_D();
+	uint16_t LD_D_E();
+	uint16_t LD_D_H();
+	uint16_t LD_D_L();
 
-	int LD_E_A();
-	int LD_E_B();
-	int LD_E_C();
-	int LD_E_D();
-	int LD_E_E();
-	int LD_E_H();
-	int LD_E_L();
+	uint16_t LD_E_A();
+	uint16_t LD_E_B();
+	uint16_t LD_E_C();
+	uint16_t LD_E_D();
+	uint16_t LD_E_E();
+	uint16_t LD_E_H();
+	uint16_t LD_E_L();
 
-	int LD_H_A();
-	int LD_H_B();
-	int LD_H_C();
-	int LD_H_D();
-	int LD_H_E();
-	int LD_H_H();
-	int LD_H_L();
+	uint16_t LD_H_A();
+	uint16_t LD_H_B();
+	uint16_t LD_H_C();
+	uint16_t LD_H_D();
+	uint16_t LD_H_E();
+	uint16_t LD_H_H();
+	uint16_t LD_H_L();
 
-	int LD_L_A();
-	int LD_L_B();
-	int LD_L_C();
-	int LD_L_D();
-	int LD_L_E();
-	int LD_L_H();
-	int LD_L_L();
+	uint16_t LD_L_A();
+	uint16_t LD_L_B();
+	uint16_t LD_L_C();
+	uint16_t LD_L_D();
+	uint16_t LD_L_E();
+	uint16_t LD_L_H();
+	uint16_t LD_L_L();
 
 	// LD r, n instructions
 	// (where n is immediate contained in PC + 1)
-	int LD_A_N();
-	int LD_B_N();
-	int LD_C_N();
-	int LD_D_N();
-	int LD_E_N();
-	int LD_H_N();
-	int LD_L_N();
+	uint16_t LD_A_N();
+	uint16_t LD_B_N();
+	uint16_t LD_C_N();
+	uint16_t LD_D_N();
+	uint16_t LD_E_N();
+	uint16_t LD_H_N();
+	uint16_t LD_L_N();
 
 	// LD r, (HL)
 	// Load contents of memory at address contained in (HL) to register r
-	int LD_A_HL();
-	int LD_B_HL();
-	int LD_C_HL();
-	int LD_D_HL();
-	int LD_E_HL();
-	int LD_H_HL();
-	int LD_L_HL();
+	uint16_t LD_A_HL();
+	uint16_t LD_B_HL();
+	uint16_t LD_C_HL();
+	uint16_t LD_D_HL();
+	uint16_t LD_E_HL();
+	uint16_t LD_H_HL();
+	uint16_t LD_L_HL();
 
 	// LD r, (IX+d)
 	// first LD_R_IXd
@@ -103,108 +105,108 @@ private:
 
 	// LD r, (IX+d)
 	// Load contents of memory stored in address (IX+d)
-	// where d is a signed 8 bit integer
+	// where d is a signed 8 bit uint16_teger
 	// first LD_R_IXd
-	int LD_R_IXd();
+	uint16_t LD_R_IXd();
 
 	// LD r, (IY+d)
 	// Load contents of memory stored in address (IY+d)
-	// where d is a signed 8 bit integer
+	// where d is a signed 8 bit uint16_teger
 	// first LD_R_IYd
-	int LD_R_IYd();
+	uint16_t LD_R_IYd();
 
 	// LD (HL), r
-	// Load contents of register r into address contained in (HL)
-	int LD_HL_A();
-	int LD_HL_B();
-	int LD_HL_C();
-	int LD_HL_D();
-	int LD_HL_E();
-	int LD_HL_H();
-	int LD_HL_L();
+	// Load contents of register r uint16_to address contained in (HL)
+	uint16_t LD_HL_A();
+	uint16_t LD_HL_B();
+	uint16_t LD_HL_C();
+	uint16_t LD_HL_D();
+	uint16_t LD_HL_E();
+	uint16_t LD_HL_H();
+	uint16_t LD_HL_L();
 
 	// LD (IX+d), r
 	// Store contents of register r to memory address stored in address(IX + d)
-	// where d is a signed 8 bit integer offset
-	int LD_IXd_R(); // DO NOT USE, same as LD_R_IXd
+	// where d is a signed 8 bit uint16_teger offset
+	uint16_t LD_IXd_R(); // DO NOT USE, same as LD_R_IXd
 
 	// LD (IX+d), r
 	// Store contents of register r to memory address stored in address(IY + d)
-	// where d is a signed 8 bit integer offset
-	int LD_IYd_R(); // DO NOT USE, same as LD_R_IYd
+	// where d is a signed 8 bit uint16_teger offset
+	uint16_t LD_IYd_R(); // DO NOT USE, same as LD_R_IYd
 
 	// LD (HL), n
-	// Store an immediate value, n, into the memory address contained in HL
-	int LD_HL_N();
+	// Store an immediate value, n, uint16_to the memory address contained in HL
+	uint16_t LD_HL_N();
 
 	// LD (IX+d), n
-	// Store an immediate value, n, into the memory address calculated from IX + d
+	// Store an immediate value, n, uint16_to the memory address calculated from IX + d
 	// where d is a signed 8-bit offset
 	// todo: add in later, since it's just 6xDD and 6x36 again
 
 	// LD (IY+d), n
-	// Store an immediate value, n, into the memory address calculated from IY + d
+	// Store an immediate value, n, uint16_to the memory address calculated from IY + d
 	// where d is a signed 8-bit offset
 	// todo: add in later, since it's just 6xFD and 6x36 again
 
 	// LD A, (BC)
 	// Load contents of memory, stored at address contained in BC, to register A
-	int LD_A_BC();
+	uint16_t LD_A_BC();
 
 	// LD A, (DE)
 	// Load contents of memory, stored at address contained in DE, to register A
-	int LD_A_DE();
+	uint16_t LD_A_DE();
 
 	// LD A, (nn)
 	// Load contents of memory, indicated at the address nn, to register A
-	int LD_A_NN();
+	uint16_t LD_A_NN();
 
 	// LD (BC), A
 	// Store contents of register A to memory address contained in BC
-	int LD_BC_A();
+	uint16_t LD_BC_A();
 
 	// LD (DE), A
 	// Store contents of register A to memory address contained in DE
-	int LD_DE_A();
+	uint16_t LD_DE_A();
 
 	// LD (nn), A
 	// Store contents of register A to address indicated by nn
-	int LD_NN_A();
+	uint16_t LD_NN_A();
 
 	// LD A, I
-	// Load contents of Interrupt Vector register I into A
+	// Load contents of uint16_terrupt Vector register I uint16_to A
 	// Also used for LD A, R; LD I, A; LD R, A
-	int LD_A_I();
+	uint16_t LD_A_I();
 
 
 	// 16-bit load instructions
 
 	// LD dd, nn
-	// Load 2 byte immediate nn into register dd
-	int LD_BC_NN(); // to BC
-	int LD_DE_NN(); // to DE
-	int LD_HL_NN(); // to HL
-	int LD_SP_NN(); // to SP
+	// Load 2 byte immediate nn uint16_to register dd
+	uint16_t LD_BC_NN(); // to BC
+	uint16_t LD_DE_NN(); // to DE
+	uint16_t LD_HL_NN(); // to HL
+	uint16_t LD_SP_NN(); // to SP
 
 	// LD IX, nn
-	// Load nn into index register IX
+	// Load nn uint16_to index register IX
 	// first opcode is 6xDD
 	// then 6x21
 
 
 	// LD IY, nn
-	// Load nn into index register IY
+	// Load nn uint16_to index register IY
 	// 6xFD then 6x21
 
 	// LD HL, (nn)
-	int LD_HL_NN_ADDR();
+	uint16_t LD_HL_NN_ADDR();
 
 	// LD dd, (nn)
 	// 6xed, then:
-	int LD_HL_NN_ADDR_2();
-	int LD_BC_NN_ADDR();
-	int LD_DE_NN_ADDR();
-	int LD_SP_NN_ADDR();
+	uint16_t LD_HL_NN_ADDR_2();
+	uint16_t LD_BC_NN_ADDR();
+	uint16_t LD_DE_NN_ADDR();
+	uint16_t LD_SP_NN_ADDR();
 
 	// LD IX, (nn)
 	// first LD_R_IXd
@@ -215,15 +217,15 @@ private:
 	// same as previous but with LD_R_IYd
 
 	// LD (nn), HL
-	int LD_NN_HL();
+	uint16_t LD_NN_HL();
 
 	//LD (nn), dd
 	// first LD_A_I
 	//then
-	int LD_NN_BC_ADDR();
-	int LD_NN_DE_ADDR();
-	int LD_NN_HL_ADDR();
-	int LD_NN_SP_ADDR();
+	uint16_t LD_NN_BC_ADDR();
+	uint16_t LD_NN_DE_ADDR();
+	uint16_t LD_NN_HL_ADDR();
+	uint16_t LD_NN_SP_ADDR();
 
 	// LD (nn), IX
 	// first LD_IXd_R
@@ -231,7 +233,7 @@ private:
 	// then 2 bytes
 
 	// LD SP, HL
-	int LD_SP_HL();
+	uint16_t LD_SP_HL();
 
 	// LD SP, IX
 	// first LD_R_IXd
@@ -242,10 +244,10 @@ private:
 	// then LD_SP_HL
 
 	// PUSH qq
-	int PUSH_BC();
-	int PUSH_DE();
-	int PUSH_HL();
-	int PUSH_AF();
+	uint16_t PUSH_BC();
+	uint16_t PUSH_DE();
+	uint16_t PUSH_HL();
+	uint16_t PUSH_AF();
 
 	// PUSH IX
 	// first LD_R_IXd
@@ -256,10 +258,10 @@ private:
 	// then PUSH_HL
 
 	// POP qq
-	int POP_BC();
-	int POP_DE();
-	int POP_HL();
-	int POP_AF();
+	uint16_t POP_BC();
+	uint16_t POP_DE();
+	uint16_t POP_HL();
+	uint16_t POP_AF();
 
 	// POP IX
 	// first LD_R_IXd
@@ -272,16 +274,16 @@ private:
 	// Exchange, block transfer, and search instructions
 
 	// EX DE, HL
-	int EX_DE_HL();
+	uint16_t EX_DE_HL();
 
 	// EX AF, AF'
-	int EX_AF_AF();
+	uint16_t EX_AF_AF();
 
 	// EXX
-	int EXX();
+	uint16_t EXX();
 
 	// EX (SP), HL
-	int EX_SP_HL();
+	uint16_t EX_SP_HL();
 
 	// EX (SP), IX
 	// first LD_R_IXd
@@ -293,52 +295,52 @@ private:
 
 	// LDI
 	// first LD_A_I
-	int LDI();
+	uint16_t LDI();
 
 	// LDIR
 	// first LD_A_I
-	int LDIR();
+	uint16_t LDIR();
 
 	// LDD
 	// first LD_A_I
-	int LDD();
+	uint16_t LDD();
 
 	// LDDR
 	// first LD_A_I
-	int LDDR();
+	uint16_t LDDR();
 
 	// CPI
 	// first LD_A_I
-	int CPI();
+	uint16_t CPI();
 
 	// CPIR
 	// first LD_A_I
-	int CPIR();
+	uint16_t CPIR();
 
 	// CPD
 	// first LD_A_I
 	// then
-	int CPD();
+	uint16_t CPD();
 
 	// CPDR
 	// first LD_A_I
 	// then
-	int CPDR();
+	uint16_t CPDR();
 
 	// ADD A, r
-	int ADD_A_A();
-	int ADD_A_B();
-	int ADD_A_C();
-	int ADD_A_D();
-	int ADD_A_E();
-	int ADD_A_H();
-	int ADD_A_L();
+	uint16_t ADD_A_A();
+	uint16_t ADD_A_B();
+	uint16_t ADD_A_C();
+	uint16_t ADD_A_D();
+	uint16_t ADD_A_E();
+	uint16_t ADD_A_H();
+	uint16_t ADD_A_L();
 
 	// ADD A, n
-	int ADD_A_N();
+	uint16_t ADD_A_N();
 
 	// ADD A, (HL)
-	int ADD_A_HL();
+	uint16_t ADD_A_HL();
 
 	// ADD A, (IX + d)
 	// first LD_IXd_R
@@ -352,19 +354,19 @@ private:
 
 	// ADC A, s: opcode group
 	// ADC A, r
-	int ADC_A_A();
-	int ADC_A_B();
-	int ADC_A_C();
-	int ADC_A_D();
-	int ADC_A_E();
-	int ADC_A_H();
-	int ADC_A_L();
+	uint16_t ADC_A_A();
+	uint16_t ADC_A_B();
+	uint16_t ADC_A_C();
+	uint16_t ADC_A_D();
+	uint16_t ADC_A_E();
+	uint16_t ADC_A_H();
+	uint16_t ADC_A_L();
 
 	// ADC A, n
-	int ADC_A_N();
+	uint16_t ADC_A_N();
 
 	// ADC A, (HL)
-	int ADC_A_HL();
+	uint16_t ADC_A_HL();
 
 	// ADC A, (IX + d)
 	// first LD_IXd_R
@@ -378,19 +380,19 @@ private:
 
 	// SUB s: opcode group
 	// SUB r
-	int SUB_A();
-	int SUB_B();
-	int SUB_C();
-	int SUB_D();
-	int SUB_E();
-	int SUB_H();
-	int SUB_L();
+	uint16_t SUB_A();
+	uint16_t SUB_B();
+	uint16_t SUB_C();
+	uint16_t SUB_D();
+	uint16_t SUB_E();
+	uint16_t SUB_H();
+	uint16_t SUB_L();
 
 	// SUB n
-	int SUB_N();
+	uint16_t SUB_N();
 
 	// SUB (HL)
-	int SUB_HL();
+	uint16_t SUB_HL();
 
 	// SUB (IX + d)
 	// first LD_IXd_R
@@ -405,19 +407,19 @@ private:
 
 	// SBC A, s: opcode group
 	// SBC A, r
-	int SBC_A_A();
-	int SBC_A_B();
-	int SBC_A_C();
-	int SBC_A_D();
-	int SBC_A_E();
-	int SBC_A_H();
-	int SBC_A_L();
+	uint16_t SBC_A_A();
+	uint16_t SBC_A_B();
+	uint16_t SBC_A_C();
+	uint16_t SBC_A_D();
+	uint16_t SBC_A_E();
+	uint16_t SBC_A_H();
+	uint16_t SBC_A_L();
 
 	// SBC A, n
-	int SBC_A_N();
+	uint16_t SBC_A_N();
 
 	// SBC A, (HL)
-	int SBC_A_HL();
+	uint16_t SBC_A_HL();
 
 	// SBC A, (IX + d)
 	// first LD_IXd_R
@@ -432,19 +434,19 @@ private:
 
 	// AND s: opcode group
 	// AND r'
-	int AND_A();
-	int AND_B();
-	int AND_C();
-	int AND_D();
-	int AND_E();
-	int AND_H();
-	int AND_L();
+	uint16_t AND_A();
+	uint16_t AND_B();
+	uint16_t AND_C();
+	uint16_t AND_D();
+	uint16_t AND_E();
+	uint16_t AND_H();
+	uint16_t AND_L();
 
 	// AND n
-	int AND_N();
+	uint16_t AND_N();
 
 	// AND (HL)
-	int AND_HL();
+	uint16_t AND_HL();
 
 	// AND (IX + d)
 	// first LD_IXd_R
@@ -458,19 +460,19 @@ private:
 
 	// OR s: opcode group
 	// OR r'
-	int OR_A();
-	int OR_B();
-	int OR_C();
-	int OR_D();
-	int OR_E();
-	int OR_H();
-	int OR_L();
+	uint16_t OR_A();
+	uint16_t OR_B();
+	uint16_t OR_C();
+	uint16_t OR_D();
+	uint16_t OR_E();
+	uint16_t OR_H();
+	uint16_t OR_L();
 
 	// OR n
-	int OR_N();
+	uint16_t OR_N();
 
 	// OR (HL)
-	int OR_HL();
+	uint16_t OR_HL();
 
 	// OR (IX + d)
 	// first LD_IXd_R
@@ -485,19 +487,19 @@ private:
 
 	// XOR s: opcode group
 	// XOR r'
-	int XOR_A();
-	int XOR_B();
-	int XOR_C();
-	int XOR_D();
-	int XOR_E();
-	int XOR_H();
-	int XOR_L();
+	uint16_t XOR_A();
+	uint16_t XOR_B();
+	uint16_t XOR_C();
+	uint16_t XOR_D();
+	uint16_t XOR_E();
+	uint16_t XOR_H();
+	uint16_t XOR_L();
 
 	// XOR n
-	int XOR_N();
+	uint16_t XOR_N();
 
 	// XOR (HL)
-	int XOR_HL(); // I think, confirm later
+	uint16_t XOR_HL(); // I think, confirm later
 
 	// XOR (IX + d)
 	// first LD_IXd_R
@@ -511,19 +513,19 @@ private:
 
 	// CP s: opcode group
 	// CP r'
-	int CP_A();
-	int CP_B();
-	int CP_C();
-	int CP_D();
-	int CP_E();
-	int CP_H();
-	int CP_L();
+	uint16_t CP_A();
+	uint16_t CP_B();
+	uint16_t CP_C();
+	uint16_t CP_D();
+	uint16_t CP_E();
+	uint16_t CP_H();
+	uint16_t CP_L();
 
 	// CP n
-	int CP_N();
+	uint16_t CP_N();
 
 	// CP (HL)
-	int CP_HL();
+	uint16_t CP_HL();
 
 	// CP (IX + d)
 	// first LD_IXd_R
@@ -536,16 +538,16 @@ private:
 	// then d
 
 	// INC r
-	int INC_A();
-	int INC_B();
-	int INC_C();
-	int INC_D();
-	int INC_E();
-	int INC_H();
-	int INC_L();
+	uint16_t INC_A();
+	uint16_t INC_B();
+	uint16_t INC_C();
+	uint16_t INC_D();
+	uint16_t INC_E();
+	uint16_t INC_H();
+	uint16_t INC_L();
 
 	// INC (HL)
-	int INC_HL_ADDR();
+	uint16_t INC_HL_ADDR();
 
 	// INC (IX + d)
 	// first LD_IXd_R
@@ -557,16 +559,16 @@ private:
 
 	// DEC m: opcode group
 	// DEC r'
-	int DEC_A();
-	int DEC_B();
-	int DEC_C();
-	int DEC_D();
-	int DEC_E();
-	int DEC_H();
-	int DEC_L();
+	uint16_t DEC_A();
+	uint16_t DEC_B();
+	uint16_t DEC_C();
+	uint16_t DEC_D();
+	uint16_t DEC_E();
+	uint16_t DEC_H();
+	uint16_t DEC_L();
 
 	// DEC (HL)
-	int DEC_HL_ADDR();
+	uint16_t DEC_HL_ADDR();
 
 	// DEC (IX + d)
 	// first LD_IXd_R
@@ -579,765 +581,765 @@ private:
 	// General purpose Arithmetic and CPU Control
 
 	// DAA
-	int DAA();
+	uint16_t DAA();
 
 	// CPL
-	int CPL();
+	uint16_t CPL();
 
 	// NEG
 	// first LD_A_I
 	// then
-	int NEG();
+	uint16_t NEG();
 
 	// CCF
-	int CCF();
+	uint16_t CCF();
 
 	// SCF
-	int SCF();
+	uint16_t SCF();
 
 	// NOP
-	int NOP();
+	uint16_t NOP();
 
 	// HALT
-	int HALT();
+	uint16_t HALT();
 
 	// DI
-	int DI();
+	uint16_t DI();
 
 	// EI
-	int EI();
+	uint16_t EI();
 
 	// IM 6
 	// first LD_A_I
-	int IM_6();
+	uint16_t IM_6();
 
 	// IM 1
 	// first LD_A_I
-	int IM_1();
+	uint16_t IM_1();
 
 	// IM 2
 	// first LD_A_I
-	int IM_2();
+	uint16_t IM_2();
 
 	// 16-Bit Arithmetic Group
 
 	// ADD HL, ss
-	int ADD_HL_BC();
-	int ADD_HL_DE();
-	int ADD_HL_HL();
-	int ADD_HL_SP();
+	uint16_t ADD_HL_BC();
+	uint16_t ADD_HL_DE();
+	uint16_t ADD_HL_HL();
+	uint16_t ADD_HL_SP();
 
 	// ADC HL, ss
 	// first LD_A_I
 	// then
-	int ADC_HL_BC();
-	int ADC_HL_DE();
-	int ADC_HL_HL();
-	int ADC_HL_SP();
+	uint16_t ADC_HL_BC();
+	uint16_t ADC_HL_DE();
+	uint16_t ADC_HL_HL();
+	uint16_t ADC_HL_SP();
 
 	// SBC HL, ss
 	// first LD_A_I
 	// then
-	int SBC_HL_BC();
-	int SBC_HL_DE();
-	int SBC_HL_HL();
-	int SBC_HL_SP();
+	uint16_t SBC_HL_BC();
+	uint16_t SBC_HL_DE();
+	uint16_t SBC_HL_HL();
+	uint16_t SBC_HL_SP();
 
 	// ADD IX, pp
 	// first LD_IXd_R
 	// then ADD_HL_SS
-	int ADD_IX_BC();
-	int ADD_IX_DE();
-	int ADD_IX_HL();
-	int ADD_IX_SP();
+	uint16_t ADD_IX_BC();
+	uint16_t ADD_IX_DE();
+	uint16_t ADD_IX_HL();
+	uint16_t ADD_IX_SP();
 
 	// ADD IY, pp
 	// first LD_IYd_R
 	// then ADD_HL_SS
-	int ADD_IY_BC();
-	int ADD_IY_DE();
-	int ADD_IY_HL();
-	int ADD_IY_SP();
+	uint16_t ADD_IY_BC();
+	uint16_t ADD_IY_DE();
+	uint16_t ADD_IY_HL();
+	uint16_t ADD_IY_SP();
 
 	// INC ss
-	int INC_BC();
-	int INC_DE();
-	int INC_HL();
-	int INC_SP();
+	uint16_t INC_BC();
+	uint16_t INC_DE();
+	uint16_t INC_HL();
+	uint16_t INC_SP();
 
 	// INC IX
 	// first LD_IXd_R
-	int INC_IX();
+	uint16_t INC_IX();
 
 	// INC IY
 	// first LD_IYd_R
-	int INC_IY();
+	uint16_t INC_IY();
 
 	// DEC ss
-	int DEC_BC();
-	int DEC_DE();
-	int DEC_HL();
-	int DEC_SP();
+	uint16_t DEC_BC();
+	uint16_t DEC_DE();
+	uint16_t DEC_HL();
+	uint16_t DEC_SP();
 
 	// DEC IX
 	// first LD_IXd_R
-	int DEC_IX();
+	uint16_t DEC_IX();
 
 	// DEC IY
 	// first LD_IYd_R
-	int DEC_IY();
+	uint16_t DEC_IY();
 
 	// Rotate and Shift Group
 
 	// RLCA
-	int RCLA();
+	uint16_t RCLA();
 
 	// RLA
-	int RLA();
+	uint16_t RLA();
 
 	// RRCA
-	int RRCA();
+	uint16_t RRCA();
 
 	// RRA
-	int RRA();
+	uint16_t RRA();
 
 	// RLC r
 	//first
-	int RLC_R();
+	uint16_t RLC_R();
 	// then any of 
-	int RLC_A();
-	int RLC_B();
-	int RLC_C();
-	int RLC_D();
-	int RLC_E();
-	int RLC_H();
-	int RLC_L();
+	uint16_t RLC_A();
+	uint16_t RLC_B();
+	uint16_t RLC_C();
+	uint16_t RLC_D();
+	uint16_t RLC_E();
+	uint16_t RLC_H();
+	uint16_t RLC_L();
 
 	// RLC (HL)
 	// first RLC_R
-	int RLC_HL();
+	uint16_t RLC_HL();
 
 	// RLC (IX + d)
 	// first LD_IXd_R
 	// then RLC_R
 	// then d
-	int RLC_IXd();
+	uint16_t RLC_IXd();
 
 	// RLC (IY + d)
 	// first LD_IYd_R
 	// then RLC_R
 	// then d
-	int RLC_IYd();
+	uint16_t RLC_IYd();
 
 	// RL m: opcode group
 
 	// RL r'
 	// first RLC_R
 	// then any of
-	int RL_A();
-	int RL_B();
-	int RL_C();
-	int RL_D();
-	int RL_E();
-	int RL_H();
-	int RL_L();
+	uint16_t RL_A();
+	uint16_t RL_B();
+	uint16_t RL_C();
+	uint16_t RL_D();
+	uint16_t RL_E();
+	uint16_t RL_H();
+	uint16_t RL_L();
 
 	// RL (HL)
 	// first RLC_R
-	int RL_HL();
+	uint16_t RL_HL();
 
 	// RL (IX + d)
 	// first LD_IXd_R
 	// then RLC_R
 	// then d
-	int RL_IXd();
+	uint16_t RL_IXd();
 
 	// RL (IY + d)
 	// first LD_IYd_R
 	// then RLC_R
 	// then d
-	int RL_IYd();
+	uint16_t RL_IYd();
 
 	//RRC m: opcode group
 
 	// RRC r'
 	// first RLC_R
 	// then one of
-	int RRC_A();
-	int RRC_B();
-	int RRC_C();
-	int RRC_D();
-	int RRC_E();
-	int RRC_H();
-	int RRC_L();
+	uint16_t RRC_A();
+	uint16_t RRC_B();
+	uint16_t RRC_C();
+	uint16_t RRC_D();
+	uint16_t RRC_E();
+	uint16_t RRC_H();
+	uint16_t RRC_L();
 
 	// RRC (HL)
 	// first RLC_R
-	int RRC_HL();
+	uint16_t RRC_HL();
 
 	// RRC (IX + d)
 	// first LD_IXd_R
 	// then RLC_R
 	// then D
-	int RRC_IXd();
+	uint16_t RRC_IXd();
 
 	// RRC (IY + d)
 	// first LD_IYd_R
 	// then RLC_R
 	// then D
-	int RRC_IYd();
+	uint16_t RRC_IYd();
 
 	// RR m: opcode group
 
 	// RR r'
 	// first RLC_R
 	// then
-	int RR_A();
-	int RR_B();
-	int RR_C();
-	int RR_D();
-	int RR_E();
-	int RR_H();
-	int RR_L();
+	uint16_t RR_A();
+	uint16_t RR_B();
+	uint16_t RR_C();
+	uint16_t RR_D();
+	uint16_t RR_E();
+	uint16_t RR_H();
+	uint16_t RR_L();
 
 	// RR (HL)
 	// first RLC_R
-	int RR_HL();
+	uint16_t RR_HL();
 
 	// RR (IX + d)
 	// first LD_IXd_R
 	// then RLC_R
 	// then D
-	int RR_IXd();
+	uint16_t RR_IXd();
 
 	// RR (IY + d)
 	// first LD_IYd_R
 	// then RLC_R
 	// then D
-	int RR_IYd();
+	uint16_t RR_IYd();
 
 	// SLA m: opcode group
 
 	// SLA r'
 	// first RLC_R
 	// then any of
-	int SLA_A();
-	int SLA_B();
-	int SLA_C();
-	int SLA_D();
-	int SLA_E();
-	int SLA_H();
-	int SLA_L();
+	uint16_t SLA_A();
+	uint16_t SLA_B();
+	uint16_t SLA_C();
+	uint16_t SLA_D();
+	uint16_t SLA_E();
+	uint16_t SLA_H();
+	uint16_t SLA_L();
 
 	// SLA (HL)
 	// first RLC_R
 	// then
-	int SLA_HL();
+	uint16_t SLA_HL();
 
 	// SLA (IX + d)
 	// first LD_IXd_R
 	// then RLC_R
 	// then D
-	int SLA_IXd();
+	uint16_t SLA_IXd();
 
 	// SLA (IY + d)
 	// first LD_IYd_R
 	// then RLC_R
 	// then D
-	int SLA_IYd();
+	uint16_t SLA_IYd();
 
 	// SRA m: opcode group
 
 	// SRA r'
 	// first RLC_R
 	// then any of
-	int SRA_A();
-	int SRA_B();
-	int SRA_C();
-	int SRA_D();
-	int SRA_E();
-	int SRA_H();
-	int SRA_L();
+	uint16_t SRA_A();
+	uint16_t SRA_B();
+	uint16_t SRA_C();
+	uint16_t SRA_D();
+	uint16_t SRA_E();
+	uint16_t SRA_H();
+	uint16_t SRA_L();
 
 	// SRA (HL)
 	// first RLC_R
 	// then
-	int SRA_HL();
+	uint16_t SRA_HL();
 
 	// SRA (IX + d)
 	// first LD_IXd_R
 	// then RLC_R
 	// then D
-	int SRA_IXd();
+	uint16_t SRA_IXd();
 
 	// SRA (IY + d)
 	// first LD_IYd_R
 	// then RLC_R
 	// then D
-	int SRA_IYd();
+	uint16_t SRA_IYd();
 
 	// SRL m: opcode group
 
 	// SRL r'
 	// first RLC_R
 	// then any of
-	int SRL_A();
-	int SRL_B();
-	int SRL_C();
-	int SRL_D();
-	int SRL_E();
-	int SRL_H();
-	int SRL_L();
+	uint16_t SRL_A();
+	uint16_t SRL_B();
+	uint16_t SRL_C();
+	uint16_t SRL_D();
+	uint16_t SRL_E();
+	uint16_t SRL_H();
+	uint16_t SRL_L();
 
 	// SRL (HL)
 	// first RLC_R
 	// then
-	int SRL_HL();
+	uint16_t SRL_HL();
 
 	// SRL (IX + d)
 	// first LD_IXd_R
 	// then RLC_R
 	// then D
-	int SRL_IXd();
+	uint16_t SRL_IXd();
 
 	// SRL (IY + d)
 	// first LD_IYd_R
 	// then RLC_R
 	// then D
-	int SRL_IYd();
+	uint16_t SRL_IYd();
 
 	// RLD
 	// first LD_A_I
-	int RLD();
+	uint16_t RLD();
 
 	// RRD
 	// first LD_A_I
-	int RRD();
+	uint16_t RRD();
 
 
 	// Bit Set, Reset, and Test Group
 	// bit b, r
-	int BIT_0_A();
-	int BIT_0_B();
-	int BIT_0_C();
-	int BIT_0_D();
-	int BIT_0_E();
-	int BIT_0_H();
-	int BIT_0_L();
+	uint16_t BIT_0_A();
+	uint16_t BIT_0_B();
+	uint16_t BIT_0_C();
+	uint16_t BIT_0_D();
+	uint16_t BIT_0_E();
+	uint16_t BIT_0_H();
+	uint16_t BIT_0_L();
 
-	int BIT_1_A();
-	int BIT_1_B();
-	int BIT_1_C();
-	int BIT_1_D();
-	int BIT_1_E();
-	int BIT_1_H();
-	int BIT_1_L();
+	uint16_t BIT_1_A();
+	uint16_t BIT_1_B();
+	uint16_t BIT_1_C();
+	uint16_t BIT_1_D();
+	uint16_t BIT_1_E();
+	uint16_t BIT_1_H();
+	uint16_t BIT_1_L();
 
-	int BIT_2_A();
-	int BIT_2_B();
-	int BIT_2_C();
-	int BIT_2_D();
-	int BIT_2_E();
-	int BIT_2_H();
-	int BIT_2_L();
+	uint16_t BIT_2_A();
+	uint16_t BIT_2_B();
+	uint16_t BIT_2_C();
+	uint16_t BIT_2_D();
+	uint16_t BIT_2_E();
+	uint16_t BIT_2_H();
+	uint16_t BIT_2_L();
 
-	int BIT_3_A();
-	int BIT_3_B();
-	int BIT_3_C();
-	int BIT_3_D();
-	int BIT_3_E();
-	int BIT_3_H();
-	int BIT_3_L();
+	uint16_t BIT_3_A();
+	uint16_t BIT_3_B();
+	uint16_t BIT_3_C();
+	uint16_t BIT_3_D();
+	uint16_t BIT_3_E();
+	uint16_t BIT_3_H();
+	uint16_t BIT_3_L();
 
-	int BIT_4_A();
-	int BIT_4_B();
-	int BIT_4_C();
-	int BIT_4_D();
-	int BIT_4_E();
-	int BIT_4_H();
-	int BIT_4_L();
+	uint16_t BIT_4_A();
+	uint16_t BIT_4_B();
+	uint16_t BIT_4_C();
+	uint16_t BIT_4_D();
+	uint16_t BIT_4_E();
+	uint16_t BIT_4_H();
+	uint16_t BIT_4_L();
 
-	int BIT_5_A();
-	int BIT_5_B();
-	int BIT_5_C();
-	int BIT_5_D();
-	int BIT_5_E();
-	int BIT_5_H();
-	int BIT_5_L();
+	uint16_t BIT_5_A();
+	uint16_t BIT_5_B();
+	uint16_t BIT_5_C();
+	uint16_t BIT_5_D();
+	uint16_t BIT_5_E();
+	uint16_t BIT_5_H();
+	uint16_t BIT_5_L();
 
-	int BIT_6_A();
-	int BIT_6_B();
-	int BIT_6_C();
-	int BIT_6_D();
-	int BIT_6_E();
-	int BIT_6_H();
-	int BIT_6_L();
+	uint16_t BIT_6_A();
+	uint16_t BIT_6_B();
+	uint16_t BIT_6_C();
+	uint16_t BIT_6_D();
+	uint16_t BIT_6_E();
+	uint16_t BIT_6_H();
+	uint16_t BIT_6_L();
 
-	int BIT_7_A();
-	int BIT_7_B();
-	int BIT_7_C();
-	int BIT_7_D();
-	int BIT_7_E();
-	int BIT_7_H();
-	int BIT_7_L();
+	uint16_t BIT_7_A();
+	uint16_t BIT_7_B();
+	uint16_t BIT_7_C();
+	uint16_t BIT_7_D();
+	uint16_t BIT_7_E();
+	uint16_t BIT_7_H();
+	uint16_t BIT_7_L();
 
 	// BIT b, (HL)
-	int BIT_0_HL();
-	int BIT_1_HL();
-	int BIT_2_HL();
-	int BIT_3_HL();
-	int BIT_4_HL();
-	int BIT_5_HL();
-	int BIT_6_HL();
-	int BIT_7_HL();
+	uint16_t BIT_0_HL();
+	uint16_t BIT_1_HL();
+	uint16_t BIT_2_HL();
+	uint16_t BIT_3_HL();
+	uint16_t BIT_4_HL();
+	uint16_t BIT_5_HL();
+	uint16_t BIT_6_HL();
+	uint16_t BIT_7_HL();
 
 	// Bit b, (IX + d)
-	int BIT_0_IXd();
-	int BIT_1_IXd();
-	int BIT_2_IXd();
-	int BIT_3_IXd();
-	int BIT_4_IXd();
-	int BIT_5_IXd();
-	int BIT_6_IXd();
-	int BIT_7_IXd();
+	uint16_t BIT_0_IXd();
+	uint16_t BIT_1_IXd();
+	uint16_t BIT_2_IXd();
+	uint16_t BIT_3_IXd();
+	uint16_t BIT_4_IXd();
+	uint16_t BIT_5_IXd();
+	uint16_t BIT_6_IXd();
+	uint16_t BIT_7_IXd();
 
 	// Bit b, (IY + d)
-	int BIT_0_IYd();
-	int BIT_1_IYd();
-	int BIT_2_IYd();
-	int BIT_3_IYd();
-	int BIT_4_IYd();
-	int BIT_5_IYd();
-	int BIT_6_IYd();
-	int BIT_7_IYd();
+	uint16_t BIT_0_IYd();
+	uint16_t BIT_1_IYd();
+	uint16_t BIT_2_IYd();
+	uint16_t BIT_3_IYd();
+	uint16_t BIT_4_IYd();
+	uint16_t BIT_5_IYd();
+	uint16_t BIT_6_IYd();
+	uint16_t BIT_7_IYd();
 
 	// SET b, r
-	int SET_0_A();
-	int SET_0_B();
-	int SET_0_C();
-	int SET_0_D();
-	int SET_0_E();
-	int SET_0_H();
-	int SET_0_L();
+	uint16_t SET_0_A();
+	uint16_t SET_0_B();
+	uint16_t SET_0_C();
+	uint16_t SET_0_D();
+	uint16_t SET_0_E();
+	uint16_t SET_0_H();
+	uint16_t SET_0_L();
 
-	int SET_1_A();
-	int SET_1_B();
-	int SET_1_C();
-	int SET_1_D();
-	int SET_1_E();
-	int SET_1_H();
-	int SET_1_L();
+	uint16_t SET_1_A();
+	uint16_t SET_1_B();
+	uint16_t SET_1_C();
+	uint16_t SET_1_D();
+	uint16_t SET_1_E();
+	uint16_t SET_1_H();
+	uint16_t SET_1_L();
 
-	int SET_2_A();
-	int SET_2_B();
-	int SET_2_C();
-	int SET_2_D();
-	int SET_2_E();
-	int SET_2_H();
-	int SET_2_L();
+	uint16_t SET_2_A();
+	uint16_t SET_2_B();
+	uint16_t SET_2_C();
+	uint16_t SET_2_D();
+	uint16_t SET_2_E();
+	uint16_t SET_2_H();
+	uint16_t SET_2_L();
 
-	int SET_3_A();
-	int SET_3_B();
-	int SET_3_C();
-	int SET_3_D();
-	int SET_3_E();
-	int SET_3_H();
-	int SET_3_L();
+	uint16_t SET_3_A();
+	uint16_t SET_3_B();
+	uint16_t SET_3_C();
+	uint16_t SET_3_D();
+	uint16_t SET_3_E();
+	uint16_t SET_3_H();
+	uint16_t SET_3_L();
 
-	int SET_4_A();
-	int SET_4_B();
-	int SET_4_C();
-	int SET_4_D();
-	int SET_4_E();
-	int SET_4_H();
-	int SET_4_L();
+	uint16_t SET_4_A();
+	uint16_t SET_4_B();
+	uint16_t SET_4_C();
+	uint16_t SET_4_D();
+	uint16_t SET_4_E();
+	uint16_t SET_4_H();
+	uint16_t SET_4_L();
 
-	int SET_5_A();
-	int SET_5_B();
-	int SET_5_C();
-	int SET_5_D();
-	int SET_5_E();
-	int SET_5_H();
-	int SET_5_L();
+	uint16_t SET_5_A();
+	uint16_t SET_5_B();
+	uint16_t SET_5_C();
+	uint16_t SET_5_D();
+	uint16_t SET_5_E();
+	uint16_t SET_5_H();
+	uint16_t SET_5_L();
 
-	int SET_6_A();
-	int SET_6_B();
-	int SET_6_C();
-	int SET_6_D();
-	int SET_6_E();
-	int SET_6_H();
-	int SET_6_L();
+	uint16_t SET_6_A();
+	uint16_t SET_6_B();
+	uint16_t SET_6_C();
+	uint16_t SET_6_D();
+	uint16_t SET_6_E();
+	uint16_t SET_6_H();
+	uint16_t SET_6_L();
 
-	int SET_7_A();
-	int SET_7_B();
-	int SET_7_C();
-	int SET_7_D();
-	int SET_7_E();
-	int SET_7_H();
-	int SET_7_L();
+	uint16_t SET_7_A();
+	uint16_t SET_7_B();
+	uint16_t SET_7_C();
+	uint16_t SET_7_D();
+	uint16_t SET_7_E();
+	uint16_t SET_7_H();
+	uint16_t SET_7_L();
 
 	// SET b, (HL)
-	int SET_A_HL();
-	int SET_B_HL();
-	int SET_C_HL();
-	int SET_D_HL();
-	int SET_E_HL();
-	int SET_H_HL();
-	int SET_L_HL();
+	uint16_t SET_A_HL();
+	uint16_t SET_B_HL();
+	uint16_t SET_C_HL();
+	uint16_t SET_D_HL();
+	uint16_t SET_E_HL();
+	uint16_t SET_H_HL();
+	uint16_t SET_L_HL();
 
 	// SET b, (IX + d)
-	int SET_A_IXd();
-	int SET_B_IXd();
-	int SET_C_IXd();
-	int SET_D_IXd();
-	int SET_E_IXd();
-	int SET_H_IXd();
-	int SET_L_IXd();
+	uint16_t SET_A_IXd();
+	uint16_t SET_B_IXd();
+	uint16_t SET_C_IXd();
+	uint16_t SET_D_IXd();
+	uint16_t SET_E_IXd();
+	uint16_t SET_H_IXd();
+	uint16_t SET_L_IXd();
 
 	// SET b, (IY + d)
-	int SET_A_IYd();
-	int SET_B_IYd();
-	int SET_C_IYd();
-	int SET_D_IYd();
-	int SET_E_IYd();
-	int SET_H_IYd();
-	int SET_L_IYd();
+	uint16_t SET_A_IYd();
+	uint16_t SET_B_IYd();
+	uint16_t SET_C_IYd();
+	uint16_t SET_D_IYd();
+	uint16_t SET_E_IYd();
+	uint16_t SET_H_IYd();
+	uint16_t SET_L_IYd();
 
 	// RES b, m
-	int RES_0_A();
-	int RES_0_B();
-	int RES_0_C();
-	int RES_0_D();
-	int RES_0_E();
-	int RES_0_H();
-	int RES_0_L();
+	uint16_t RES_0_A();
+	uint16_t RES_0_B();
+	uint16_t RES_0_C();
+	uint16_t RES_0_D();
+	uint16_t RES_0_E();
+	uint16_t RES_0_H();
+	uint16_t RES_0_L();
 
-	int RES_1_A();
-	int RES_1_B();
-	int RES_1_C();
-	int RES_1_D();
-	int RES_1_E();
-	int RES_1_H();
-	int RES_1_L();
+	uint16_t RES_1_A();
+	uint16_t RES_1_B();
+	uint16_t RES_1_C();
+	uint16_t RES_1_D();
+	uint16_t RES_1_E();
+	uint16_t RES_1_H();
+	uint16_t RES_1_L();
 
-	int RES_2_A();
-	int RES_2_B();
-	int RES_2_C();
-	int RES_2_D();
-	int RES_2_E();
-	int RES_2_H();
-	int RES_2_L();
+	uint16_t RES_2_A();
+	uint16_t RES_2_B();
+	uint16_t RES_2_C();
+	uint16_t RES_2_D();
+	uint16_t RES_2_E();
+	uint16_t RES_2_H();
+	uint16_t RES_2_L();
 
-	int RES_3_A();
-	int RES_3_B();
-	int RES_3_C();
-	int RES_3_D();
-	int RES_3_E();
-	int RES_3_H();
-	int RES_3_L();
+	uint16_t RES_3_A();
+	uint16_t RES_3_B();
+	uint16_t RES_3_C();
+	uint16_t RES_3_D();
+	uint16_t RES_3_E();
+	uint16_t RES_3_H();
+	uint16_t RES_3_L();
 
-	int RES_4_A();
-	int RES_4_B();
-	int RES_4_C();
-	int RES_4_D();
-	int RES_4_E();
-	int RES_4_H();
-	int RES_4_L();
+	uint16_t RES_4_A();
+	uint16_t RES_4_B();
+	uint16_t RES_4_C();
+	uint16_t RES_4_D();
+	uint16_t RES_4_E();
+	uint16_t RES_4_H();
+	uint16_t RES_4_L();
 
-	int RES_5_A();
-	int RES_5_B();
-	int RES_5_C();
-	int RES_5_D();
-	int RES_5_E();
-	int RES_5_H();
-	int RES_5_L();
+	uint16_t RES_5_A();
+	uint16_t RES_5_B();
+	uint16_t RES_5_C();
+	uint16_t RES_5_D();
+	uint16_t RES_5_E();
+	uint16_t RES_5_H();
+	uint16_t RES_5_L();
 
-	int RES_6_A();
-	int RES_6_B();
-	int RES_6_C();
-	int RES_6_D();
-	int RES_6_E();
-	int RES_6_H();
-	int RES_6_L();
+	uint16_t RES_6_A();
+	uint16_t RES_6_B();
+	uint16_t RES_6_C();
+	uint16_t RES_6_D();
+	uint16_t RES_6_E();
+	uint16_t RES_6_H();
+	uint16_t RES_6_L();
 
-	int RES_7_A();
-	int RES_7_B();
-	int RES_7_C();
-	int RES_7_D();
-	int RES_7_E();
-	int RES_7_H();
-	int RES_7_L();
+	uint16_t RES_7_A();
+	uint16_t RES_7_B();
+	uint16_t RES_7_C();
+	uint16_t RES_7_D();
+	uint16_t RES_7_E();
+	uint16_t RES_7_H();
+	uint16_t RES_7_L();
 
 	// RES b, (HL)
-	int RES_0_HL();
-	int RES_1_HL();
-	int RES_2_HL();
-	int RES_3_HL();
-	int RES_4_HL();
-	int RES_5_HL();
-	int RES_6_HL();
-	int RES_7_HL();
+	uint16_t RES_0_HL();
+	uint16_t RES_1_HL();
+	uint16_t RES_2_HL();
+	uint16_t RES_3_HL();
+	uint16_t RES_4_HL();
+	uint16_t RES_5_HL();
+	uint16_t RES_6_HL();
+	uint16_t RES_7_HL();
 
 	// RES b, (IX + d)
-	int RES_0_IXd();
-	int RES_1_IXd();
-	int RES_2_IXd();
-	int RES_3_IXd();
-	int RES_4_IXd();
-	int RES_5_IXd();
-	int RES_6_IXd();
-	int RES_7_IXd();
+	uint16_t RES_0_IXd();
+	uint16_t RES_1_IXd();
+	uint16_t RES_2_IXd();
+	uint16_t RES_3_IXd();
+	uint16_t RES_4_IXd();
+	uint16_t RES_5_IXd();
+	uint16_t RES_6_IXd();
+	uint16_t RES_7_IXd();
 
 	// RES b, (IY + d)
-	int RES_0_IYd();
-	int RES_1_IYd();
-	int RES_2_IYd();
-	int RES_3_IYd();
-	int RES_4_IYd();
-	int RES_5_IYd();
-	int RES_6_IYd();
-	int RES_7_IYd();
+	uint16_t RES_0_IYd();
+	uint16_t RES_1_IYd();
+	uint16_t RES_2_IYd();
+	uint16_t RES_3_IYd();
+	uint16_t RES_4_IYd();
+	uint16_t RES_5_IYd();
+	uint16_t RES_6_IYd();
+	uint16_t RES_7_IYd();
 
 	// Jump group
 
 	// JP nn
-	int JP_nn();
+	uint16_t JP_nn();
 
 	// JP cc, nn
-	int JP_NZ_nn();
-	int JP_Z_nn();
-	int JP_NC_nn();
-	int JP_C_nn();
-	int JP_PO_nn();
-	int JP_PE_nn();
-	int JP_P_nn();
-	int JP_M_nn();
+	uint16_t JP_NZ_nn();
+	uint16_t JP_Z_nn();
+	uint16_t JP_NC_nn();
+	uint16_t JP_C_nn();
+	uint16_t JP_PO_nn();
+	uint16_t JP_PE_nn();
+	uint16_t JP_P_nn();
+	uint16_t JP_M_nn();
 
 	// JR e
-	int JR_e();
+	uint16_t JR_e();
 	
 	// JR C, e
-	int JR_C_e();
+	uint16_t JR_C_e();
 
 	// JR NC, e
-	int JR_NC_e();
+	uint16_t JR_NC_e();
 
 	// JR Z, e
-	int JR_Z_e();
+	uint16_t JR_Z_e();
 
 	// JR NZ, e
-	int JR_NZ_e();
+	uint16_t JR_NZ_e();
 
 	// JP (HL)
-	int JP_HL();
+	uint16_t JP_HL();
 
 	// JP (IX)
-	int JP_IX();
+	uint16_t JP_IX();
 
 	// JP (IY)
-	int JP_IY();
+	uint16_t JP_IY();
 
 	// DJNZ, e
-	int DJNZ_e();
+	uint16_t DJNZ_e();
 
 	// Call and Return Group
 	// CALL nn
-	int CALL_nn();
+	uint16_t CALL_nn();
 
 	// CALL cc, nn
-	int CALL_NZ_nn();
-	int CALL_Z_nn();
-	int CALL_NC_nn();
-	int CALL_C_nn();
-	int CALL_PO_nn();
-	int CALL_PE_nn();
-	int CALL_P_nn();
-	int CALL_M_nn();
+	uint16_t CALL_NZ_nn();
+	uint16_t CALL_Z_nn();
+	uint16_t CALL_NC_nn();
+	uint16_t CALL_C_nn();
+	uint16_t CALL_PO_nn();
+	uint16_t CALL_PE_nn();
+	uint16_t CALL_P_nn();
+	uint16_t CALL_M_nn();
 
 	// RET
-	int RET();
+	uint16_t RET();
 
 	// RET cc
-	int RET_NZ();
-	int RET_Z();
-	int RET_NC();
-	int RET_C();
-	int RET_PO();
-	int RET_PE();
-	int RET_P();
-	int RET_M();
+	uint16_t RET_NZ();
+	uint16_t RET_Z();
+	uint16_t RET_NC();
+	uint16_t RET_C();
+	uint16_t RET_PO();
+	uint16_t RET_PE();
+	uint16_t RET_P();
+	uint16_t RET_M();
 
 	// RETI
-	int RETI();
+	uint16_t RETI();
 
 	// RETN
-	int RETN();
+	uint16_t RETN();
 
 	// RST p
-	int RST_00h();
-	int RST_08h();
-	int RST_10h();
-	int RST_18h();
-	int RST_20h();
-	int RST_28h();
-	int RST_30h();
-	int RST_38h();
+	uint16_t RST_00h();
+	uint16_t RST_08h();
+	uint16_t RST_10h();
+	uint16_t RST_18h();
+	uint16_t RST_20h();
+	uint16_t RST_28h();
+	uint16_t RST_30h();
+	uint16_t RST_38h();
 
 	// Input and Output Group
 	
 	// IN A, (n)
-	int IN_A();
+	uint16_t IN_A();
 
 	// IN r (C)
-	int IN_A_C();
-	int IN_B_C();
-	int IN_C_C();
-	int IN_D_C();
-	int IN_E_C();
-	int IN_F_C();
-	int IN_H_C();
-	int IN_L_C();
+	uint16_t IN_A_C();
+	uint16_t IN_B_C();
+	uint16_t IN_C_C();
+	uint16_t IN_D_C();
+	uint16_t IN_E_C();
+	uint16_t IN_F_C();
+	uint16_t IN_H_C();
+	uint16_t IN_L_C();
 
 	// INI
-	int INI();
+	uint16_t INI();
 
 	// INIR
-	int INIR();
+	uint16_t INIR();
 
 	// IND
-	int IND();
+	uint16_t IND();
 
 	// INDR
-	int INDR();
+	uint16_t INDR();
 
 	// OUT (n), A
-	int OUT_N_A();
+	uint16_t OUT_N_A();
 
 	// OUT (C), r
-	int OUT_C_A();
-	int OUT_C_B();
-	int OUT_C_C();
-	int OUT_C_D();
-	int OUT_C_E();
-	int OUT_C_H();
-	int OUT_C_L();
+	uint16_t OUT_C_A();
+	uint16_t OUT_C_B();
+	uint16_t OUT_C_C();
+	uint16_t OUT_C_D();
+	uint16_t OUT_C_E();
+	uint16_t OUT_C_H();
+	uint16_t OUT_C_L();
 
 	// OTIR
-	int OTIR();
+	uint16_t OTIR();
 
 	// OUTD
-	int OUTD();
+	uint16_t OUTD();
 
 	// OTDR
-	int OTDR();
+	uint16_t OTDR();
 
 
 	// Not opcodes
 	// Opcode groupings
-	int BITS_group();
-	int IX_group();
-	int IY_group();
-	int EXTD_group();
+	uint16_t BITS_group();
+	uint16_t IX_group();
+	uint16_t IY_group();
+	uint16_t EXTD_group();
 
 
 };
