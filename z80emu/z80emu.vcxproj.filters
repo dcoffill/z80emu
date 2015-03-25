@@ -18,25 +18,25 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RegisterEnums.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Ram.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Registers.h">
+    <ClInclude Include="DataRegisters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="opcodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DataRegisters.h">
+    <ClInclude Include="Ram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RegisterEnums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Registers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -65,5 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
