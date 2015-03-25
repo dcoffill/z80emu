@@ -15,85 +15,85 @@ private:
 	Ram _memory;
 
 	// CPU opcode implementations
-	// return uuint16_t16_t address of next instruction
+	// return uinline void16_t address of next instruction
 	// TODO: look into generating specialized method implementations from generic function template for each opcode (actual template<> or just generic method)
 
 	// LD r, r' instruction opcodes
-	uint16_t LD_A_A();
-	uint16_t LD_A_B();
-	uint16_t LD_A_C();
-	uint16_t LD_A_D();
-	uint16_t LD_A_E();
-	uint16_t LD_A_H();
-	uint16_t LD_A_L();
+	inline void LD_A_A();
+	inline void LD_A_B();
+	inline void LD_A_C();
+	inline void LD_A_D();
+	inline void LD_A_E();
+	inline void LD_A_H();
+	inline void LD_A_L();
 
-	uint16_t LD_B_A();
-	uint16_t LD_B_B();
-	uint16_t LD_B_C();
-	uint16_t LD_B_D();
-	uint16_t LD_B_E();
-	uint16_t LD_B_H();
-	uint16_t LD_B_L();
+	inline void LD_B_A();
+	inline void LD_B_B();
+	inline void LD_B_C();
+	inline void LD_B_D();
+	inline void LD_B_E();
+	inline void LD_B_H();
+	inline void LD_B_L();
 
-	uint16_t LD_C_A();
-	uint16_t LD_C_B();
-	uint16_t LD_C_C();
-	uint16_t LD_C_D();
-	uint16_t LD_C_E();
-	uint16_t LD_C_H();
-	uint16_t LD_C_L();
+	inline void LD_C_A();
+	inline void LD_C_B();
+	inline void LD_C_C();
+	inline void LD_C_D();
+	inline void LD_C_E();
+	inline void LD_C_H();
+	inline void LD_C_L();
 
-	uint16_t LD_D_A();
-	uint16_t LD_D_B();
-	uint16_t LD_D_C();
-	uint16_t LD_D_D();
-	uint16_t LD_D_E();
-	uint16_t LD_D_H();
-	uint16_t LD_D_L();
+	inline void LD_D_A();
+	inline void LD_D_B();
+	inline void LD_D_C();
+	inline void LD_D_D();
+	inline void LD_D_E();
+	inline void LD_D_H();
+	inline void LD_D_L();
 
-	uint16_t LD_E_A();
-	uint16_t LD_E_B();
-	uint16_t LD_E_C();
-	uint16_t LD_E_D();
-	uint16_t LD_E_E();
-	uint16_t LD_E_H();
-	uint16_t LD_E_L();
+	inline void LD_E_A();
+	inline void LD_E_B();
+	inline void LD_E_C();
+	inline void LD_E_D();
+	inline void LD_E_E();
+	inline void LD_E_H();
+	inline void LD_E_L();
 
-	uint16_t LD_H_A();
-	uint16_t LD_H_B();
-	uint16_t LD_H_C();
-	uint16_t LD_H_D();
-	uint16_t LD_H_E();
-	uint16_t LD_H_H();
-	uint16_t LD_H_L();
+	inline void LD_H_A();
+	inline void LD_H_B();
+	inline void LD_H_C();
+	inline void LD_H_D();
+	inline void LD_H_E();
+	inline void LD_H_H();
+	inline void LD_H_L();
 
-	uint16_t LD_L_A();
-	uint16_t LD_L_B();
-	uint16_t LD_L_C();
-	uint16_t LD_L_D();
-	uint16_t LD_L_E();
-	uint16_t LD_L_H();
-	uint16_t LD_L_L();
+	inline void LD_L_A();
+	inline void LD_L_B();
+	inline void LD_L_C();
+	inline void LD_L_D();
+	inline void LD_L_E();
+	inline void LD_L_H();
+	inline void LD_L_L();
 
 	// LD r, n instructions
 	// (where n is immediate contained in PC + 1)
-	uint16_t LD_A_N();
-	uint16_t LD_B_N();
-	uint16_t LD_C_N();
-	uint16_t LD_D_N();
-	uint16_t LD_E_N();
-	uint16_t LD_H_N();
-	uint16_t LD_L_N();
+	inline void LD_A_N();
+	inline void LD_B_N();
+	inline void LD_C_N();
+	inline void LD_D_N();
+	inline void LD_E_N();
+	inline void LD_H_N();
+	inline void LD_L_N();
 
 	// LD r, (HL)
 	// Load contents of memory at address contained in (HL) to register r
-	uint16_t LD_A_HL();
-	uint16_t LD_B_HL();
-	uint16_t LD_C_HL();
-	uint16_t LD_D_HL();
-	uint16_t LD_E_HL();
-	uint16_t LD_H_HL();
-	uint16_t LD_L_HL();
+	inline void LD_A_HL();
+	inline void LD_B_HL();
+	inline void LD_C_HL();
+	inline void LD_D_HL();
+	inline void LD_E_HL();
+	inline void LD_H_HL();
+	inline void LD_L_HL();
 
 	// LD r, (IX+d)
 	// first LD_R_IXd
@@ -105,108 +105,108 @@ private:
 
 	// LD r, (IX+d)
 	// Load contents of memory stored in address (IX+d)
-	// where d is a signed 8 bit uint16_teger
+	// where d is a signed 8 bit inline voideger
 	// first LD_R_IXd
-	uint16_t LD_R_IXd();
+	inline void LD_R_IXd();
 
 	// LD r, (IY+d)
 	// Load contents of memory stored in address (IY+d)
-	// where d is a signed 8 bit uint16_teger
+	// where d is a signed 8 bit inline voideger
 	// first LD_R_IYd
-	uint16_t LD_R_IYd();
+	inline void LD_R_IYd();
 
 	// LD (HL), r
-	// Load contents of register r uint16_to address contained in (HL)
-	uint16_t LD_HL_A();
-	uint16_t LD_HL_B();
-	uint16_t LD_HL_C();
-	uint16_t LD_HL_D();
-	uint16_t LD_HL_E();
-	uint16_t LD_HL_H();
-	uint16_t LD_HL_L();
+	// Load contents of register r inline voido address contained in (HL)
+	inline void LD_HL_A();
+	inline void LD_HL_B();
+	inline void LD_HL_C();
+	inline void LD_HL_D();
+	inline void LD_HL_E();
+	inline void LD_HL_H();
+	inline void LD_HL_L();
 
 	// LD (IX+d), r
 	// Store contents of register r to memory address stored in address(IX + d)
-	// where d is a signed 8 bit uint16_teger offset
-	uint16_t LD_IXd_R(); // DO NOT USE, same as LD_R_IXd
+	// where d is a signed 8 bit inline voideger offset
+	inline void LD_IXd_R(); // DO NOT USE, same as LD_R_IXd
 
 	// LD (IX+d), r
 	// Store contents of register r to memory address stored in address(IY + d)
-	// where d is a signed 8 bit uint16_teger offset
-	uint16_t LD_IYd_R(); // DO NOT USE, same as LD_R_IYd
+	// where d is a signed 8 bit inline voideger offset
+	inline void LD_IYd_R(); // DO NOT USE, same as LD_R_IYd
 
 	// LD (HL), n
-	// Store an immediate value, n, uint16_to the memory address contained in HL
-	uint16_t LD_HL_N();
+	// Store an immediate value, n, inline voido the memory address contained in HL
+	inline void LD_HL_N();
 
 	// LD (IX+d), n
-	// Store an immediate value, n, uint16_to the memory address calculated from IX + d
+	// Store an immediate value, n, inline voido the memory address calculated from IX + d
 	// where d is a signed 8-bit offset
 	// todo: add in later, since it's just 6xDD and 6x36 again
 
 	// LD (IY+d), n
-	// Store an immediate value, n, uint16_to the memory address calculated from IY + d
+	// Store an immediate value, n, inline voido the memory address calculated from IY + d
 	// where d is a signed 8-bit offset
 	// todo: add in later, since it's just 6xFD and 6x36 again
 
 	// LD A, (BC)
 	// Load contents of memory, stored at address contained in BC, to register A
-	uint16_t LD_A_BC();
+	inline void LD_A_BC();
 
 	// LD A, (DE)
 	// Load contents of memory, stored at address contained in DE, to register A
-	uint16_t LD_A_DE();
+	inline void LD_A_DE();
 
 	// LD A, (nn)
 	// Load contents of memory, indicated at the address nn, to register A
-	uint16_t LD_A_NN();
+	inline void LD_A_NN();
 
 	// LD (BC), A
 	// Store contents of register A to memory address contained in BC
-	uint16_t LD_BC_A();
+	inline void LD_BC_A();
 
 	// LD (DE), A
 	// Store contents of register A to memory address contained in DE
-	uint16_t LD_DE_A();
+	inline void LD_DE_A();
 
 	// LD (nn), A
 	// Store contents of register A to address indicated by nn
-	uint16_t LD_NN_A();
+	inline void LD_NN_A();
 
 	// LD A, I
-	// Load contents of uint16_terrupt Vector register I uint16_to A
+	// Load contents of inline voiderrupt Vector register I inline voido A
 	// Also used for LD A, R; LD I, A; LD R, A
-	uint16_t LD_A_I();
+	inline void LD_A_I();
 
 
 	// 16-bit load instructions
 
 	// LD dd, nn
-	// Load 2 byte immediate nn uint16_to register dd
-	uint16_t LD_BC_NN(); // to BC
-	uint16_t LD_DE_NN(); // to DE
-	uint16_t LD_HL_NN(); // to HL
-	uint16_t LD_SP_NN(); // to SP
+	// Load 2 byte immediate nn inline voido register dd
+	inline void LD_BC_NN(); // to BC
+	inline void LD_DE_NN(); // to DE
+	inline void LD_HL_NN(); // to HL
+	inline void LD_SP_NN(); // to SP
 
 	// LD IX, nn
-	// Load nn uint16_to index register IX
+	// Load nn inline voido index register IX
 	// first opcode is 6xDD
 	// then 6x21
 
 
 	// LD IY, nn
-	// Load nn uint16_to index register IY
+	// Load nn inline voido index register IY
 	// 6xFD then 6x21
 
 	// LD HL, (nn)
-	uint16_t LD_HL_NN_ADDR();
+	inline void LD_HL_NN_ADDR();
 
 	// LD dd, (nn)
 	// 6xed, then:
-	uint16_t LD_HL_NN_ADDR_2();
-	uint16_t LD_BC_NN_ADDR();
-	uint16_t LD_DE_NN_ADDR();
-	uint16_t LD_SP_NN_ADDR();
+	inline void LD_HL_NN_ADDR_2();
+	inline void LD_BC_NN_ADDR();
+	inline void LD_DE_NN_ADDR();
+	inline void LD_SP_NN_ADDR();
 
 	// LD IX, (nn)
 	// first LD_R_IXd
@@ -217,15 +217,15 @@ private:
 	// same as previous but with LD_R_IYd
 
 	// LD (nn), HL
-	uint16_t LD_NN_HL();
+	inline void LD_NN_HL();
 
 	//LD (nn), dd
 	// first LD_A_I
 	//then
-	uint16_t LD_NN_BC_ADDR();
-	uint16_t LD_NN_DE_ADDR();
-	uint16_t LD_NN_HL_ADDR();
-	uint16_t LD_NN_SP_ADDR();
+	inline void LD_NN_BC_ADDR();
+	inline void LD_NN_DE_ADDR();
+	inline void LD_NN_HL_ADDR();
+	inline void LD_NN_SP_ADDR();
 
 	// LD (nn), IX
 	// first LD_IXd_R
@@ -233,7 +233,7 @@ private:
 	// then 2 bytes
 
 	// LD SP, HL
-	uint16_t LD_SP_HL();
+	inline void LD_SP_HL();
 
 	// LD SP, IX
 	// first LD_R_IXd
@@ -244,10 +244,10 @@ private:
 	// then LD_SP_HL
 
 	// PUSH qq
-	uint16_t PUSH_BC();
-	uint16_t PUSH_DE();
-	uint16_t PUSH_HL();
-	uint16_t PUSH_AF();
+	inline void PUSH_BC();
+	inline void PUSH_DE();
+	inline void PUSH_HL();
+	inline void PUSH_AF();
 
 	// PUSH IX
 	// first LD_R_IXd
@@ -258,10 +258,10 @@ private:
 	// then PUSH_HL
 
 	// POP qq
-	uint16_t POP_BC();
-	uint16_t POP_DE();
-	uint16_t POP_HL();
-	uint16_t POP_AF();
+	inline void POP_BC();
+	inline void POP_DE();
+	inline void POP_HL();
+	inline void POP_AF();
 
 	// POP IX
 	// first LD_R_IXd
@@ -274,16 +274,16 @@ private:
 	// Exchange, block transfer, and search instructions
 
 	// EX DE, HL
-	uint16_t EX_DE_HL();
+	inline void EX_DE_HL();
 
 	// EX AF, AF'
-	uint16_t EX_AF_AF();
+	inline void EX_AF_AF();
 
 	// EXX
-	uint16_t EXX();
+	inline void EXX();
 
 	// EX (SP), HL
-	uint16_t EX_SP_HL();
+	inline void EX_SP_HL();
 
 	// EX (SP), IX
 	// first LD_R_IXd
@@ -295,52 +295,52 @@ private:
 
 	// LDI
 	// first LD_A_I
-	uint16_t LDI();
+	inline void LDI();
 
 	// LDIR
 	// first LD_A_I
-	uint16_t LDIR();
+	inline void LDIR();
 
 	// LDD
 	// first LD_A_I
-	uint16_t LDD();
+	inline void LDD();
 
 	// LDDR
 	// first LD_A_I
-	uint16_t LDDR();
+	inline void LDDR();
 
 	// CPI
 	// first LD_A_I
-	uint16_t CPI();
+	inline void CPI();
 
 	// CPIR
 	// first LD_A_I
-	uint16_t CPIR();
+	inline void CPIR();
 
 	// CPD
 	// first LD_A_I
 	// then
-	uint16_t CPD();
+	inline void CPD();
 
 	// CPDR
 	// first LD_A_I
 	// then
-	uint16_t CPDR();
+	inline void CPDR();
 
 	// ADD A, r
-	uint16_t ADD_A_A();
-	uint16_t ADD_A_B();
-	uint16_t ADD_A_C();
-	uint16_t ADD_A_D();
-	uint16_t ADD_A_E();
-	uint16_t ADD_A_H();
-	uint16_t ADD_A_L();
+	inline void ADD_A_A();
+	inline void ADD_A_B();
+	inline void ADD_A_C();
+	inline void ADD_A_D();
+	inline void ADD_A_E();
+	inline void ADD_A_H();
+	inline void ADD_A_L();
 
 	// ADD A, n
-	uint16_t ADD_A_N();
+	inline void ADD_A_N();
 
 	// ADD A, (HL)
-	uint16_t ADD_A_HL();
+	inline void ADD_A_HL();
 
 	// ADD A, (IX + d)
 	// first LD_IXd_R
@@ -354,19 +354,19 @@ private:
 
 	// ADC A, s: opcode group
 	// ADC A, r
-	uint16_t ADC_A_A();
-	uint16_t ADC_A_B();
-	uint16_t ADC_A_C();
-	uint16_t ADC_A_D();
-	uint16_t ADC_A_E();
-	uint16_t ADC_A_H();
-	uint16_t ADC_A_L();
+	inline void ADC_A_A();
+	inline void ADC_A_B();
+	inline void ADC_A_C();
+	inline void ADC_A_D();
+	inline void ADC_A_E();
+	inline void ADC_A_H();
+	inline void ADC_A_L();
 
 	// ADC A, n
-	uint16_t ADC_A_N();
+	inline void ADC_A_N();
 
 	// ADC A, (HL)
-	uint16_t ADC_A_HL();
+	inline void ADC_A_HL();
 
 	// ADC A, (IX + d)
 	// first LD_IXd_R
@@ -380,19 +380,19 @@ private:
 
 	// SUB s: opcode group
 	// SUB r
-	uint16_t SUB_A();
-	uint16_t SUB_B();
-	uint16_t SUB_C();
-	uint16_t SUB_D();
-	uint16_t SUB_E();
-	uint16_t SUB_H();
-	uint16_t SUB_L();
+	inline void SUB_A();
+	inline void SUB_B();
+	inline void SUB_C();
+	inline void SUB_D();
+	inline void SUB_E();
+	inline void SUB_H();
+	inline void SUB_L();
 
 	// SUB n
-	uint16_t SUB_N();
+	inline void SUB_N();
 
 	// SUB (HL)
-	uint16_t SUB_HL();
+	inline void SUB_HL();
 
 	// SUB (IX + d)
 	// first LD_IXd_R
@@ -407,19 +407,19 @@ private:
 
 	// SBC A, s: opcode group
 	// SBC A, r
-	uint16_t SBC_A_A();
-	uint16_t SBC_A_B();
-	uint16_t SBC_A_C();
-	uint16_t SBC_A_D();
-	uint16_t SBC_A_E();
-	uint16_t SBC_A_H();
-	uint16_t SBC_A_L();
+	inline void SBC_A_A();
+	inline void SBC_A_B();
+	inline void SBC_A_C();
+	inline void SBC_A_D();
+	inline void SBC_A_E();
+	inline void SBC_A_H();
+	inline void SBC_A_L();
 
 	// SBC A, n
-	uint16_t SBC_A_N();
+	inline void SBC_A_N();
 
 	// SBC A, (HL)
-	uint16_t SBC_A_HL();
+	inline void SBC_A_HL();
 
 	// SBC A, (IX + d)
 	// first LD_IXd_R
@@ -434,19 +434,19 @@ private:
 
 	// AND s: opcode group
 	// AND r'
-	uint16_t AND_A();
-	uint16_t AND_B();
-	uint16_t AND_C();
-	uint16_t AND_D();
-	uint16_t AND_E();
-	uint16_t AND_H();
-	uint16_t AND_L();
+	inline void AND_A();
+	inline void AND_B();
+	inline void AND_C();
+	inline void AND_D();
+	inline void AND_E();
+	inline void AND_H();
+	inline void AND_L();
 
 	// AND n
-	uint16_t AND_N();
+	inline void AND_N();
 
 	// AND (HL)
-	uint16_t AND_HL();
+	inline void AND_HL();
 
 	// AND (IX + d)
 	// first LD_IXd_R
@@ -460,19 +460,19 @@ private:
 
 	// OR s: opcode group
 	// OR r'
-	uint16_t OR_A();
-	uint16_t OR_B();
-	uint16_t OR_C();
-	uint16_t OR_D();
-	uint16_t OR_E();
-	uint16_t OR_H();
-	uint16_t OR_L();
+	inline void OR_A();
+	inline void OR_B();
+	inline void OR_C();
+	inline void OR_D();
+	inline void OR_E();
+	inline void OR_H();
+	inline void OR_L();
 
 	// OR n
-	uint16_t OR_N();
+	inline void OR_N();
 
 	// OR (HL)
-	uint16_t OR_HL();
+	inline void OR_HL();
 
 	// OR (IX + d)
 	// first LD_IXd_R
@@ -487,19 +487,19 @@ private:
 
 	// XOR s: opcode group
 	// XOR r'
-	uint16_t XOR_A();
-	uint16_t XOR_B();
-	uint16_t XOR_C();
-	uint16_t XOR_D();
-	uint16_t XOR_E();
-	uint16_t XOR_H();
-	uint16_t XOR_L();
+	inline void XOR_A();
+	inline void XOR_B();
+	inline void XOR_C();
+	inline void XOR_D();
+	inline void XOR_E();
+	inline void XOR_H();
+	inline void XOR_L();
 
 	// XOR n
-	uint16_t XOR_N();
+	inline void XOR_N();
 
 	// XOR (HL)
-	uint16_t XOR_HL(); // I think, confirm later
+	inline void XOR_HL(); // I think, confirm later
 
 	// XOR (IX + d)
 	// first LD_IXd_R
@@ -513,19 +513,19 @@ private:
 
 	// CP s: opcode group
 	// CP r'
-	uint16_t CP_A();
-	uint16_t CP_B();
-	uint16_t CP_C();
-	uint16_t CP_D();
-	uint16_t CP_E();
-	uint16_t CP_H();
-	uint16_t CP_L();
+	inline void CP_A();
+	inline void CP_B();
+	inline void CP_C();
+	inline void CP_D();
+	inline void CP_E();
+	inline void CP_H();
+	inline void CP_L();
 
 	// CP n
-	uint16_t CP_N();
+	inline void CP_N();
 
 	// CP (HL)
-	uint16_t CP_HL();
+	inline void CP_HL();
 
 	// CP (IX + d)
 	// first LD_IXd_R
@@ -538,16 +538,16 @@ private:
 	// then d
 
 	// INC r
-	uint16_t INC_A();
-	uint16_t INC_B();
-	uint16_t INC_C();
-	uint16_t INC_D();
-	uint16_t INC_E();
-	uint16_t INC_H();
-	uint16_t INC_L();
+	inline void INC_A();
+	inline void INC_B();
+	inline void INC_C();
+	inline void INC_D();
+	inline void INC_E();
+	inline void INC_H();
+	inline void INC_L();
 
 	// INC (HL)
-	uint16_t INC_HL_ADDR();
+	inline void INC_HL_ADDR();
 
 	// INC (IX + d)
 	// first LD_IXd_R
@@ -559,16 +559,16 @@ private:
 
 	// DEC m: opcode group
 	// DEC r'
-	uint16_t DEC_A();
-	uint16_t DEC_B();
-	uint16_t DEC_C();
-	uint16_t DEC_D();
-	uint16_t DEC_E();
-	uint16_t DEC_H();
-	uint16_t DEC_L();
+	inline void DEC_A();
+	inline void DEC_B();
+	inline void DEC_C();
+	inline void DEC_D();
+	inline void DEC_E();
+	inline void DEC_H();
+	inline void DEC_L();
 
 	// DEC (HL)
-	uint16_t DEC_HL_ADDR();
+	inline void DEC_HL_ADDR();
 
 	// DEC (IX + d)
 	// first LD_IXd_R
@@ -581,765 +581,765 @@ private:
 	// General purpose Arithmetic and CPU Control
 
 	// DAA
-	uint16_t DAA();
+	inline void DAA();
 
 	// CPL
-	uint16_t CPL();
+	inline void CPL();
 
 	// NEG
 	// first LD_A_I
 	// then
-	uint16_t NEG();
+	inline void NEG();
 
 	// CCF
-	uint16_t CCF();
+	inline void CCF();
 
 	// SCF
-	uint16_t SCF();
+	inline void SCF();
 
 	// NOP
-	uint16_t NOP();
+	inline void NOP();
 
 	// HALT
-	uint16_t HALT();
+	inline void HALT();
 
 	// DI
-	uint16_t DI();
+	inline void DI();
 
 	// EI
-	uint16_t EI();
+	inline void EI();
 
 	// IM 6
 	// first LD_A_I
-	uint16_t IM_6();
+	inline void IM_6();
 
 	// IM 1
 	// first LD_A_I
-	uint16_t IM_1();
+	inline void IM_1();
 
 	// IM 2
 	// first LD_A_I
-	uint16_t IM_2();
+	inline void IM_2();
 
 	// 16-Bit Arithmetic Group
 
 	// ADD HL, ss
-	uint16_t ADD_HL_BC();
-	uint16_t ADD_HL_DE();
-	uint16_t ADD_HL_HL();
-	uint16_t ADD_HL_SP();
+	inline void ADD_HL_BC();
+	inline void ADD_HL_DE();
+	inline void ADD_HL_HL();
+	inline void ADD_HL_SP();
 
 	// ADC HL, ss
 	// first LD_A_I
 	// then
-	uint16_t ADC_HL_BC();
-	uint16_t ADC_HL_DE();
-	uint16_t ADC_HL_HL();
-	uint16_t ADC_HL_SP();
+	inline void ADC_HL_BC();
+	inline void ADC_HL_DE();
+	inline void ADC_HL_HL();
+	inline void ADC_HL_SP();
 
 	// SBC HL, ss
 	// first LD_A_I
 	// then
-	uint16_t SBC_HL_BC();
-	uint16_t SBC_HL_DE();
-	uint16_t SBC_HL_HL();
-	uint16_t SBC_HL_SP();
+	inline void SBC_HL_BC();
+	inline void SBC_HL_DE();
+	inline void SBC_HL_HL();
+	inline void SBC_HL_SP();
 
 	// ADD IX, pp
 	// first LD_IXd_R
 	// then ADD_HL_SS
-	uint16_t ADD_IX_BC();
-	uint16_t ADD_IX_DE();
-	uint16_t ADD_IX_HL();
-	uint16_t ADD_IX_SP();
+	inline void ADD_IX_BC();
+	inline void ADD_IX_DE();
+	inline void ADD_IX_HL();
+	inline void ADD_IX_SP();
 
 	// ADD IY, pp
 	// first LD_IYd_R
 	// then ADD_HL_SS
-	uint16_t ADD_IY_BC();
-	uint16_t ADD_IY_DE();
-	uint16_t ADD_IY_HL();
-	uint16_t ADD_IY_SP();
+	inline void ADD_IY_BC();
+	inline void ADD_IY_DE();
+	inline void ADD_IY_HL();
+	inline void ADD_IY_SP();
 
 	// INC ss
-	uint16_t INC_BC();
-	uint16_t INC_DE();
-	uint16_t INC_HL();
-	uint16_t INC_SP();
+	inline void INC_BC();
+	inline void INC_DE();
+	inline void INC_HL();
+	inline void INC_SP();
 
 	// INC IX
 	// first LD_IXd_R
-	uint16_t INC_IX();
+	inline void INC_IX();
 
 	// INC IY
 	// first LD_IYd_R
-	uint16_t INC_IY();
+	inline void INC_IY();
 
 	// DEC ss
-	uint16_t DEC_BC();
-	uint16_t DEC_DE();
-	uint16_t DEC_HL();
-	uint16_t DEC_SP();
+	inline void DEC_BC();
+	inline void DEC_DE();
+	inline void DEC_HL();
+	inline void DEC_SP();
 
 	// DEC IX
 	// first LD_IXd_R
-	uint16_t DEC_IX();
+	inline void DEC_IX();
 
 	// DEC IY
 	// first LD_IYd_R
-	uint16_t DEC_IY();
+	inline void DEC_IY();
 
 	// Rotate and Shift Group
 
 	// RLCA
-	uint16_t RCLA();
+	inline void RCLA();
 
 	// RLA
-	uint16_t RLA();
+	inline void RLA();
 
 	// RRCA
-	uint16_t RRCA();
+	inline void RRCA();
 
 	// RRA
-	uint16_t RRA();
+	inline void RRA();
 
 	// RLC r
 	//first
-	uint16_t RLC_R();
+	inline void RLC_R();
 	// then any of 
-	uint16_t RLC_A();
-	uint16_t RLC_B();
-	uint16_t RLC_C();
-	uint16_t RLC_D();
-	uint16_t RLC_E();
-	uint16_t RLC_H();
-	uint16_t RLC_L();
+	inline void RLC_A();
+	inline void RLC_B();
+	inline void RLC_C();
+	inline void RLC_D();
+	inline void RLC_E();
+	inline void RLC_H();
+	inline void RLC_L();
 
 	// RLC (HL)
 	// first RLC_R
-	uint16_t RLC_HL();
+	inline void RLC_HL();
 
 	// RLC (IX + d)
 	// first LD_IXd_R
 	// then RLC_R
 	// then d
-	uint16_t RLC_IXd();
+	inline void RLC_IXd();
 
 	// RLC (IY + d)
 	// first LD_IYd_R
 	// then RLC_R
 	// then d
-	uint16_t RLC_IYd();
+	inline void RLC_IYd();
 
 	// RL m: opcode group
 
 	// RL r'
 	// first RLC_R
 	// then any of
-	uint16_t RL_A();
-	uint16_t RL_B();
-	uint16_t RL_C();
-	uint16_t RL_D();
-	uint16_t RL_E();
-	uint16_t RL_H();
-	uint16_t RL_L();
+	inline void RL_A();
+	inline void RL_B();
+	inline void RL_C();
+	inline void RL_D();
+	inline void RL_E();
+	inline void RL_H();
+	inline void RL_L();
 
 	// RL (HL)
 	// first RLC_R
-	uint16_t RL_HL();
+	inline void RL_HL();
 
 	// RL (IX + d)
 	// first LD_IXd_R
 	// then RLC_R
 	// then d
-	uint16_t RL_IXd();
+	inline void RL_IXd();
 
 	// RL (IY + d)
 	// first LD_IYd_R
 	// then RLC_R
 	// then d
-	uint16_t RL_IYd();
+	inline void RL_IYd();
 
 	//RRC m: opcode group
 
 	// RRC r'
 	// first RLC_R
 	// then one of
-	uint16_t RRC_A();
-	uint16_t RRC_B();
-	uint16_t RRC_C();
-	uint16_t RRC_D();
-	uint16_t RRC_E();
-	uint16_t RRC_H();
-	uint16_t RRC_L();
+	inline void RRC_A();
+	inline void RRC_B();
+	inline void RRC_C();
+	inline void RRC_D();
+	inline void RRC_E();
+	inline void RRC_H();
+	inline void RRC_L();
 
 	// RRC (HL)
 	// first RLC_R
-	uint16_t RRC_HL();
+	inline void RRC_HL();
 
 	// RRC (IX + d)
 	// first LD_IXd_R
 	// then RLC_R
 	// then D
-	uint16_t RRC_IXd();
+	inline void RRC_IXd();
 
 	// RRC (IY + d)
 	// first LD_IYd_R
 	// then RLC_R
 	// then D
-	uint16_t RRC_IYd();
+	inline void RRC_IYd();
 
 	// RR m: opcode group
 
 	// RR r'
 	// first RLC_R
 	// then
-	uint16_t RR_A();
-	uint16_t RR_B();
-	uint16_t RR_C();
-	uint16_t RR_D();
-	uint16_t RR_E();
-	uint16_t RR_H();
-	uint16_t RR_L();
+	inline void RR_A();
+	inline void RR_B();
+	inline void RR_C();
+	inline void RR_D();
+	inline void RR_E();
+	inline void RR_H();
+	inline void RR_L();
 
 	// RR (HL)
 	// first RLC_R
-	uint16_t RR_HL();
+	inline void RR_HL();
 
 	// RR (IX + d)
 	// first LD_IXd_R
 	// then RLC_R
 	// then D
-	uint16_t RR_IXd();
+	inline void RR_IXd();
 
 	// RR (IY + d)
 	// first LD_IYd_R
 	// then RLC_R
 	// then D
-	uint16_t RR_IYd();
+	inline void RR_IYd();
 
 	// SLA m: opcode group
 
 	// SLA r'
 	// first RLC_R
 	// then any of
-	uint16_t SLA_A();
-	uint16_t SLA_B();
-	uint16_t SLA_C();
-	uint16_t SLA_D();
-	uint16_t SLA_E();
-	uint16_t SLA_H();
-	uint16_t SLA_L();
+	inline void SLA_A();
+	inline void SLA_B();
+	inline void SLA_C();
+	inline void SLA_D();
+	inline void SLA_E();
+	inline void SLA_H();
+	inline void SLA_L();
 
 	// SLA (HL)
 	// first RLC_R
 	// then
-	uint16_t SLA_HL();
+	inline void SLA_HL();
 
 	// SLA (IX + d)
 	// first LD_IXd_R
 	// then RLC_R
 	// then D
-	uint16_t SLA_IXd();
+	inline void SLA_IXd();
 
 	// SLA (IY + d)
 	// first LD_IYd_R
 	// then RLC_R
 	// then D
-	uint16_t SLA_IYd();
+	inline void SLA_IYd();
 
 	// SRA m: opcode group
 
 	// SRA r'
 	// first RLC_R
 	// then any of
-	uint16_t SRA_A();
-	uint16_t SRA_B();
-	uint16_t SRA_C();
-	uint16_t SRA_D();
-	uint16_t SRA_E();
-	uint16_t SRA_H();
-	uint16_t SRA_L();
+	inline void SRA_A();
+	inline void SRA_B();
+	inline void SRA_C();
+	inline void SRA_D();
+	inline void SRA_E();
+	inline void SRA_H();
+	inline void SRA_L();
 
 	// SRA (HL)
 	// first RLC_R
 	// then
-	uint16_t SRA_HL();
+	inline void SRA_HL();
 
 	// SRA (IX + d)
 	// first LD_IXd_R
 	// then RLC_R
 	// then D
-	uint16_t SRA_IXd();
+	inline void SRA_IXd();
 
 	// SRA (IY + d)
 	// first LD_IYd_R
 	// then RLC_R
 	// then D
-	uint16_t SRA_IYd();
+	inline void SRA_IYd();
 
 	// SRL m: opcode group
 
 	// SRL r'
 	// first RLC_R
 	// then any of
-	uint16_t SRL_A();
-	uint16_t SRL_B();
-	uint16_t SRL_C();
-	uint16_t SRL_D();
-	uint16_t SRL_E();
-	uint16_t SRL_H();
-	uint16_t SRL_L();
+	inline void SRL_A();
+	inline void SRL_B();
+	inline void SRL_C();
+	inline void SRL_D();
+	inline void SRL_E();
+	inline void SRL_H();
+	inline void SRL_L();
 
 	// SRL (HL)
 	// first RLC_R
 	// then
-	uint16_t SRL_HL();
+	inline void SRL_HL();
 
 	// SRL (IX + d)
 	// first LD_IXd_R
 	// then RLC_R
 	// then D
-	uint16_t SRL_IXd();
+	inline void SRL_IXd();
 
 	// SRL (IY + d)
 	// first LD_IYd_R
 	// then RLC_R
 	// then D
-	uint16_t SRL_IYd();
+	inline void SRL_IYd();
 
 	// RLD
 	// first LD_A_I
-	uint16_t RLD();
+	inline void RLD();
 
 	// RRD
 	// first LD_A_I
-	uint16_t RRD();
+	inline void RRD();
 
 
 	// Bit Set, Reset, and Test Group
 	// bit b, r
-	uint16_t BIT_0_A();
-	uint16_t BIT_0_B();
-	uint16_t BIT_0_C();
-	uint16_t BIT_0_D();
-	uint16_t BIT_0_E();
-	uint16_t BIT_0_H();
-	uint16_t BIT_0_L();
+	inline void BIT_0_A();
+	inline void BIT_0_B();
+	inline void BIT_0_C();
+	inline void BIT_0_D();
+	inline void BIT_0_E();
+	inline void BIT_0_H();
+	inline void BIT_0_L();
 
-	uint16_t BIT_1_A();
-	uint16_t BIT_1_B();
-	uint16_t BIT_1_C();
-	uint16_t BIT_1_D();
-	uint16_t BIT_1_E();
-	uint16_t BIT_1_H();
-	uint16_t BIT_1_L();
+	inline void BIT_1_A();
+	inline void BIT_1_B();
+	inline void BIT_1_C();
+	inline void BIT_1_D();
+	inline void BIT_1_E();
+	inline void BIT_1_H();
+	inline void BIT_1_L();
 
-	uint16_t BIT_2_A();
-	uint16_t BIT_2_B();
-	uint16_t BIT_2_C();
-	uint16_t BIT_2_D();
-	uint16_t BIT_2_E();
-	uint16_t BIT_2_H();
-	uint16_t BIT_2_L();
+	inline void BIT_2_A();
+	inline void BIT_2_B();
+	inline void BIT_2_C();
+	inline void BIT_2_D();
+	inline void BIT_2_E();
+	inline void BIT_2_H();
+	inline void BIT_2_L();
 
-	uint16_t BIT_3_A();
-	uint16_t BIT_3_B();
-	uint16_t BIT_3_C();
-	uint16_t BIT_3_D();
-	uint16_t BIT_3_E();
-	uint16_t BIT_3_H();
-	uint16_t BIT_3_L();
+	inline void BIT_3_A();
+	inline void BIT_3_B();
+	inline void BIT_3_C();
+	inline void BIT_3_D();
+	inline void BIT_3_E();
+	inline void BIT_3_H();
+	inline void BIT_3_L();
 
-	uint16_t BIT_4_A();
-	uint16_t BIT_4_B();
-	uint16_t BIT_4_C();
-	uint16_t BIT_4_D();
-	uint16_t BIT_4_E();
-	uint16_t BIT_4_H();
-	uint16_t BIT_4_L();
+	inline void BIT_4_A();
+	inline void BIT_4_B();
+	inline void BIT_4_C();
+	inline void BIT_4_D();
+	inline void BIT_4_E();
+	inline void BIT_4_H();
+	inline void BIT_4_L();
 
-	uint16_t BIT_5_A();
-	uint16_t BIT_5_B();
-	uint16_t BIT_5_C();
-	uint16_t BIT_5_D();
-	uint16_t BIT_5_E();
-	uint16_t BIT_5_H();
-	uint16_t BIT_5_L();
+	inline void BIT_5_A();
+	inline void BIT_5_B();
+	inline void BIT_5_C();
+	inline void BIT_5_D();
+	inline void BIT_5_E();
+	inline void BIT_5_H();
+	inline void BIT_5_L();
 
-	uint16_t BIT_6_A();
-	uint16_t BIT_6_B();
-	uint16_t BIT_6_C();
-	uint16_t BIT_6_D();
-	uint16_t BIT_6_E();
-	uint16_t BIT_6_H();
-	uint16_t BIT_6_L();
+	inline void BIT_6_A();
+	inline void BIT_6_B();
+	inline void BIT_6_C();
+	inline void BIT_6_D();
+	inline void BIT_6_E();
+	inline void BIT_6_H();
+	inline void BIT_6_L();
 
-	uint16_t BIT_7_A();
-	uint16_t BIT_7_B();
-	uint16_t BIT_7_C();
-	uint16_t BIT_7_D();
-	uint16_t BIT_7_E();
-	uint16_t BIT_7_H();
-	uint16_t BIT_7_L();
+	inline void BIT_7_A();
+	inline void BIT_7_B();
+	inline void BIT_7_C();
+	inline void BIT_7_D();
+	inline void BIT_7_E();
+	inline void BIT_7_H();
+	inline void BIT_7_L();
 
 	// BIT b, (HL)
-	uint16_t BIT_0_HL();
-	uint16_t BIT_1_HL();
-	uint16_t BIT_2_HL();
-	uint16_t BIT_3_HL();
-	uint16_t BIT_4_HL();
-	uint16_t BIT_5_HL();
-	uint16_t BIT_6_HL();
-	uint16_t BIT_7_HL();
+	inline void BIT_0_HL();
+	inline void BIT_1_HL();
+	inline void BIT_2_HL();
+	inline void BIT_3_HL();
+	inline void BIT_4_HL();
+	inline void BIT_5_HL();
+	inline void BIT_6_HL();
+	inline void BIT_7_HL();
 
 	// Bit b, (IX + d)
-	uint16_t BIT_0_IXd();
-	uint16_t BIT_1_IXd();
-	uint16_t BIT_2_IXd();
-	uint16_t BIT_3_IXd();
-	uint16_t BIT_4_IXd();
-	uint16_t BIT_5_IXd();
-	uint16_t BIT_6_IXd();
-	uint16_t BIT_7_IXd();
+	inline void BIT_0_IXd();
+	inline void BIT_1_IXd();
+	inline void BIT_2_IXd();
+	inline void BIT_3_IXd();
+	inline void BIT_4_IXd();
+	inline void BIT_5_IXd();
+	inline void BIT_6_IXd();
+	inline void BIT_7_IXd();
 
 	// Bit b, (IY + d)
-	uint16_t BIT_0_IYd();
-	uint16_t BIT_1_IYd();
-	uint16_t BIT_2_IYd();
-	uint16_t BIT_3_IYd();
-	uint16_t BIT_4_IYd();
-	uint16_t BIT_5_IYd();
-	uint16_t BIT_6_IYd();
-	uint16_t BIT_7_IYd();
+	inline void BIT_0_IYd();
+	inline void BIT_1_IYd();
+	inline void BIT_2_IYd();
+	inline void BIT_3_IYd();
+	inline void BIT_4_IYd();
+	inline void BIT_5_IYd();
+	inline void BIT_6_IYd();
+	inline void BIT_7_IYd();
 
 	// SET b, r
-	uint16_t SET_0_A();
-	uint16_t SET_0_B();
-	uint16_t SET_0_C();
-	uint16_t SET_0_D();
-	uint16_t SET_0_E();
-	uint16_t SET_0_H();
-	uint16_t SET_0_L();
+	inline void SET_0_A();
+	inline void SET_0_B();
+	inline void SET_0_C();
+	inline void SET_0_D();
+	inline void SET_0_E();
+	inline void SET_0_H();
+	inline void SET_0_L();
 
-	uint16_t SET_1_A();
-	uint16_t SET_1_B();
-	uint16_t SET_1_C();
-	uint16_t SET_1_D();
-	uint16_t SET_1_E();
-	uint16_t SET_1_H();
-	uint16_t SET_1_L();
+	inline void SET_1_A();
+	inline void SET_1_B();
+	inline void SET_1_C();
+	inline void SET_1_D();
+	inline void SET_1_E();
+	inline void SET_1_H();
+	inline void SET_1_L();
 
-	uint16_t SET_2_A();
-	uint16_t SET_2_B();
-	uint16_t SET_2_C();
-	uint16_t SET_2_D();
-	uint16_t SET_2_E();
-	uint16_t SET_2_H();
-	uint16_t SET_2_L();
+	inline void SET_2_A();
+	inline void SET_2_B();
+	inline void SET_2_C();
+	inline void SET_2_D();
+	inline void SET_2_E();
+	inline void SET_2_H();
+	inline void SET_2_L();
 
-	uint16_t SET_3_A();
-	uint16_t SET_3_B();
-	uint16_t SET_3_C();
-	uint16_t SET_3_D();
-	uint16_t SET_3_E();
-	uint16_t SET_3_H();
-	uint16_t SET_3_L();
+	inline void SET_3_A();
+	inline void SET_3_B();
+	inline void SET_3_C();
+	inline void SET_3_D();
+	inline void SET_3_E();
+	inline void SET_3_H();
+	inline void SET_3_L();
 
-	uint16_t SET_4_A();
-	uint16_t SET_4_B();
-	uint16_t SET_4_C();
-	uint16_t SET_4_D();
-	uint16_t SET_4_E();
-	uint16_t SET_4_H();
-	uint16_t SET_4_L();
+	inline void SET_4_A();
+	inline void SET_4_B();
+	inline void SET_4_C();
+	inline void SET_4_D();
+	inline void SET_4_E();
+	inline void SET_4_H();
+	inline void SET_4_L();
 
-	uint16_t SET_5_A();
-	uint16_t SET_5_B();
-	uint16_t SET_5_C();
-	uint16_t SET_5_D();
-	uint16_t SET_5_E();
-	uint16_t SET_5_H();
-	uint16_t SET_5_L();
+	inline void SET_5_A();
+	inline void SET_5_B();
+	inline void SET_5_C();
+	inline void SET_5_D();
+	inline void SET_5_E();
+	inline void SET_5_H();
+	inline void SET_5_L();
 
-	uint16_t SET_6_A();
-	uint16_t SET_6_B();
-	uint16_t SET_6_C();
-	uint16_t SET_6_D();
-	uint16_t SET_6_E();
-	uint16_t SET_6_H();
-	uint16_t SET_6_L();
+	inline void SET_6_A();
+	inline void SET_6_B();
+	inline void SET_6_C();
+	inline void SET_6_D();
+	inline void SET_6_E();
+	inline void SET_6_H();
+	inline void SET_6_L();
 
-	uint16_t SET_7_A();
-	uint16_t SET_7_B();
-	uint16_t SET_7_C();
-	uint16_t SET_7_D();
-	uint16_t SET_7_E();
-	uint16_t SET_7_H();
-	uint16_t SET_7_L();
+	inline void SET_7_A();
+	inline void SET_7_B();
+	inline void SET_7_C();
+	inline void SET_7_D();
+	inline void SET_7_E();
+	inline void SET_7_H();
+	inline void SET_7_L();
 
 	// SET b, (HL)
-	uint16_t SET_A_HL();
-	uint16_t SET_B_HL();
-	uint16_t SET_C_HL();
-	uint16_t SET_D_HL();
-	uint16_t SET_E_HL();
-	uint16_t SET_H_HL();
-	uint16_t SET_L_HL();
+	inline void SET_A_HL();
+	inline void SET_B_HL();
+	inline void SET_C_HL();
+	inline void SET_D_HL();
+	inline void SET_E_HL();
+	inline void SET_H_HL();
+	inline void SET_L_HL();
 
 	// SET b, (IX + d)
-	uint16_t SET_A_IXd();
-	uint16_t SET_B_IXd();
-	uint16_t SET_C_IXd();
-	uint16_t SET_D_IXd();
-	uint16_t SET_E_IXd();
-	uint16_t SET_H_IXd();
-	uint16_t SET_L_IXd();
+	inline void SET_A_IXd();
+	inline void SET_B_IXd();
+	inline void SET_C_IXd();
+	inline void SET_D_IXd();
+	inline void SET_E_IXd();
+	inline void SET_H_IXd();
+	inline void SET_L_IXd();
 
 	// SET b, (IY + d)
-	uint16_t SET_A_IYd();
-	uint16_t SET_B_IYd();
-	uint16_t SET_C_IYd();
-	uint16_t SET_D_IYd();
-	uint16_t SET_E_IYd();
-	uint16_t SET_H_IYd();
-	uint16_t SET_L_IYd();
+	inline void SET_A_IYd();
+	inline void SET_B_IYd();
+	inline void SET_C_IYd();
+	inline void SET_D_IYd();
+	inline void SET_E_IYd();
+	inline void SET_H_IYd();
+	inline void SET_L_IYd();
 
 	// RES b, m
-	uint16_t RES_0_A();
-	uint16_t RES_0_B();
-	uint16_t RES_0_C();
-	uint16_t RES_0_D();
-	uint16_t RES_0_E();
-	uint16_t RES_0_H();
-	uint16_t RES_0_L();
+	inline void RES_0_A();
+	inline void RES_0_B();
+	inline void RES_0_C();
+	inline void RES_0_D();
+	inline void RES_0_E();
+	inline void RES_0_H();
+	inline void RES_0_L();
 
-	uint16_t RES_1_A();
-	uint16_t RES_1_B();
-	uint16_t RES_1_C();
-	uint16_t RES_1_D();
-	uint16_t RES_1_E();
-	uint16_t RES_1_H();
-	uint16_t RES_1_L();
+	inline void RES_1_A();
+	inline void RES_1_B();
+	inline void RES_1_C();
+	inline void RES_1_D();
+	inline void RES_1_E();
+	inline void RES_1_H();
+	inline void RES_1_L();
 
-	uint16_t RES_2_A();
-	uint16_t RES_2_B();
-	uint16_t RES_2_C();
-	uint16_t RES_2_D();
-	uint16_t RES_2_E();
-	uint16_t RES_2_H();
-	uint16_t RES_2_L();
+	inline void RES_2_A();
+	inline void RES_2_B();
+	inline void RES_2_C();
+	inline void RES_2_D();
+	inline void RES_2_E();
+	inline void RES_2_H();
+	inline void RES_2_L();
 
-	uint16_t RES_3_A();
-	uint16_t RES_3_B();
-	uint16_t RES_3_C();
-	uint16_t RES_3_D();
-	uint16_t RES_3_E();
-	uint16_t RES_3_H();
-	uint16_t RES_3_L();
+	inline void RES_3_A();
+	inline void RES_3_B();
+	inline void RES_3_C();
+	inline void RES_3_D();
+	inline void RES_3_E();
+	inline void RES_3_H();
+	inline void RES_3_L();
 
-	uint16_t RES_4_A();
-	uint16_t RES_4_B();
-	uint16_t RES_4_C();
-	uint16_t RES_4_D();
-	uint16_t RES_4_E();
-	uint16_t RES_4_H();
-	uint16_t RES_4_L();
+	inline void RES_4_A();
+	inline void RES_4_B();
+	inline void RES_4_C();
+	inline void RES_4_D();
+	inline void RES_4_E();
+	inline void RES_4_H();
+	inline void RES_4_L();
 
-	uint16_t RES_5_A();
-	uint16_t RES_5_B();
-	uint16_t RES_5_C();
-	uint16_t RES_5_D();
-	uint16_t RES_5_E();
-	uint16_t RES_5_H();
-	uint16_t RES_5_L();
+	inline void RES_5_A();
+	inline void RES_5_B();
+	inline void RES_5_C();
+	inline void RES_5_D();
+	inline void RES_5_E();
+	inline void RES_5_H();
+	inline void RES_5_L();
 
-	uint16_t RES_6_A();
-	uint16_t RES_6_B();
-	uint16_t RES_6_C();
-	uint16_t RES_6_D();
-	uint16_t RES_6_E();
-	uint16_t RES_6_H();
-	uint16_t RES_6_L();
+	inline void RES_6_A();
+	inline void RES_6_B();
+	inline void RES_6_C();
+	inline void RES_6_D();
+	inline void RES_6_E();
+	inline void RES_6_H();
+	inline void RES_6_L();
 
-	uint16_t RES_7_A();
-	uint16_t RES_7_B();
-	uint16_t RES_7_C();
-	uint16_t RES_7_D();
-	uint16_t RES_7_E();
-	uint16_t RES_7_H();
-	uint16_t RES_7_L();
+	inline void RES_7_A();
+	inline void RES_7_B();
+	inline void RES_7_C();
+	inline void RES_7_D();
+	inline void RES_7_E();
+	inline void RES_7_H();
+	inline void RES_7_L();
 
 	// RES b, (HL)
-	uint16_t RES_0_HL();
-	uint16_t RES_1_HL();
-	uint16_t RES_2_HL();
-	uint16_t RES_3_HL();
-	uint16_t RES_4_HL();
-	uint16_t RES_5_HL();
-	uint16_t RES_6_HL();
-	uint16_t RES_7_HL();
+	inline void RES_0_HL();
+	inline void RES_1_HL();
+	inline void RES_2_HL();
+	inline void RES_3_HL();
+	inline void RES_4_HL();
+	inline void RES_5_HL();
+	inline void RES_6_HL();
+	inline void RES_7_HL();
 
 	// RES b, (IX + d)
-	uint16_t RES_0_IXd();
-	uint16_t RES_1_IXd();
-	uint16_t RES_2_IXd();
-	uint16_t RES_3_IXd();
-	uint16_t RES_4_IXd();
-	uint16_t RES_5_IXd();
-	uint16_t RES_6_IXd();
-	uint16_t RES_7_IXd();
+	inline void RES_0_IXd();
+	inline void RES_1_IXd();
+	inline void RES_2_IXd();
+	inline void RES_3_IXd();
+	inline void RES_4_IXd();
+	inline void RES_5_IXd();
+	inline void RES_6_IXd();
+	inline void RES_7_IXd();
 
 	// RES b, (IY + d)
-	uint16_t RES_0_IYd();
-	uint16_t RES_1_IYd();
-	uint16_t RES_2_IYd();
-	uint16_t RES_3_IYd();
-	uint16_t RES_4_IYd();
-	uint16_t RES_5_IYd();
-	uint16_t RES_6_IYd();
-	uint16_t RES_7_IYd();
+	inline void RES_0_IYd();
+	inline void RES_1_IYd();
+	inline void RES_2_IYd();
+	inline void RES_3_IYd();
+	inline void RES_4_IYd();
+	inline void RES_5_IYd();
+	inline void RES_6_IYd();
+	inline void RES_7_IYd();
 
 	// Jump group
 
 	// JP nn
-	uint16_t JP_nn();
+	inline void JP_nn();
 
 	// JP cc, nn
-	uint16_t JP_NZ_nn();
-	uint16_t JP_Z_nn();
-	uint16_t JP_NC_nn();
-	uint16_t JP_C_nn();
-	uint16_t JP_PO_nn();
-	uint16_t JP_PE_nn();
-	uint16_t JP_P_nn();
-	uint16_t JP_M_nn();
+	inline void JP_NZ_nn();
+	inline void JP_Z_nn();
+	inline void JP_NC_nn();
+	inline void JP_C_nn();
+	inline void JP_PO_nn();
+	inline void JP_PE_nn();
+	inline void JP_P_nn();
+	inline void JP_M_nn();
 
 	// JR e
-	uint16_t JR_e();
+	inline void JR_e();
 	
 	// JR C, e
-	uint16_t JR_C_e();
+	inline void JR_C_e();
 
 	// JR NC, e
-	uint16_t JR_NC_e();
+	inline void JR_NC_e();
 
 	// JR Z, e
-	uint16_t JR_Z_e();
+	inline void JR_Z_e();
 
 	// JR NZ, e
-	uint16_t JR_NZ_e();
+	inline void JR_NZ_e();
 
 	// JP (HL)
-	uint16_t JP_HL();
+	inline void JP_HL();
 
 	// JP (IX)
-	uint16_t JP_IX();
+	inline void JP_IX();
 
 	// JP (IY)
-	uint16_t JP_IY();
+	inline void JP_IY();
 
 	// DJNZ, e
-	uint16_t DJNZ_e();
+	inline void DJNZ_e();
 
 	// Call and Return Group
 	// CALL nn
-	uint16_t CALL_nn();
+	inline void CALL_nn();
 
 	// CALL cc, nn
-	uint16_t CALL_NZ_nn();
-	uint16_t CALL_Z_nn();
-	uint16_t CALL_NC_nn();
-	uint16_t CALL_C_nn();
-	uint16_t CALL_PO_nn();
-	uint16_t CALL_PE_nn();
-	uint16_t CALL_P_nn();
-	uint16_t CALL_M_nn();
+	inline void CALL_NZ_nn();
+	inline void CALL_Z_nn();
+	inline void CALL_NC_nn();
+	inline void CALL_C_nn();
+	inline void CALL_PO_nn();
+	inline void CALL_PE_nn();
+	inline void CALL_P_nn();
+	inline void CALL_M_nn();
 
 	// RET
-	uint16_t RET();
+	inline void RET();
 
 	// RET cc
-	uint16_t RET_NZ();
-	uint16_t RET_Z();
-	uint16_t RET_NC();
-	uint16_t RET_C();
-	uint16_t RET_PO();
-	uint16_t RET_PE();
-	uint16_t RET_P();
-	uint16_t RET_M();
+	inline void RET_NZ();
+	inline void RET_Z();
+	inline void RET_NC();
+	inline void RET_C();
+	inline void RET_PO();
+	inline void RET_PE();
+	inline void RET_P();
+	inline void RET_M();
 
 	// RETI
-	uint16_t RETI();
+	inline void RETI();
 
 	// RETN
-	uint16_t RETN();
+	inline void RETN();
 
 	// RST p
-	uint16_t RST_00h();
-	uint16_t RST_08h();
-	uint16_t RST_10h();
-	uint16_t RST_18h();
-	uint16_t RST_20h();
-	uint16_t RST_28h();
-	uint16_t RST_30h();
-	uint16_t RST_38h();
+	inline void RST_00h();
+	inline void RST_08h();
+	inline void RST_10h();
+	inline void RST_18h();
+	inline void RST_20h();
+	inline void RST_28h();
+	inline void RST_30h();
+	inline void RST_38h();
 
 	// Input and Output Group
 	
 	// IN A, (n)
-	uint16_t IN_A();
+	inline void IN_A();
 
 	// IN r (C)
-	uint16_t IN_A_C();
-	uint16_t IN_B_C();
-	uint16_t IN_C_C();
-	uint16_t IN_D_C();
-	uint16_t IN_E_C();
-	uint16_t IN_F_C();
-	uint16_t IN_H_C();
-	uint16_t IN_L_C();
+	inline void IN_A_C();
+	inline void IN_B_C();
+	inline void IN_C_C();
+	inline void IN_D_C();
+	inline void IN_E_C();
+	inline void IN_F_C();
+	inline void IN_H_C();
+	inline void IN_L_C();
 
 	// INI
-	uint16_t INI();
+	inline void INI();
 
 	// INIR
-	uint16_t INIR();
+	inline void INIR();
 
 	// IND
-	uint16_t IND();
+	inline void IND();
 
 	// INDR
-	uint16_t INDR();
+	inline void INDR();
 
 	// OUT (n), A
-	uint16_t OUT_N_A();
+	inline void OUT_N_A();
 
 	// OUT (C), r
-	uint16_t OUT_C_A();
-	uint16_t OUT_C_B();
-	uint16_t OUT_C_C();
-	uint16_t OUT_C_D();
-	uint16_t OUT_C_E();
-	uint16_t OUT_C_H();
-	uint16_t OUT_C_L();
+	inline void OUT_C_A();
+	inline void OUT_C_B();
+	inline void OUT_C_C();
+	inline void OUT_C_D();
+	inline void OUT_C_E();
+	inline void OUT_C_H();
+	inline void OUT_C_L();
 
 	// OTIR
-	uint16_t OTIR();
+	inline void OTIR();
 
 	// OUTD
-	uint16_t OUTD();
+	inline void OUTD();
 
 	// OTDR
-	uint16_t OTDR();
+	inline void OTDR();
 
 
 	// Not opcodes
 	// Opcode groupings
-	uint16_t BITS_group();
-	uint16_t IX_group();
-	uint16_t IY_group();
-	uint16_t EXTD_group();
+	inline void BITS_group();
+	inline void IX_group();
+	inline void IY_group();
+	inline void EXTD_group();
 
 
 };

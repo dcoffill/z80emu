@@ -14,7 +14,8 @@ public:
 
 	void zero(); // zero all registers, not sure if this is necessary anymore
 
-	inline void LD(reg::DataReg, reg::DataReg);
+	inline void LD_R_RP(reg::DataReg, reg::DataReg);
+	inline void LD_R_N(reg::DataReg, uint8_t);
 	inline void LD(reg::DataReg16, reg::DataReg16);
 
 	void EXX(); // Perform the EXX instruction (swap BC, DE, and HL with their shadow counterparts)

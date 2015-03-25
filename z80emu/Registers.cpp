@@ -18,11 +18,20 @@ void Registers::zero() {
 	 
 }
 
-// This method implements the LD instruction
-void Registers::LD(reg::DataReg dest, reg::DataReg src)
+// This method implements the LD r, r' instruction
+void Registers::LD_R_RP(reg::DataReg dest, reg::DataReg src)
 {
 	(*_main)[dest] = (*_main)[src];
+	(*this)[reg::PC] += 1;
 }
+
+// Implements LD r, n instruction
+void Registers::LD_R_N(reg::DataReg dest, uint8_t value)
+{
+	(*_main)[dest] = value;
+	(*this)[reg::PC] += 2;
+}
+
 
 uint16_t& Registers::operator[](const reg::DataReg16 regVal)
 {

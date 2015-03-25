@@ -7,10 +7,7 @@
 void Cpu::execute() {
 	// zero all registers
 	_registers.zero();
-	typedef uint16_t (Cpu::*opcode)(void);
-	enum DataReg16;
-	enum DataReg;
-
+	typedef void (Cpu::*opcode)(void);
 
 	static opcode array[] = {
 			// 0x00
@@ -290,21 +287,262 @@ void Cpu::execute() {
 
 	uint8_t next_inst; // next instruction to be executed
 
-	while (true) {
+	while (true)
+	{
 		// Fetch instruction from address indicated by PC
 		next_inst = _memory.read(_registers[reg::PC]);
-		// Decode and execute opcode from lookup table
+		// Decode and execute opcode from lookup table, update PC approprately
 		(this->*array[next_inst])();
-		int x = _registers[reg::A];
 	}
 }
 
-uint16_t Cpu::NOP() {
-	return 1;
+void Cpu::NOP() {
+	_registers[reg::PC] += 1;
 }
 
-uint16_t Cpu::LD_A_A()
+#pragma region LD_r_rprime
+
+void Cpu::LD_A_A()
 {
-	_registers.LD(reg::A, reg::A);
-	return _registers[reg::PC] + 1;
+	_registers.LD_R_RP(reg::A, reg::A);
 }
+
+void Cpu::LD_A_B()
+{
+	_registers.LD_R_RP(reg::A, reg::B);
+}
+
+void Cpu::LD_A_C()
+{
+	_registers.LD_R_RP(reg::A, reg::C);
+}
+
+void Cpu::LD_A_D()
+{
+	_registers.LD_R_RP(reg::A, reg::D);
+}
+
+void Cpu::LD_A_E()
+{
+	_registers.LD_R_RP(reg::A, reg::E);
+}
+
+void Cpu::LD_A_H()
+{
+	_registers.LD_R_RP(reg::A, reg::H);
+}
+
+void Cpu::LD_A_L()
+{
+	_registers.LD_R_RP(reg::A, reg::L);
+}
+
+void Cpu::LD_B_A()
+{
+	_registers.LD_R_RP(reg::B, reg::A);
+}
+void Cpu::LD_B_B()
+{
+	_registers.LD_R_RP(reg::B, reg::B);
+
+}
+void Cpu::LD_B_C()
+{
+	_registers.LD_R_RP(reg::B, reg::C);
+}
+void Cpu::LD_B_D()
+{
+	_registers.LD_R_RP(reg::B, reg::D);
+}
+void Cpu::LD_B_E()
+{
+	_registers.LD_R_RP(reg::B, reg::E);
+}
+void Cpu::LD_B_H()
+{
+	_registers.LD_R_RP(reg::B, reg::H);
+}
+void Cpu::LD_B_L()
+{
+	_registers.LD_R_RP(reg::B, reg::L);
+}
+
+void Cpu::LD_C_A()
+{
+	_registers.LD_R_RP(reg::C, reg::A);
+}
+void Cpu::LD_C_B()
+{
+	_registers.LD_R_RP(reg::C, reg::B);
+}
+void Cpu::LD_C_C()
+{
+	_registers.LD_R_RP(reg::C, reg::C);
+}
+void Cpu::LD_C_D()
+{
+	_registers.LD_R_RP(reg::C, reg::D);
+}
+void Cpu::LD_C_E()
+{
+	_registers.LD_R_RP(reg::C, reg::E);
+}
+void Cpu::LD_C_H()
+{
+	_registers.LD_R_RP(reg::C, reg::H);
+}
+void Cpu::LD_C_L()
+{
+	_registers.LD_R_RP(reg::C, reg::L);
+}
+
+void Cpu::LD_D_A()
+{
+	_registers.LD_R_RP(reg::D, reg::A);
+}
+void Cpu::LD_D_B()
+{
+	_registers.LD_R_RP(reg::D, reg::B);
+}
+void Cpu::LD_D_C()
+{
+	_registers.LD_R_RP(reg::D, reg::C);
+}
+void Cpu::LD_D_D()
+{
+	_registers.LD_R_RP(reg::D, reg::D);
+}
+void Cpu::LD_D_E()
+{
+	_registers.LD_R_RP(reg::D, reg::E);
+}
+void Cpu::LD_D_H()
+{
+	_registers.LD_R_RP(reg::D, reg::H);
+}
+void Cpu::LD_D_L()
+{
+	_registers.LD_R_RP(reg::D, reg::L);
+}
+
+void Cpu::LD_E_A()
+{
+	_registers.LD_R_RP(reg::E, reg::A);
+}
+void Cpu::LD_E_B()
+{
+	_registers.LD_R_RP(reg::E, reg::B);
+}
+void Cpu::LD_E_C()
+{
+	_registers.LD_R_RP(reg::E, reg::C);
+}
+void Cpu::LD_E_D()
+{
+	_registers.LD_R_RP(reg::E, reg::D);
+}
+void Cpu::LD_E_E()
+{
+	_registers.LD_R_RP(reg::E, reg::E);
+}
+void Cpu::LD_E_H()
+{
+	_registers.LD_R_RP(reg::E, reg::H);
+}
+void Cpu::LD_E_L()
+{
+	_registers.LD_R_RP(reg::E, reg::L);
+}
+
+void Cpu::LD_H_A()
+{
+	_registers.LD_R_RP(reg::H, reg::A);
+}
+void Cpu::LD_H_B()
+{
+	_registers.LD_R_RP(reg::H, reg::B);
+}
+void Cpu::LD_H_C()
+{
+	_registers.LD_R_RP(reg::H, reg::C);
+}
+void Cpu::LD_H_D()
+{
+	_registers.LD_R_RP(reg::H, reg::D);
+}
+void Cpu::LD_H_E()
+{
+	_registers.LD_R_RP(reg::H, reg::E);
+}
+void Cpu::LD_H_H()
+{
+	_registers.LD_R_RP(reg::H, reg::H);
+}
+void Cpu::LD_H_L()
+{
+	_registers.LD_R_RP(reg::H, reg::L);
+}
+
+void Cpu::LD_L_A()
+{
+	_registers.LD_R_RP(reg::L, reg::A);
+}
+void Cpu::LD_L_B()
+{
+	_registers.LD_R_RP(reg::L, reg::B);
+}
+void Cpu::LD_L_C()
+{
+	_registers.LD_R_RP(reg::L, reg::C);
+}
+void Cpu::LD_L_D()
+{
+	_registers.LD_R_RP(reg::L, reg::D);
+}
+void Cpu::LD_L_E()
+{
+	_registers.LD_R_RP(reg::L, reg::E);
+}
+void Cpu::LD_L_H()
+{
+	_registers.LD_R_RP(reg::L, reg::H);
+}
+void Cpu::LD_L_L()
+{
+	_registers.LD_R_RP(reg::L, reg::L);
+}
+
+#pragma endregion
+
+#pragma region LD_r_n
+
+void Cpu::LD_A_N()
+{
+	_registers.LD_R_N(reg::A, _memory.read(_registers[reg::PC] + 1));
+}
+void Cpu::LD_B_N()
+{
+	_registers.LD_R_N(reg::B, _memory.read(_registers[reg::PC] + 1));
+}
+void Cpu::LD_C_N()
+{
+	_registers.LD_R_N(reg::C, _memory.read(_registers[reg::PC] + 1));
+}
+void Cpu::LD_D_N()
+{
+	_registers.LD_R_N(reg::D, _memory.read(_registers[reg::PC] + 1));
+}
+void Cpu::LD_E_N()
+{
+	_registers.LD_R_N(reg::E, _memory.read(_registers[reg::PC] + 1));
+}
+void Cpu::LD_H_N()
+{
+	_registers.LD_R_N(reg::H, _memory.read(_registers[reg::PC] + 1));
+	}
+void Cpu::LD_L_N()
+{
+	_registers.LD_R_N(reg::L, _memory.read(_registers[reg::PC] + 1));
+}
+
+#pragma endregion
