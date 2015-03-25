@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Class Name="Cpu">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>//////7f//fv//7/v77++/v///f73/rv/2///////X8=</HashCode>
+      <FileName>Cpu.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_registers" />
+      <Field Name="_memory" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DataRegisters">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAgAAQAAQgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataRegisters.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Registers">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="_alt" Type="DataRegisters">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.082" Y="0.129" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAQAAAABQAAAAAEFIAAAAAgCAARAAAA=</HashCode>
+      <FileName>Registers.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_main" />
+      <Field Name="_alt" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Ram">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAACAAAAAAAAAAAAAAAQCAAAAAAAA=</HashCode>
+      <FileName>Ram.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="opcodes::instruction" Collapsed="true">
+    <Position X="12.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>opcodes.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="opcodes::opcode_struct" Collapsed="true">
+    <Position X="10.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>opcodes.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="reg::DataReg" Collapsed="true">
+    <Position X="10.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtkUAAAA=</HashCode>
+      <FileName>RegisterEnums.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="reg::DataReg16" Collapsed="true">
+    <Position X="12.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAACAAAIAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RegisterEnums.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="reg::Special8" Collapsed="true">
+    <Position X="12.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAQA=</HashCode>
+      <FileName>RegisterEnums.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="reg::Special16" Collapsed="true">
+    <Position X="10.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIIAAAAAAAAAAAAIAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>RegisterEnums.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
