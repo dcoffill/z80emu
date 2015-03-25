@@ -5,95 +5,42 @@
 
 #include <memory>
 #include "DataRegisters.h"
+#include "RegisterEnums.h"
+
 class Registers {
 public:
 	Registers();
-	void zero();
+	virtual ~Registers();
 
+	void zero(); // zero all registers, not sure if this is necessary anymore
 
+	inline void LD(reg::DataReg, reg::DataReg);
+	inline void LD(reg::DataReg16, reg::DataReg16);
 
-	DataRegisters& Main();
-	void EXX();
-	uint16_t IX();
-	void SetIX(uint16_t);
+	void EXX(); // Perform the EXX instruction (swap BC, DE, and HL with their shadow counterparts)
 
-	uint16_t IY();
-	void SetIY(uint16_t);
-
-	uint16_t SP();
-	void SetSP(uint16_t);
-
-	uint16_t PC();
-	void SetPC(uint16_t);
-
-	uint8_t I();
-	void SetI(uint8_t);
-
-	uint8_t R();
-	void SetR(uint8_t);
-	void IncR(); // increment Refresh (R) register
-
-	uint8_t operator[](ByteReg regVal) const
-	{
-		return _main->_reg[regVal];
-	}
-
-	uint16_t& operator[](const WordReg regVal);
-	uint8_t& operator[](const ByteReg regVal);
-
-
+	// Setters/getters for accessing special and general purpose registers
+	uint16_t& operator[](const reg::DataReg16 regVal);
+	uint8_t& operator[](const reg::DataReg regVal);
+	uint8_t& operator[](const reg::Special8 regVal);
+	uint16_t& operator[](const reg::Special16 regVal);
 
 private:
 
+	// DataRegisters for main/alternate general purpose registers
 	DataRegisters *_main;
 	DataRegisters *_alt;
-
-	// 16 bit address/index registers
-	uint16_t _ix;
-	uint16_t _iy;
-
-	// stack pointer
-	uint16_t _sp;
-
-	// program counter
-	uint16_t _pc;
-
-	// interrupt vector
-	uint8_t _i;
-
-	// refresh counter
-	uint8_t _r;
+	
+	// Special purpose registers
+	uint16_t shared16[4]; // IX, IY, SP, and PC registers
+	uint8_t other[2]; // I and R registers
 
 
+	// TODO: figure out how to treat flags and the interrupt flip flops
 	// interrupt flip flops
 	bool _iff1;
 	bool _iff2;
 
-};
-
-enum ByteReg : int
-{
-	A = 0,
-	B = 1,
-	C = 2,
-	D = 3,
-	E = 4,
-	F = 5,
-	H = 6,
-	L = 7,
-	R,
-	I
-};
-
-enum WordReg
-{
-	AB,
-	CD,
-	HL,
-	IX,
-	IY,
-	SP,
-	PC
 };
 
 #endif

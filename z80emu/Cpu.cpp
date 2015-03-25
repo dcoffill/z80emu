@@ -1,11 +1,16 @@
 #include "stdafx.h"
 #include "Cpu.h"
 #include "opcodes.h"
+#include "Registers.h"
+#include "RegisterEnums.h"
 
 void Cpu::execute() {
 	// zero all registers
 	_registers.zero();
 	typedef uint16_t (Cpu::*opcode)(void);
+	enum DataReg16;
+	enum DataReg;
+
 
 	static opcode array[] = {
 			// 0x00
@@ -287,21 +292,19 @@ void Cpu::execute() {
 
 	while (true) {
 		// Fetch instruction from address indicated by PC
-		next_inst = _memory.read(_registers._pc);
-		switch (next_inst) {
-			
-			default:
-				std::cout << "Unrecognized opcode: " << std::hex << next_inst << std::endl;
-				break;
-		}
+		next_inst = _memory.read(_registers[reg::PC]);
 		// Decode and execute opcode from lookup table
 		(this->*array[next_inst])();
-		_registers.IncR();
-		_registers.Main().A();
-		_registers.SetPC();
+		int x = _registers[reg::A];
 	}
 }
 
-int Cpu::NOP() {
+uint16_t Cpu::NOP() {
 	return 1;
+}
+
+uint16_t Cpu::LD_A_A()
+{
+	_registers.LD(reg::A, reg::A);
+	return _registers[reg::PC] + 1;
 }

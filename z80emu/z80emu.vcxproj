@@ -81,6 +81,7 @@
   <ItemGroup>
     <ClInclude Include="DataRegisters.h" />
     <ClInclude Include="opcodes.h" />
+    <ClInclude Include="RegisterEnums.h" />
     <ClInclude Include="Registers.h" />
     <ClInclude Include="Ram.h" />
     <ClInclude Include="stdafx.h" />
@@ -91,11 +92,15 @@
     <ClCompile Include="Cpu.cpp" />
     <ClCompile Include="Ram.cpp" />
     <ClCompile Include="Registers.cpp" />
+    <ClCompile Include="DataRegisters.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="z80emu.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
