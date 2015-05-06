@@ -11,7 +11,7 @@ void Ram::load_from_file(std::string &input_file) {
 		return; // file is too large, don't do anything
 	}
 	infile.seekg(0, std::ios::beg);
-	infile.read((char *)_memory, size); // hopefully this cast doesn't blow up...
+	infile.read(reinterpret_cast<char *>(_memory), size); // hopefully this cast doesn't blow up...  TODO: see if there is a better way to do this
 	infile.close();
 	return;
 }

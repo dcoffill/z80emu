@@ -32,7 +32,6 @@ void Registers::LD_R_N(reg::DataReg dest, uint8_t value)
 	(*this)[reg::PC] += 2;
 }
 
-
 uint16_t& Registers::operator[](const reg::DataReg16 regVal)
 {
 	return (*_main)[regVal];
@@ -48,4 +47,18 @@ uint8_t& Registers::operator[](const reg::Special8 regVal)
 uint16_t& Registers::operator[](const reg::Special16 regVal)
 {
 	return shared16[regVal];
+}
+
+uint8_t Registers::operator[](const flag::StatusFlag statusFlag)
+{
+	uint8_t regF = (*this)[reg::F]; // copy contents of Flags register
+	return (regF >> statusFlag) & 0x01; // shift bit in question to become new LSB, then mask to get its value
+}
+
+// set a flag to a given value (true or false)
+void Registers::setFlag(const flag::StatusFlag statusFlag, bool value)
+{
+	uint8_t regF = (*this)[reg::F]; // get value of Flag register
+	regF &= ~(0x01 << statusFlag); // force that value to 0
+	(*this)[reg::F] |= (static_cast<uint8_t>(value) << statusFlag); // set flag with appropriate value
 }

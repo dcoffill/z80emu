@@ -6,6 +6,7 @@
 #include <memory>
 #include "DataRegisters.h"
 #include "RegisterEnums.h"
+#include "Flags.h"
 
 class Registers {
 public:
@@ -25,6 +26,8 @@ public:
 	uint8_t& operator[](const reg::DataReg regVal);
 	uint8_t& operator[](const reg::Special8 regVal);
 	uint16_t& operator[](const reg::Special16 regVal);
+	uint8_t operator[](const flag::StatusFlag statusFlag); // read bit from status flags
+	void setFlag(const flag::StatusFlag, bool value);
 
 private:
 
