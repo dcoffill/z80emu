@@ -58,7 +58,6 @@ uint8_t Registers::operator[](const flag::StatusFlag statusFlag)
 // set a flag to a given value (true or false)
 void Registers::setFlag(const flag::StatusFlag statusFlag, bool value)
 {
-	uint8_t regF = (*this)[reg::F]; // get value of Flag register
-	regF &= ~(0x01 << statusFlag); // force that value to 0
+	(*this)[reg::F] &= ~(0x01 << statusFlag); // force that value to 0
 	(*this)[reg::F] |= (static_cast<uint8_t>(value) << statusFlag); // set flag with appropriate value
 }
