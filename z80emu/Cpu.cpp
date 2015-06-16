@@ -292,7 +292,9 @@ void Cpu::execute() {
 		// Fetch instruction from address indicated by PC
 		next_inst = _memory.read(_registers[reg::PC]);
 		// Decode and execute opcode from lookup table, update PC approprately
-		(this->*array[next_inst])();
+		switch (next_inst) {
+		default: exit(1);
+		}
 	}
 }
 
@@ -546,3 +548,143 @@ void Cpu::LD_L_N()
 }
 
 #pragma endregion
+
+#pragma region LD_A_HL
+void Cpu::LD_A_HL()
+{
+	uint8_t value = _memory.read(_registers[reg::HL]);
+	_registers.LD_R_N(reg::A, value);
+}
+void Cpu::LD_B_HL()
+{
+	uint8_t value = _memory.read(_registers[reg::HL]);
+	_registers.LD_R_N(reg::B, value);
+}
+void Cpu::LD_C_HL()
+{
+	uint8_t value = _memory.read(_registers[reg::HL]);
+	_registers.LD_R_N(reg::C, value);
+}
+void Cpu::LD_D_HL()
+{
+	uint8_t value = _memory.read(_registers[reg::HL]);
+	_registers.LD_R_N(reg::D, value);
+}
+void Cpu::LD_E_HL()
+{
+	uint8_t value = _memory.read(_registers[reg::HL]);
+	_registers.LD_R_N(reg::E, value);
+}
+void Cpu::LD_H_HL()
+{
+	uint8_t value = _memory.read(_registers[reg::HL]);
+	_registers.LD_R_N(reg::H, value);
+}
+void Cpu::LD_L_HL()
+{
+	uint8_t value = _memory.read(_registers[reg::HL]);
+	_registers.LD_R_N(reg::L, value);
+}
+
+#pragma endregion
+
+#pragma region LD_HL_R
+
+void Cpu::LD_HL_A()
+{
+	uint16_t address = _registers[reg::HL];
+	_memory.write(address, _registers[reg::A]);
+	_registers[reg::PC] += 1;
+}
+
+void Cpu::LD_HL_B()
+{
+	uint16_t address = _registers[reg::HL];
+	_memory.write(address, _registers[reg::B]);
+	_registers[reg::PC] += 1;
+}
+
+void Cpu::LD_HL_C()
+{
+	uint16_t address = _registers[reg::HL];
+	_memory.write(address, _registers[reg::C]);
+	_registers[reg::PC] += 1;
+}
+
+void Cpu::LD_HL_D()
+{
+	uint16_t address = _registers[reg::HL];
+	_memory.write(address, _registers[reg::D]);
+	_registers[reg::PC] += 1;
+}
+
+void Cpu::LD_HL_E()
+{
+	uint16_t address = _registers[reg::HL];
+	_memory.write(address, _registers[reg::E]);
+	_registers[reg::PC] += 1;
+}
+
+void Cpu::LD_HL_H()
+{
+	uint16_t address = _registers[reg::HL];
+	_memory.write(address, _registers[reg::H]);
+	_registers[reg::PC] += 1;
+}
+
+void Cpu::LD_HL_L()
+{
+	uint16_t address = _registers[reg::HL];
+	_memory.write(address, _registers[reg::L]);
+	_registers[reg::PC] += 1;
+}
+
+#pragma endregion
+
+void Cpu::ADD_A_R(reg::DataReg reg)
+{
+	// TODO: make this take a uint8_t instead of a reg so it's more generalizable
+	uint8_t acc = _registers[reg::A];
+	uint8_t val = _registers[reg];
+	uint8_t result = acc + val;
+
+	// set/reset sign flag
+	if (result < 0)
+	{
+		_registers.setFlag(flag::S);
+	}
+	else _registers.resetFlag(flag::S);
+
+	if (_registers[reg::A] == 0)
+	{
+		_registers.setFlag(flag::Z);
+	}
+	else _registers.resetFlag(flag::Z);
+
+	// TODO: see if there's a way to do this without an if/else
+	if (_registers[reg::A] & 0x0F + _registers[reg] & 0x0F > 15)
+	{
+		_registers.setFlag(flag::H);
+	}
+	else _registers.resetFlag(flag::H);
+
+	// set/reset P (overflow flag)
+	if (_registers[reg::A] + _registers[reg] > 255)
+	{
+		_registers.setFlag(flag::P);
+	}
+	else _registers.resetFlag(flag::P);
+
+	// always reset N flag, as per documentation
+	_registers.resetFlag(flag::N);
+
+	_registers[reg::A] += result;
+
+	// set/reset C (carry flag)
+	if (_registers[reg::A] + _registers[reg] > 255)
+	{
+		_registers.setFlag(flag::C);
+	}
+	else _registers.resetFlag(flag::C); 
+	
+}
