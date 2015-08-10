@@ -1,15 +1,17 @@
 #include "stdafx.h"
+#include <assert.h>
 #include "Registers.h"
 #include "DataRegisters.h"
 #include "RegisterEnums.h"
-#include <assert.h>
 
 DataRegisters::DataRegisters()
 {
 	_reg16 = reinterpret_cast<uint16_t *>(&_reg);
 }
 
-DataRegisters::~DataRegisters() {}
+DataRegisters::~DataRegisters()
+{
+}
 
 uint16_t& DataRegisters::operator[](const reg::DataReg16 regVal)
 {

@@ -13,25 +13,29 @@ Registers::~Registers()
 	delete _alt;
 }
 
-void Registers::zero() {
+void Registers::zero()
+{
 	// initializes all registers to zero
-	 
 }
 
 // Implements LD r, n instruction
-void Registers::LD(reg::DataReg dest, uint8_t value) {
+void Registers::LD(reg::DataReg dest, uint8_t value)
+{
 	(*_main)[dest] = value;
 }
 
-void Registers::LD(reg::DataReg16 dest, uint16_t value) {
+void Registers::LD(reg::DataReg16 dest, uint16_t value)
+{
 	(*_main)[dest] = value;
 }
 
-void Registers::INC(reg::DataReg16 dest) {
+void Registers::INC(reg::DataReg16 dest)
+{
 	++(*_main)[dest];
 }
 
-void Registers::INC(reg::DataReg dest) {
+void Registers::INC(reg::DataReg dest)
+{
 	++(*_main)[dest];
 }
 
@@ -39,14 +43,17 @@ uint16_t& Registers::operator[](const reg::DataReg16 regVal)
 {
 	return (*_main)[regVal];
 }
+
 uint8_t& Registers::operator[](const reg::DataReg regVal)
 {
 	return (*_main)[regVal];
 }
+
 uint8_t& Registers::operator[](const reg::Special8 regVal)
 {
 	return other[regVal];
 }
+
 uint16_t& Registers::operator[](const reg::Special16 regVal)
 {
 	return shared16[regVal];

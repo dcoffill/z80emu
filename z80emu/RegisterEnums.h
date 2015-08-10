@@ -5,14 +5,12 @@
 // and Special8 and Special16 for the special purpose registers
 // These allow the compiler to choose the correct way to access a given register
 
-namespace reg
-{
+namespace reg {
 	// The arrangement of the items in this enum are endian-dependent, so perhaps
 	// put in some sort of #ifdef here to substitute little/big endian arrangement
 
 	// 8-bit general purpose registers
-	enum DataReg : int
-	{
+	enum DataReg : int {
 		F = 0,
 		A = 1,
 		C = 2,
@@ -24,8 +22,7 @@ namespace reg
 	};
 
 	// 16-bit general purpose registers
-	enum DataReg16 : int
-	{
+	enum DataReg16 : int {
 		AF = 0,
 		BC = 1,
 		DE = 2,
@@ -33,15 +30,13 @@ namespace reg
 	};
 
 	// 8-bit special-purpose registers
-	enum Special8 : int
-	{
+	enum Special8 : int {
 		R,
 		I
 	};
 
 	// 16-bit general purpose registers
-	enum Special16 : int
-	{
+	enum Special16 : int {
 		IX,
 		IY,
 		SP,

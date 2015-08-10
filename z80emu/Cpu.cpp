@@ -3,35 +3,34 @@
 #include "Registers.h"
 #include "RegisterEnums.h"
 
-void Cpu::execute() {
-	// zero all registers
+void Cpu::execute()
+{
 	_registers.zero();
 
-	for (;;)
-	{
+	for (;;) {
 		uint8_t next_instruction = _memory.read(_registers[reg::PC]);
 		// Decode and execute opcode
 		switch (next_instruction) {
-		case 0x00:
-			nop();
-			break;
-		case 0x01:
-			ld(reg::BC); // LD dd, nn
-			break;
-		case 0x02:
-			ld(reg::BC, reg::A);
-			break;
-		case 0x03:
-			inc_ss(reg::BC);
-			break;
-		case 0x04:
-			inc_r(reg::B);
-			break;
-		case 0x05:
-			dec_r(reg::B);
-			break;
-		default:
-			exit(1);
+			case 0x00:
+				nop();
+				break;
+			case 0x01:
+				ld(reg::BC); // LD dd, nn
+				break;
+			case 0x02:
+				ld(reg::BC, reg::A); // LD (BC), A
+				break;
+			case 0x03:
+				inc_ss(reg::BC);
+				break;
+			case 0x04:
+				inc_r(reg::B);
+				break;
+			case 0x05:
+				dec_r(reg::B);
+				break;
+			default:
+				exit(1);
 		}
 	}
 }
@@ -51,7 +50,7 @@ void Cpu::add_a_r(const reg::DataReg reg)
 	_registers.setFlag(flag::Z, result == 0);
 	bool halfCarry = (acc & 0x0F) + (val & 0x0F) > 15;
 	_registers.setFlag(flag::H, halfCarry);
-	bool overflow = acc + val  > 255;
+	bool overflow = acc + val > 255;
 	_registers.setFlag(flag::P, overflow);
 	_registers.setFlag(flag::N, false);
 	_registers.setFlag(flag::C, overflow);

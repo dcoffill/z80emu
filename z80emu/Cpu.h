@@ -1,11 +1,10 @@
-#include "stdafx.h"
 #pragma once
-#ifndef CPU_H
-#define CPU_H
 
+#include "stdafx.h"
 #include "Registers.h"
 #include "Ram.h"
 #include <memory>
+
 class Cpu {
 public:
 	void execute();
@@ -23,12 +22,8 @@ private:
 	void ld(const reg::DataReg16 dest, const reg::DataReg src);
 	void nop();
 
-
-	// Not opcodes
-	// Opcode groupings
-	inline void BITS_group();
-	inline void IX_group();
-	inline void IY_group();
-	inline void EXTD_group();
+	void BITS_group();
+	void IX_group();
+	void IY_group();
+	void EXTD_group();
 };
-#endif

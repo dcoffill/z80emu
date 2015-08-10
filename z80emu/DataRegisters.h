@@ -1,13 +1,10 @@
-#include "stdafx.h"
 #pragma once
-#ifndef DATAREGISTERS_H
-#define DATAREGISTERS_H
 
+#include "stdafx.h"
 #include <memory>
 #include "RegisterEnums.h"
 
-class DataRegisters
-{
+class DataRegisters {
 public:
 	DataRegisters();
 	virtual ~DataRegisters();
@@ -19,4 +16,3 @@ private:
 	uint16_t *_reg16; // Pointer to _reg that lets us interpret two adjacent 8-bit registers as one 16-bit register
 
 };
-#endif 

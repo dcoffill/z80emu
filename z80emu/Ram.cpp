@@ -1,9 +1,10 @@
 #include "stdafx.h"
-#include "Ram.h"
 #include <fstream>
+#include "Ram.h"
 
 
-void Ram::load_from_file(std::string &input_file) {
+void Ram::load_from_file(std::string &input_file)
+{
 	std::ifstream infile;
 	infile.open(input_file, std::ios::binary | std::ios::in);
 	int size = infile.tellg();
@@ -16,10 +17,12 @@ void Ram::load_from_file(std::string &input_file) {
 	return;
 }
 
-uint8_t Ram::read(uint16_t address) {
+uint8_t Ram::read(uint16_t address) const
+{
 	return _memory[address];
 }
 
-void Ram::write(uint16_t address, uint8_t data) {
+void Ram::write(uint16_t address, uint8_t data)
+{
 	_memory[address] = data;
 }

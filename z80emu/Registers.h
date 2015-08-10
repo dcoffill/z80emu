@@ -1,8 +1,6 @@
-#include "stdafx.h"
 #pragma once
-#ifndef REGISTER_H
-#define REGISTER_H
 
+#include "stdafx.h"
 #include <memory>
 #include "DataRegisters.h"
 #include "RegisterEnums.h"
@@ -35,17 +33,13 @@ private:
 	// DataRegisters for main/alternate general purpose registers
 	DataRegisters *_main;
 	DataRegisters *_alt;
-	
+
 	// Special purpose registers
 	uint16_t shared16[4]; // IX, IY, SP, and PC registers
 	uint8_t other[2]; // I and R registers
-
 
 	// TODO: figure out how to treat flags and the interrupt flip flops
 	// interrupt flip flops
 	bool _iff1;
 	bool _iff2;
-
 };
-
-#endif

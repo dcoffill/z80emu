@@ -1,10 +1,11 @@
-namespace flag
-{
+#pragma once
+
+namespace flag {
 	// Represents static flags
 	const bool set = true;
 	const bool reset = false;
-	enum StatusFlag : int
-	{
+
+	enum StatusFlag : int {
 		C = 0,
 		N = 1,
 		P = 2,
