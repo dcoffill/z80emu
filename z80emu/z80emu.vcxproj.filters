@@ -24,9 +24,6 @@
     <ClInclude Include="DataRegisters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="opcodes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Ram.h">
       <Filter>Header Files</Filter>
     </ClInclude>

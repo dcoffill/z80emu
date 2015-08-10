@@ -16,7 +16,7 @@ public:
 
 private:
 	uint8_t _reg[8];
-	uint16_t *_reg16;
+	uint16_t *_reg16; // Pointer to _reg that lets us interpret two adjacent 8-bit registers as one 16-bit register
 
 };
 #endif 
