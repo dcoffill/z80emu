@@ -29,8 +29,35 @@ void Cpu::execute()
 			case 0x05:
 				dec_r(reg::B);
 				break;
+			case 0x06:
+				ld_n(reg::B); // LD r, n
+				break;
+			case 0x07:
+				rlca();
+				break;
+			case 0x08:
+				_registers.ex_af_af();
+				break;
+			case 0x09:
+				add_hl(reg::BC);
+			case 0x0A: // TODO: should I do this in a better way?
+				_registers.ld(reg::A, _memory.read(_registers[reg::BC])); // LD A, (BC)
+				break;
+			case 0x0B:
+				dec(reg::BC);
+				break;
+			case 0x0C:
+				inc(reg::C);
+				break;
+			case 0x0D:
+				dec(reg::C);
+				break;
+			case 0x0E:
+				ld_n(reg::C);
+				break;
 			default:
-				exit(1);
+				std::cerr << "Encountered illegal or unimplemented opcode: 0x" << std::hex << std::uppercase << static_cast<int>(next_instruction) << std::endl;
+				break;
 		}
 	}
 }
@@ -56,6 +83,24 @@ void Cpu::add_a_r(const reg::DataReg reg)
 	_registers.setFlag(flag::C, overflow);
 	_registers[reg::A] = result;
 	++_registers[reg::PC];
+}
+
+void Cpu::add_hl(reg::DataReg16 reg)
+{
+	uint16_t hl = _registers[reg::HL];
+	uint16_t other = _registers[reg];
+	uint16_t result = hl + other;
+
+	_registers.setFlag(flag::S, result < 0);
+	_registers.setFlag(flag::Z, result == 0);
+	bool overflow = hl + other > 65535;
+	_registers.setFlag(flag::C, overflow);
+	_registers.setFlag(flag::P, overflow);
+	bool halfCarry = (hl & 0x0FFF) + (other & 0x0FFF) > 4095;
+	_registers.setFlag(flag::H, halfCarry);
+	_registers.setFlag(flag::N, false);
+	_registers[reg::HL] = result;
+	_registers[reg::PC] += 1;
 }
 
 void Cpu::inc_r(const reg::DataReg reg)
@@ -99,12 +144,19 @@ uint8_t Cpu::dec(const uint8_t value)
 	return result;
 }
 
+void Cpu::ld_n(const reg::DataReg reg)
+{
+	uint8_t value = _memory.read(_registers[reg::PC] + 1);
+	_registers.ld(reg, value);
+	_registers[reg::PC] += 2;
+}
+
 void Cpu::ld(const reg::DataReg16 reg)
 {
 	uint8_t low = _memory.read(_registers[reg::PC] + 1);
 	uint8_t high = _memory.read(_registers[reg::PC] + 2);
 	uint16_t value = (high << 8) | low;
-	_registers.LD(reg, value);
+	_registers.ld(reg, value);
 	_registers[reg::PC] += 3;
 }
 
@@ -113,5 +165,16 @@ void Cpu::ld(const reg::DataReg16 addressReg, const reg::DataReg src)
 	uint8_t value = _registers[src];
 	uint16_t address = _memory.read(_registers[addressReg]);
 	_memory.write(address, value);
+	_registers[reg::PC] += 1;
+}
+
+void Cpu::rlca()
+{
+	uint8_t acc = _registers[reg::A];
+	uint8_t shifted = (acc << 1) | (acc >> 7);
+	_registers.setFlag(flag::H, false);
+	_registers.setFlag(flag::N, false);
+	_registers.setFlag(flag::C, acc >> 7);
+	_registers[reg::A] = shifted;
 	_registers[reg::PC] += 1;
 }

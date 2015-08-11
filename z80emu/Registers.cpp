@@ -19,12 +19,12 @@ void Registers::zero()
 }
 
 // Implements LD r, n instruction
-void Registers::LD(reg::DataReg dest, uint8_t value)
+void Registers::ld(reg::DataReg dest, uint8_t value)
 {
 	(*_main)[dest] = value;
 }
 
-void Registers::LD(reg::DataReg16 dest, uint16_t value)
+void Registers::ld(reg::DataReg16 dest, uint16_t value)
 {
 	(*_main)[dest] = value;
 }
@@ -37,6 +37,20 @@ void Registers::INC(reg::DataReg16 dest)
 void Registers::INC(reg::DataReg dest)
 {
 	++(*_main)[dest];
+}
+
+void Registers::ex_af_af()
+{
+	uint16_t temp = (*_main)[reg::AF];
+	(*_main)[reg::AF] = (*_alt)[reg::AF];
+	(*_alt)[reg::AF] = temp;
+}
+
+void Registers::ex(const reg::DataReg16 reg)
+{
+	uint16_t temp = (*_main)[reg];
+	(*_main)[reg] = (*_alt)[reg];
+	(*_alt)[reg] = temp;
 }
 
 uint16_t& Registers::operator[](const reg::DataReg16 regVal)

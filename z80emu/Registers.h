@@ -13,11 +13,13 @@ public:
 
 	void zero(); // zero all registers, not sure if this is necessary anymore
 
-	void LD(reg::DataReg, reg::DataReg);
-	void LD(reg::DataReg, uint8_t);
-	void LD(reg::DataReg16, uint16_t);
+	void ld(reg::DataReg, reg::DataReg);
+	void ld(reg::DataReg, uint8_t);
+	void ld(reg::DataReg16, uint16_t);
 	void INC(reg::DataReg16 dest);
 	void INC(reg::DataReg dest);
+	void ex(const reg::DataReg16 reg);
+	void ex_af_af();
 	void EXX(); // Perform the EXX instruction (swap BC, DE, and HL with their shadow counterparts)
 
 	// Setters/getters for accessing special and general purpose registers
