@@ -100,7 +100,7 @@ void Cpu::add_a_r(const reg::DataReg reg)
 	uint8_t val = _registers[reg];
 	uint8_t result = acc + val;
 
-	_registers.setFlag(flag::S, result < 0);
+	_registers.setFlag(flag::S, static_cast<int8_t>(result) < 0);
 	_registers.setFlag(flag::Z, result == 0);
 	bool halfCarry = (acc & 0x0F) + (val & 0x0F) > 15;
 	_registers.setFlag(flag::H, halfCarry);
@@ -112,13 +112,13 @@ void Cpu::add_a_r(const reg::DataReg reg)
 	++_registers[reg::PC];
 }
 
-void Cpu::add_hl(reg::DataReg16 reg)
+void Cpu::add_hl(const reg::DataReg16 reg)
 {
 	uint16_t hl = _registers[reg::HL];
 	uint16_t other = _registers[reg];
 	uint16_t result = hl + other;
 
-	_registers.setFlag(flag::S, result < 0);
+	_registers.setFlag(flag::S, static_cast<int8_t>(result) < 0);
 	_registers.setFlag(flag::Z, result == 0);
 	bool overflow = hl + other > 65535;
 	_registers.setFlag(flag::C, overflow);
@@ -145,7 +145,7 @@ void Cpu::inc_ss(const reg::DataReg16 reg)
 uint8_t Cpu::inc(const uint8_t value)
 {
 	uint8_t result = value + 1;
-	_registers.setFlag(flag::S, result < 0);
+	_registers.setFlag(flag::S, static_cast<int8_t>(result) < 0);
 	_registers.setFlag(flag::Z, _registers[reg::A] == 0);
 	bool halfCarry = (value & 0x0F) + 0x01 > 15;
 	_registers.setFlag(flag::H, halfCarry);
@@ -163,7 +163,7 @@ void Cpu::dec_r(const reg::DataReg reg)
 uint8_t Cpu::dec(const uint8_t value)
 {
 	uint8_t result = value - 1;
-	_registers.setFlag(flag::S, result < 0);
+	_registers.setFlag(flag::S, static_cast<int8_t>(result) < 0);
 	_registers.setFlag(flag::Z, result == 0);
 	_registers.setFlag(flag::H, (value & 0x0F) < 0x01); // Borrow occurs if lower nibble subtrahend > lower nibble minuend
 	_registers.setFlag(flag::P, value == 0x80);
