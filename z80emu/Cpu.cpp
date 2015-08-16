@@ -224,6 +224,7 @@ void Cpu::rla()
 	_registers.setFlag(flag::H, false);
 	_registers.setFlag(flag::N, false);
 	_registers.setFlag(flag::C, acc >> 7);
+	_registers[reg::A] = shifted;
 	_registers[reg::PC] += 1;
 }
 
