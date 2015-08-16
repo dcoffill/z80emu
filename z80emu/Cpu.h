@@ -23,6 +23,9 @@ private:
 	void ld_n(const reg::DataReg reg);
 	void ld(const reg::DataReg16 dest, const reg::DataReg src);
 	void rlca();
+	void rrca();
+	void rla();
+	void djnz();
 	void nop();
 
 	void BITS_group();

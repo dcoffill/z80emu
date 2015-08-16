@@ -55,6 +55,33 @@ void Cpu::execute()
 			case 0x0E:
 				ld_n(reg::C);
 				break;
+			case 0x0F:
+				rrca();
+				break;
+			case 0x10:
+				djnz();
+				break;
+			case 0x11:
+				ld(reg::DE);
+				break;
+			case 0x12:
+				ld(reg::DE, reg::A);
+				break;
+			case 0x13:
+				inc(reg::DE);
+				break;
+			case 0x14:
+				inc(reg::D);
+				break;
+			case 0x15:
+				dec(reg::D);
+				break;
+			case 0x16:
+				ld_n(reg::D);
+				break;
+			case 0x17:
+				rla();
+				break;
 			default:
 				std::cerr << "Encountered illegal or unimplemented opcode: 0x" << std::hex << std::uppercase << static_cast<int>(next_instruction) << std::endl;
 				break;
@@ -177,4 +204,38 @@ void Cpu::rlca()
 	_registers.setFlag(flag::C, acc >> 7);
 	_registers[reg::A] = shifted;
 	_registers[reg::PC] += 1;
+}
+
+void Cpu::rrca()
+{
+	uint8_t acc = _registers[reg::A];
+	uint8_t shifted = (acc >> 1) | (acc << 7);
+	_registers.setFlag(flag::H, false);
+	_registers.setFlag(flag::N, false);
+	_registers.setFlag(flag::C, acc & 0x01);
+	_registers[reg::A] = shifted;
+	_registers[reg::PC] += 1;
+}
+
+void Cpu::rla()
+{
+	uint8_t acc = _registers[reg::A];
+	uint8_t shifted = (acc << 1) | _registers[flag::C];
+	_registers.setFlag(flag::H, false);
+	_registers.setFlag(flag::N, false);
+	_registers.setFlag(flag::C, acc >> 7);
+	_registers[reg::A] = shifted;
+	_registers[reg::PC] += 1;
+}
+
+// Jump group
+
+void Cpu::djnz()
+{
+	uint8_t b_value = --_registers[reg::B];
+	uint8_t offset = _memory.read(_registers[reg::PC] + 1);
+	_registers[reg::PC] += 2;
+	if (b_value != 0) { // jump
+		_registers[reg::PC] += static_cast<int8_t>(offset);
+	}
 }
