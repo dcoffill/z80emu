@@ -4,7 +4,7 @@
 #include "Cpu.h"
 #include "Ram.h"
 
-int _tmain(int argc, _TCHAR *argv[])
+int main(int argc, char *argv[])
 {
 	Cpu cpu;
 	cpu.execute();
