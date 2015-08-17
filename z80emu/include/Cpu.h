@@ -22,10 +22,13 @@ private:
 	void ld(const reg::DataReg16 reg);
 	void ld_n(const reg::DataReg reg);
 	void ld(const reg::DataReg16 dest, const reg::DataReg src);
+	void ld_acc_address(const reg::DataReg16 addressReg);
 	void rlca();
 	void rrca();
+	void rra();
 	void rla();
 	void djnz();
+	void jr();
 	void nop();
 
 	void BITS_group();

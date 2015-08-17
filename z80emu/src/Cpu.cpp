@@ -40,8 +40,8 @@ void Cpu::execute()
 				break;
 			case 0x09:
 				add_hl(reg::BC);
-			case 0x0A: // TODO: should I do this in a better way?
-				_registers.ld(reg::A, _memory.read(_registers[reg::BC])); // LD A, (BC)
+			case 0x0A:
+				ld_acc_address(reg::BC);
 				break;
 			case 0x0B:
 				dec(reg::BC);
@@ -81,6 +81,30 @@ void Cpu::execute()
 				break;
 			case 0x17:
 				rla();
+				break;
+			case 0x18:
+				jr();
+				break;
+			case 0x19:
+				add_hl(reg::DE);
+				break;
+			case 0x1A:
+				ld_acc_address(reg::DE);
+				break;
+			case 0x1B:
+				dec(reg::DE);
+				break;
+			case 0x1C:
+				inc(reg::E);
+				break;
+			case 0x1D:
+				dec(reg::E);
+				break;
+			case 0x1E:
+				ld_n(reg::E);
+				break;
+			case 0x1F:
+				rra();
 				break;
 			default:
 				std::cerr << "Encountered illegal or unimplemented opcode: 0x" << std::hex << std::uppercase << static_cast<int>(next_instruction) << std::endl;
@@ -195,6 +219,14 @@ void Cpu::ld(const reg::DataReg16 addressReg, const reg::DataReg src)
 	_registers[reg::PC] += 1;
 }
 
+void Cpu::ld_acc_address(const reg::DataReg16 addressReg)
+{
+	uint16_t address = _registers[addressReg];
+	uint8_t value = _memory.read(address);
+	_registers.ld(reg::A, value);
+	_registers[reg::PC] += 1;
+}
+
 void Cpu::rlca()
 {
 	uint8_t acc = _registers[reg::A];
@@ -210,6 +242,17 @@ void Cpu::rrca()
 {
 	uint8_t acc = _registers[reg::A];
 	uint8_t shifted = (acc >> 1) | (acc << 7);
+	_registers.setFlag(flag::H, false);
+	_registers.setFlag(flag::N, false);
+	_registers.setFlag(flag::C, acc & 0x01);
+	_registers[reg::A] = shifted;
+	_registers[reg::PC] += 1;
+}
+
+void Cpu::rra()
+{
+	uint8_t acc = _registers[reg::A];
+	uint8_t shifted = (acc >> 1) | (_registers[flag::C] << 7);
 	_registers.setFlag(flag::H, false);
 	_registers.setFlag(flag::N, false);
 	_registers.setFlag(flag::C, acc & 0x01);
@@ -236,6 +279,12 @@ void Cpu::djnz()
 	uint8_t offset = _memory.read(_registers[reg::PC] + 1);
 	_registers[reg::PC] += 2;
 	if (b_value != 0) { // jump
-		_registers[reg::PC] += static_cast<int8_t>(offset);
+		_registers[reg::PC] += static_cast<int8_t>(offset); // TODO: does static cast need to be here for proper pos/neg offset?
 	}
+}
+
+void Cpu::jr()
+{
+	uint8_t offset = _memory.read(_registers[reg::PC] + 1);
+	_registers[reg::PC] += 2 + static_cast<int8_t>(offset);
 }
