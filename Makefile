@@ -1,36 +1,39 @@
 SHELL = /bin/bash
-CXXFLAGS = -std=c++11 -pedantic -Wall -Wextra -I$(INCLUDEDIR)
+CXXFLAGS = -std=c++11 -pedantic -Wall -Wextra -I$(INCLUDEDIR) -Winvalid-pch
 DEBUGFLAGS = -O0 -g -D _DEBUG
 RELEASEFLAGS = -O2 -D _RELEASE
 
-TARGET = z80emu.exe
+TARGET = $(BUILDDIR)/z80emu.exe
 INCLUDEDIR = z80emu/include
 SRCDIR = z80emu/src
-SOURCES = $(shell echo z80emu/src/*.cpp)
-HEADERS = $(shell echo z80emu/include/*.h)
-OBJECTS = $(SOURCES:.cpp=.o)
+BUILDDIR = z80emu/build
+SOURCES = $(shell echo $(SRCDIR)/*.cpp)
+HEADERS = $(shell echo $(INCLUDEDIR)/*.h)
+OBJECTS = $(patsubst $(SRCDIR)/%.cpp,$(BUILDDIR)/%.o,$(SOURCES))
+.PHONY: release debug clean build
 
-PREFIX = $(DESTDIR)/usr/local
-BINDIR = $(PREFIX)/bin
 default: all
 
-all: $(TARGET) z80emu/stdafx.h.gch
+all: $(TARGET) $(INCLUDEDIR)/stdafx.h.gch
 
-$(TARGET): $(OBJECTS) z80emu/stdafx.h.gch
+$(TARGET): $(OBJECTS) $(INCLUDEDIR)/stdafx.h.gch
 	$(CXX) $(CXXFLAGS) $(DEBUGFLAGS) $(OBJECTS) -o $(TARGET)
 
-release: $(SOURCES) $(HEADERS) z80emu/stdafx.h.gch
+$(OBJECTS): $(BUILDDIR)/%.o: $(SRCDIR)/%.cpp $(INCLUDEDIR)/stdafx.h.gch | $(BUILDDIR)
+	$(CXX) $(CXXFLAGS) $(DEBUGFLAGS) -c $< -o $@
+
+release: $(SOURCES) $(HEADERS) $(INCLUDEDIR)/stdafx.h.gch
 	$(CXX) $(CXXFLAGS) $(RELEASEFLAGS) $(SOURCES) -o $(TARGET)
 
-debug: $(SOURCES) $(HEADERS) z80emu/stdafx.h.gch
+debug: $(SOURCES) $(HEADERS) $(INCLUDEDIR)/stdafx.h.gch
 	$(CXX) $(CXXFLAGS) $(DEBUGFLAGS) $(SOURCES) -o $(TARGET)
 
-z80emu/stdafx.h.gch: $(INCLUDEDIR)/stdafx.h
-	$(CXX) $(CXXFLAGS) -x c++-header $(INCLUDEDIR)/stdafx.h -o z80emu/stdafx.h.gch
+$(INCLUDEDIR)/stdafx.h.gch: $(INCLUDEDIR)/stdafx.h
+	$(CXX) $(CXXFLAGS) $(DEBUGFLAGS) -x c++-header $(INCLUDEDIR)/stdafx.h -o $(INCLUDEDIR)/stdafx.h.gch
 
 clean:
-	-rm -f $(OBJECTS)
-	-rm -f $(shell echo z80emu/*.d)
-	-rm -f $(shell echo z80emu/*.gch)
-	-rm -f z80emu.exe
+	-rm -r $(BUILDDIR)
+	-rm -f $(INCLUDEDIR)/stdafx.h.gch
 
+$(BUILDDIR):
+	@mkdir -p $(BUILDDIR)
