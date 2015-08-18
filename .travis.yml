@@ -1,0 +1,3 @@
+language: cpp
+script: make -j2
+compiler: g++
