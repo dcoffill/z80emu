@@ -1,7 +1,9 @@
+sudo: false
 language: cpp
 script: make -j2
 compiler: g++
-
+install:
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
 addons:
   apt:
     sources:
