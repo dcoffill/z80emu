@@ -1,12 +1,13 @@
 z80emu
 ======
+[![Travis Build Status](https://travis-ci.org/dcoffill/z80emu.svg?branch=master)](https://travis-ci.org/dcoffill/z80emu)
 
 Overview
 --------
 z80emu is an emulator for the Zilog Z80 microprocessor.  This was started as
 an experiment/hobby project to write an emulator for a CISC machine, after I
 had just written a MIPS simulator for my Advanced Architecture class.
-  Additionally, I wanted a chance to mess with some of the fancy C++ features 
+  Additionally, I wanted a chance to mess with some of the fancy C++ features
 I'd never been allowed to use for class projects.
 
 
