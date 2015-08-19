@@ -2,6 +2,7 @@
 #include "Cpu.h"
 #include "Registers.h"
 #include "RegisterEnums.h"
+#include <bitset>
 
 void Cpu::execute()
 {
@@ -106,6 +107,30 @@ void Cpu::execute()
 			case 0x1F:
 				rra();
 				break;
+			case 0x20:
+				jr_nz();
+				break;
+			case 0x21:
+				ld(reg::HL);
+				break;
+			case 0x22:
+				ld_nn_hl();
+				break;
+			case 0x23:
+				inc(reg::HL);
+				break;
+			case 0x24:
+				inc(reg::H);
+				break;
+			case 0x25:
+				dec(reg::H);
+				break;
+			case 0x26:
+				ld_n(reg::H);
+				break;
+			case 0x27:
+				daa();
+				break;
 			default:
 				std::cerr << "Encountered illegal or unimplemented opcode: 0x" << std::hex << std::uppercase << static_cast<int>(next_instruction) << std::endl;
 				break;
@@ -170,7 +195,7 @@ uint8_t Cpu::inc(const uint8_t value)
 {
 	uint8_t result = value + 1;
 	_registers.setFlag(flag::S, static_cast<int8_t>(result) < 0);
-	_registers.setFlag(flag::Z, _registers[reg::A] == 0);
+	_registers.setFlag(flag::Z, result == 0);
 	bool halfCarry = (value & 0x0F) + 0x01 > 15;
 	_registers.setFlag(flag::H, halfCarry);
 	_registers.setFlag(flag::P, value == 0x7F);
@@ -225,6 +250,16 @@ void Cpu::ld_acc_address(const reg::DataReg16 addressReg)
 	uint8_t value = _memory.read(address);
 	_registers.ld(reg::A, value);
 	_registers[reg::PC] += 1;
+}
+
+void Cpu::ld_nn_hl()
+{
+	uint8_t low_order = _memory.read(_registers[reg::PC] + 1);
+	uint8_t high_order = _memory.read(_registers[reg::PC] + 2);
+	uint16_t address = (high_order << 8) | low_order;
+	_memory.write(address, _registers[reg::L]);
+	_memory.write(address + 1, _registers[reg::H]);
+	_registers[reg::PC] += 3;
 }
 
 void Cpu::rlca()
@@ -287,4 +322,46 @@ void Cpu::jr()
 {
 	uint8_t offset = _memory.read(_registers[reg::PC] + 1);
 	_registers[reg::PC] += 2 + static_cast<int8_t>(offset);
+}
+
+void Cpu::jr_nz()
+{
+	_registers[reg::PC] += 2;
+	uint8_t offset = _memory.read(_registers[reg::PC] + 1);
+	if (!_registers[flag::Z]) { // jump if NZ
+		_registers[reg::PC] += static_cast<int8_t>(offset);
+	}
+}
+
+void Cpu::daa()
+{
+	// Implements algorithm from http://www.worldofspectrum.org/faq/reference/z80reference.htm
+	const uint8_t acc = _registers[reg::A];
+	uint8_t correction = 0;
+	if (acc > 0x99 || _registers[flag::C]) {
+		correction |= 0x60;
+		_registers.setFlag(flag::C, true);
+	}
+	else {
+		_registers.setFlag(flag::C, false);
+	}
+
+	if (acc & 0x0F > 9 || _registers[flag::H]) {
+		correction |= 0x06;
+	}
+
+	uint8_t result = acc;
+	if (!_registers[flag::N]) {
+		result += correction;
+	}
+	else {
+		result -= correction;
+	}
+
+	_registers.setFlag(flag::S, result >> 7);
+	_registers.setFlag(flag::Z, result == 0);
+	_registers.setFlag(flag::H, ((acc ^ result) >> 4) & 0x01);
+	bool is_even_parity = std::bitset<8>(result).count() % 2 == 0; // should inline to popcount intrinsic on x86
+	_registers.setFlag(flag::P, is_even_parity);
+	_registers[reg::A] = result;
 }
