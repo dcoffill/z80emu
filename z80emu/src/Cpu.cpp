@@ -389,7 +389,7 @@ void Cpu::daa()
 		_registers.setFlag(flag::C, false);
 	}
 
-	if (acc & 0x0F > 9 || _registers[flag::H]) {
+	if ((acc & 0x0F) > 9 || _registers[flag::H]) {
 		correction |= 0x06;
 	}
 
