@@ -131,6 +131,30 @@ void Cpu::execute()
 			case 0x27:
 				daa();
 				break;
+			case 0x28:
+				jr_z();
+				break;
+			case 0x29:
+				add_hl(reg::HL);
+				break;
+			case 0x2A:
+				ld_hl_nn();
+				break;
+			case 0x2B:
+				dec(reg::HL);
+				break;
+			case 0x2C:
+				inc(reg::L);
+				break;
+			case 0x2D:
+				dec(reg::L);
+				break;
+			case 0x2E:
+				ld_n(reg::L);
+				break;
+			case 0x2F:
+				cpl();
+				break;
 			default:
 				std::cerr << "Encountered illegal or unimplemented opcode: 0x" << std::hex << std::uppercase << static_cast<int>(next_instruction) << std::endl;
 				break;
@@ -262,6 +286,16 @@ void Cpu::ld_nn_hl()
 	_registers[reg::PC] += 3;
 }
 
+void Cpu::ld_hl_nn()
+{
+	uint8_t low_order = _memory.read(_registers[reg::PC] + 1);
+	uint8_t high_order = _memory.read(_registers[reg::PC] + 2);
+	uint16_t address = (high_order << 8) | low_order;
+	_registers[reg::L] = _memory.read(address);
+	_registers[reg::H] = _memory.read(address + 1);
+	_registers[reg::PC] += 3;
+}
+
 void Cpu::rlca()
 {
 	uint8_t acc = _registers[reg::A];
@@ -333,6 +367,15 @@ void Cpu::jr_nz()
 	}
 }
 
+void Cpu::jr_z()
+{
+	_registers[reg::PC] += 2;
+	uint8_t offset = _memory.read(_registers[reg::PC] + 1);
+	if (_registers[flag::Z]) { // jump if Z
+		_registers[reg::PC] += static_cast<int8_t>(offset);
+	}
+}
+
 void Cpu::daa()
 {
 	// Implements algorithm from http://www.worldofspectrum.org/faq/reference/z80reference.htm
@@ -364,4 +407,13 @@ void Cpu::daa()
 	bool is_even_parity = std::bitset<8>(result).count() % 2 == 0; // should inline to popcount intrinsic on x86
 	_registers.setFlag(flag::P, is_even_parity);
 	_registers[reg::A] = result;
+	_registers[reg::PC] += 1;
+}
+
+void Cpu::cpl()
+{
+	_registers[reg::A] = ~_registers[reg::A];
+	_registers.setFlag(flag::H, true);
+	_registers.setFlag(flag::N, true);
+	_registers[reg::PC] += 2;
 }
