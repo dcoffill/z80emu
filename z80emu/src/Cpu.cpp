@@ -108,7 +108,7 @@ void Cpu::execute()
 				rra();
 				break;
 			case 0x20:
-				jr_nz();
+				jr(!_registers[flag::Z]);
 				break;
 			case 0x21:
 				ld(reg::HL);
@@ -132,7 +132,7 @@ void Cpu::execute()
 				daa();
 				break;
 			case 0x28:
-				jr_z();
+				jr(_registers[flag::Z]);
 				break;
 			case 0x29:
 				add_hl(reg::HL);
@@ -358,20 +358,11 @@ void Cpu::jr()
 	_registers[reg::PC] += 2 + static_cast<int8_t>(offset);
 }
 
-void Cpu::jr_nz()
+void Cpu::jr(const bool jump_condition)
 {
 	_registers[reg::PC] += 2;
 	uint8_t offset = _memory.read(_registers[reg::PC] + 1);
-	if (!_registers[flag::Z]) { // jump if NZ
-		_registers[reg::PC] += static_cast<int8_t>(offset);
-	}
-}
-
-void Cpu::jr_z()
-{
-	_registers[reg::PC] += 2;
-	uint8_t offset = _memory.read(_registers[reg::PC] + 1);
-	if (_registers[flag::Z]) { // jump if Z
+	if (jump_condition) {
 		_registers[reg::PC] += static_cast<int8_t>(offset);
 	}
 }
