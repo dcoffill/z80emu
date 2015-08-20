@@ -18,6 +18,7 @@ private:
 	void inc_ss(const reg::DataReg16 reg);
 	uint8_t inc(const uint8_t value);
 	void dec_r(const reg::DataReg reg);
+	void dec_ss(const reg::DataReg16 reg);
 	uint8_t dec(const uint8_t value);
 	void ld(const reg::DataReg16 reg);
 	void ld_n(const reg::DataReg reg);
