@@ -15,12 +15,12 @@ DataRegisters::~DataRegisters()
 
 uint16_t& DataRegisters::operator[](const reg::DataReg16 regVal)
 {
-	assert(regVal >= 0 && regVal <= 3); // ensure that the 16-bit register that was specified is in the proper range
-	return _reg16[regVal];
+	assert(regVal.position >= 0 && regVal.position <= 3); // ensure that the 16-bit register that was specified is in the proper range
+	return _reg16[regVal.position];
 }
 
 uint8_t& DataRegisters::operator[](const reg::DataReg regVal)
 {
-	assert(regVal <= 7 && regVal >= 0); // ensure that the 8-bit register that was specified is in the proper range
-	return _reg[regVal];
+	assert(regVal.position <= 7 && regVal.position >= 0); // ensure that the 8-bit register that was specified is in the proper range
+	return _reg[regVal.position];
 }
