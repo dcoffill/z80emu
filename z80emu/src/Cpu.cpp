@@ -263,7 +263,7 @@ void Cpu::ld(const reg::DataReg16 reg)
 void Cpu::ld(const reg::DataReg16 addressReg, const reg::DataReg src)
 {
 	uint8_t value = _registers[src];
-	uint16_t address = _memory.read(_registers[addressReg]);
+	uint16_t address = _registers[addressReg];
 	_memory.write(address, value);
 	_registers[reg::PC] += 1;
 }
