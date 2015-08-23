@@ -10,6 +10,9 @@ had just written a MIPS simulator for my Advanced Architecture class.
   Additionally, I wanted a chance to mess with some of the fancy C++ features
 I'd never been allowed to use for class projects.
 
+License
+-------
+z80emu is licensed under the terms of the GPLv3 or later.
 
 Resources Used
 --------------
@@ -26,7 +29,7 @@ Resources used in creating this emulator include:
 > An excellent, interactive table of Z80 opcodes.
 
 [Z80 on Wikipedia](https://en.wikipedia.org/wiki/Zilog_Z80)
-> Wikipedia's article on the Z80, which gives a decent, high-level overview of the chip and its features.
+> Wikipedia's article on the Z80, which gives a decent high-level overview of the chip and its features.
 
 [Z80 summary from z80.info](http://www.z80.info/z80info.htm)
 > A nice, brief overview of the Z80 and some of it's undocumented behavior.
