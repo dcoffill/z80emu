@@ -8,13 +8,13 @@
 namespace reg {
 	class Reg8 {
 	public:
-		Reg8(int pos): position(pos) { };
+		Reg8(int pos) : position(pos) {};
 		const int position;
 	};
 
 	class Reg16 {
 	public:
-		Reg16(int pos): position(pos) { };
+		Reg16(int pos) : position(pos) {};
 		const int position;
 	};
 
