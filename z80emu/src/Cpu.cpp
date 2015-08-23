@@ -45,13 +45,13 @@ void Cpu::execute()
 				ld_acc_address(reg::BC);
 				break;
 			case 0x0B:
-				dec(reg::BC);
+				dec_ss(reg::BC);
 				break;
 			case 0x0C:
-				inc(reg::C);
+				inc_r(reg::C);
 				break;
 			case 0x0D:
-				dec(reg::C);
+				dec_r(reg::C);
 				break;
 			case 0x0E:
 				ld_n(reg::C);
@@ -69,13 +69,13 @@ void Cpu::execute()
 				ld(reg::DE, reg::A);
 				break;
 			case 0x13:
-				inc(reg::DE);
+				inc_ss(reg::DE);
 				break;
 			case 0x14:
-				inc(reg::D);
+				inc_r(reg::D);
 				break;
 			case 0x15:
-				dec(reg::D);
+				dec_r(reg::D);
 				break;
 			case 0x16:
 				ld_n(reg::D);
@@ -93,13 +93,13 @@ void Cpu::execute()
 				ld_acc_address(reg::DE);
 				break;
 			case 0x1B:
-				dec(reg::DE);
+				dec_ss(reg::DE);
 				break;
 			case 0x1C:
-				inc(reg::E);
+				inc_r(reg::E);
 				break;
 			case 0x1D:
-				dec(reg::E);
+				dec_r(reg::E);
 				break;
 			case 0x1E:
 				ld_n(reg::E);
@@ -108,7 +108,7 @@ void Cpu::execute()
 				rra();
 				break;
 			case 0x20:
-				jr_nz();
+				jr(!_registers[flag::Z]);
 				break;
 			case 0x21:
 				ld(reg::HL);
@@ -117,13 +117,13 @@ void Cpu::execute()
 				ld_nn_hl();
 				break;
 			case 0x23:
-				inc(reg::HL);
+				inc_ss(reg::HL);
 				break;
 			case 0x24:
-				inc(reg::H);
+				inc_r(reg::H);
 				break;
 			case 0x25:
-				dec(reg::H);
+				dec_r(reg::H);
 				break;
 			case 0x26:
 				ld_n(reg::H);
@@ -132,7 +132,7 @@ void Cpu::execute()
 				daa();
 				break;
 			case 0x28:
-				jr_z();
+				jr(_registers[flag::Z]);
 				break;
 			case 0x29:
 				add_hl(reg::HL);
@@ -141,13 +141,13 @@ void Cpu::execute()
 				ld_hl_nn();
 				break;
 			case 0x2B:
-				dec(reg::HL);
+				dec_ss(reg::HL);
 				break;
 			case 0x2C:
-				inc(reg::L);
+				inc_r(reg::L);
 				break;
 			case 0x2D:
-				dec(reg::L);
+				dec_r(reg::L);
 				break;
 			case 0x2E:
 				ld_n(reg::L);
@@ -155,6 +155,11 @@ void Cpu::execute()
 			case 0x2F:
 				cpl();
 				break;
+			case 0x30:
+				jr(!_registers[flag::C]);
+				break;
+			case 0x31:
+
 			default:
 				std::cerr << "Encountered illegal or unimplemented opcode: 0x" << std::hex << std::uppercase << static_cast<int>(next_instruction) << std::endl;
 				break;
@@ -231,6 +236,11 @@ void Cpu::dec_r(const reg::DataReg reg)
 {
 	_registers[reg] = dec(_registers[reg]);
 	++_registers[reg::PC];
+}
+
+void Cpu::dec_ss(const reg::DataReg16 reg)
+{
+	--_registers[reg];
 }
 
 uint8_t Cpu::dec(const uint8_t value)
@@ -358,20 +368,11 @@ void Cpu::jr()
 	_registers[reg::PC] += 2 + static_cast<int8_t>(offset);
 }
 
-void Cpu::jr_nz()
+void Cpu::jr(const bool jump_condition)
 {
 	_registers[reg::PC] += 2;
 	uint8_t offset = _memory.read(_registers[reg::PC] + 1);
-	if (!_registers[flag::Z]) { // jump if NZ
-		_registers[reg::PC] += static_cast<int8_t>(offset);
-	}
-}
-
-void Cpu::jr_z()
-{
-	_registers[reg::PC] += 2;
-	uint8_t offset = _memory.read(_registers[reg::PC] + 1);
-	if (_registers[flag::Z]) { // jump if Z
+	if (jump_condition) {
 		_registers[reg::PC] += static_cast<int8_t>(offset);
 	}
 }

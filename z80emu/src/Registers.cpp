@@ -65,12 +65,12 @@ uint8_t& Registers::operator[](const reg::DataReg regVal)
 
 uint8_t& Registers::operator[](const reg::Special8 regVal)
 {
-	return other[regVal];
+	return other[regVal.position];
 }
 
 uint16_t& Registers::operator[](const reg::Special16 regVal)
 {
-	return shared16[regVal];
+	return shared16[regVal.position];
 }
 
 uint8_t Registers::operator[](const flag::StatusFlag statusFlag)
