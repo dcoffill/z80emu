@@ -4,6 +4,11 @@
 #include "RegisterEnums.h"
 #include <bitset>
 
+/**
+ * @brief  Begins virtual Cpu execution
+ *
+ * Begins executing Z80 instructions previously loaded into Ram.
+ */
 void Cpu::execute()
 {
 	_registers.zero();
@@ -167,11 +172,19 @@ void Cpu::execute()
 	}
 }
 
+/**
+ * @brief Implements `NOP` instruction
+ */
 void Cpu::nop()
 {
 	++_registers[reg::PC];
 }
 
+/**
+ * @brief Implements `ADD A, r` instruction
+ * @param reg 8-bit Register whose contents should be added to the Accumulator
+ * Add contents of @p reg to the Accumulator and set status flags based on the result
+ */
 void Cpu::add_a_r(const reg::DataReg reg)
 {
 	uint8_t acc = _registers[reg::A];
@@ -190,6 +203,11 @@ void Cpu::add_a_r(const reg::DataReg reg)
 	++_registers[reg::PC];
 }
 
+/**
+ * @brief Implements `ADD HL, ss` instruction
+ * @param reg 16-bit Register whose contents should be added to HL
+ * Add contents of @p reg to the Accumulator and set status flags based on the result
+ */
 void Cpu::add_hl(const reg::DataReg16 reg)
 {
 	uint16_t hl = _registers[reg::HL];
@@ -208,12 +226,22 @@ void Cpu::add_hl(const reg::DataReg16 reg)
 	_registers[reg::PC] += 1;
 }
 
+/**
+ * @brief Implements `INC r` instruction
+ * @param reg 8-bit Register to increment
+ * Increment contents of @p reg and set status flags based on the result
+ */
 void Cpu::inc_r(const reg::DataReg reg)
 {
 	_registers[reg] = inc(_registers[reg]);
 	++_registers[reg::PC];
 }
 
+/**
+ * @brief Implements `INC ss` instruction
+ * @param reg 16-bit Register whose contents should be incremented
+ * Increment contents of @p reg
+ */
 void Cpu::inc_ss(const reg::DataReg16 reg)
 {
 	++_registers[reg];
